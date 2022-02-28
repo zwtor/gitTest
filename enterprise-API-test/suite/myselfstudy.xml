@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="酷学院我的自学模块" thread-count="2">
+	<test name="我的自学流程测试">
+		<classes>
+			<class name="cn.lazy.study.cases.TestMySelfStudy" />
+		</classes>
+	</test>
+</suite>

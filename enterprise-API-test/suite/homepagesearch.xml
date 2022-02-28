@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="移动端首页模块" thread-count="2">
+	<test name="移动端首页搜索模块">
+		<classes>
+			<class name="cn.lazy.group.a.cases.TestHomePageSearch" />
+		</classes>
+	</test>
+</suite>

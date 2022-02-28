@@ -1,0 +1,39 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="酷学院档案馆模块" thread-count="2">
+	<test name="任务档案">
+		<classes>
+			<class name="cn.lazy.archives.cases.TestStaffarchives" />
+			
+			<class name="cn.lazy.group.a.cases.TestStationCostomTable"/>
+			<class name="cn.lazy.group.a.cases.TestStationUserinfo"/>
+			
+		</classes>
+	</test>
+	
+	 <test name="离职人员档案">
+		<classes>
+			<class name="cn.lazy.archives.cases.TestQuitArchivesInfo" />
+		</classes>
+	</test> 
+	 <test name="自学档案">
+		<classes>
+			<class name="cn.lazy.archives.cases.TestSelfArchives" />
+		</classes>
+	</test> 
+	<test name="认证档案">
+		<classes>
+			<class name="cn.lazy.archives.cases.TestQualificationArchives" />
+		</classes>
+	</test>
+	
+	<test name="学分排行榜">
+		<classes>
+			<class name="cn.lazy.archives.cases.TestScoreRank" />
+		</classes>
+	</test>
+	<test name="证书排行榜">
+		<classes>
+			<class name="cn.lazy.archives.cases.TestCertificateRanks" />
+		</classes>
+	</test>
+</suite>

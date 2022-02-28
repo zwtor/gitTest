@@ -1,0 +1,20 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="酷学院消息中心" thread-count="2">
+	<test name="酷学院全部消息">
+		<classes>
+			<class name="cn.lazy.message.cases.TestAllMessage" />
+		</classes>
+	</test>
+	
+	<test name="酷学院未读消息">
+		<classes>
+			<class name="cn.lazy.message.cases.TestUnReadMessage" />
+		</classes>
+	</test>
+	<test name="酷学院已读消息">
+		<classes>
+			<class name="cn.lazy.message.cases.TestReadMessage" />
+		</classes>
+	</test>
+	
+</suite>

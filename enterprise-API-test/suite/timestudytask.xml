@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="酷学院定时学习模块" thread-count="4" parallel ="tests" >
+	<test name="定时学习模板流程测试">
+		<classes>
+			<class name="cn.lazy.timestudy.cases.TestTimerStudyTask" />
+			<class name="cn.lazy.timestudy.cases.TestTimerStudyTrickTask" />
+			<class name="cn.lazy.timestudy.cases.TestAuthRangeTimeStudy" />
+		</classes>
+	</test> 
+</suite>

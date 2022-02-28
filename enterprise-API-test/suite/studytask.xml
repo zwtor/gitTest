@@ -1,0 +1,28 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="酷学院学习任务模块" thread-count="1">
+	<test name="学习任务流程测试">
+		<classes>
+			<class name="cn.lazy.study.cases.TestExtremelyStudyTask" />
+			<class name="cn.lazy.study.cases.TestAppStudyTask" />
+			<class name="cn.lazy.study.cases.TestMixStudyTask" />
+			<class name="cn.lazy.study.cases.TestOfflineTypeStudyTask" />
+			<class name="cn.lazy.study.cases.TestOfflineTypeOutLecturerStudyTask" />
+			<class name="cn.lazy.study.cases.TestStudyTask" />
+			<class name="cn.lazy.study.cases.TestCheatFlagCutScreenCountOfExam" /> 
+			<class name="cn.lazy.study.cases.TestStudyStageTrick" />
+			<class name="cn.lazy.study.cases.TestAppStudyTaskTrick" /> 
+			<class name="cn.lazy.study.cases.TestStudyHigherExamResult" />
+			<class name="cn.lazy.study.cases.TestStudyNewHistoryResult" /> 
+			<class name="cn.lazy.study.cases.TestAuthorityRangeStudy" />
+			<class name="cn.lazy.study.cases.TestExamCheckTrue" />
+			<class name="cn.lazy.study.cases.TestSpecialStudy" />
+			<class name="cn.lazy.study.cases.TestStudyMyOperation" />
+			<class name="cn.lazy.group.a.cases.TestStudyPlanPublish" />
+			<class name="cn.lazy.study.cases.TestStudyOperationSaveDraft" />
+			<class name="cn.lazy.study.cases.TestSignManage" />
+			<class name="cn.lazy.group.a.cases.TestStudyPay" />
+			<class name="cn.lazy.group.a.cases.TestRecordSubmit" />
+			<class name="cn.lazy.group.a.cases.TestRepeatAddQuestion" />
+		</classes>
+	</test>
+</suite>

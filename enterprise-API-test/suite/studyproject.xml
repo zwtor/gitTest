@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="酷学院学习项目模块" thread-count="2">
+	<test name="学习项目流程测试">
+		<classes>
+			<class name="cn.lazy.studyproject.cases.TestAppNewStudyProject" />
+			<class name="cn.lazy.studyproject.cases.TestNewStudyProject2" />
+			<class name="cn.lazy.studyproject.cases.TestNewStudyProject" />
+			<class name="cn.lazy.studyproject.cases.TestStudyProject" />
+			<class name="cn.lazy.studyproject.cases.TestStudyProjectSignUpWebApprove" />
+			<class name="cn.lazy.studyproject.cases.TestStudyProjectTrick" />
+			<class name="cn.lazy.studyproject.cases.TestStudyProjectExamHistoryResult" /> 
+			<class name="cn.lazy.studyproject.cases.TestStudyProjectExamHigherHistoryResult" /> 
+			<class name="cn.lazy.studyproject.cases.TestStudyAuthRangeProject" />
+			<class name="cn.lazy.studyproject.cases.TestStudyProjectCourseData" />
+			<class name="cn.lazy.studyproject.cases.TestAppAddStudyProject" />
+			<class name="cn.lazy.group.a.cases.TestResourceLock" />
+		</classes>
+	</test>  
+</suite>

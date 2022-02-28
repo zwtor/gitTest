@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="酷学院新员工模块" thread-count="1" >
+	
+	<test name="新员工培训流程测试">
+		<classes>
+	    	<class name="cn.lazy.newemployee.cases.TestNewEmployeeOpera" />
+			<class name="cn.lazy.newemployee.cases.TestNewEmployeeTrain" />
+			<class name="cn.lazy.newemployee.cases.TestNewEmployeeTrick" />
+			<class name="cn.lazy.newemployee.cases.TestNewEmployeeAssign" />
+			<class name="cn.lazy.newemployee.cases.TestNewEmployeeData" />
+			<class name="cn.lazy.newemployee.cases.TestNewEmployeeMarking" />
+			<class name="cn.lazy.newemployee.cases.TestToturAnalysis" />
+		</classes>
+	</test>
+</suite> 

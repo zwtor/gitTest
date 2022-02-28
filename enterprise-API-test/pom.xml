@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>API-test-collection</artifactId>
+        <groupId>org.example</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>enterprise-API-test</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>API-test-core</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>2.6.0</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.20</version>
+                <configuration>
+                    <!--设置参数命令行 -->
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
+                    <systemPropertyVariables>
+                        <!--是否忽略html，解释见下图。与之后在reportNg报告上显示截图相关。当前已经使用allure了，这里可以直接去掉啦 -->
+                        <org.uncommons.reportng.escape-output>false</org.uncommons.reportng.escape-output>
+                    </systemPropertyVariables>
+                    <!--测试失败后，是否忽略并继续测试 -->
+                    <testFailureIgnore>true</testFailureIgnore>
+                    <properties>
+                        <property>
+                            <name>usedefaultlisteners</name>
+                            <value>false</value>
+                        </property>
+                        <property>
+                            <name>listener</name>
+                            <value>com.lazy.config.ExtentTestNGIReporterListener</value>
+                        </property>
+                    </properties>
+                    <argLine>-Dfile.encoding=UTF-8</argLine>
+                    <workingDirectory>target</workingDirectory>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>suite/archives.xml</suiteXmlFile>
+                        <suiteXmlFile>suite/electivetask.xml</suiteXmlFile>
+                        <suiteXmlFile>suite/homepagesearch.xml</suiteXmlFile>
+                        <suiteXmlFile>suite/message.xml</suiteXmlFile>
+                        <suiteXmlFile>suite/myselfstudy.xml</suiteXmlFile>
+                        <suiteXmlFile>suite/mystudytask.xml</suiteXmlFile>
+                        <suiteXmlFile>suite/newemployee.xml</suiteXmlFile>
+                        <suiteXmlFile>suite/studyproject.xml</suiteXmlFile>
+                        <suiteXmlFile>suite/studytask.xml</suiteXmlFile>
+                        <suiteXmlFile>suite/timestudytask.xml</suiteXmlFile>
+                        <suiteXmlFile>suite/oncall.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <fork>true</fork>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
