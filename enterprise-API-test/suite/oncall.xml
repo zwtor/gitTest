@@ -2,7 +2,7 @@
 <suite name="oncall工单" thread-count="2">
 	<test name="oncall问题覆盖">
 		<classes>
-			<class name="cn.lazy.group.a.cases.TestOncall" />
+			<class name="group.a.cases.TestOncall" />
 		</classes>
 	</test>
 </suite>

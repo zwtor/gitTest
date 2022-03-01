@@ -3,13 +3,13 @@
 	
 	<test name="新员工培训流程测试">
 		<classes>
-	    	<class name="cn.lazy.newemployee.cases.TestNewEmployeeOpera" />
-			<class name="cn.lazy.newemployee.cases.TestNewEmployeeTrain" />
-			<class name="cn.lazy.newemployee.cases.TestNewEmployeeTrick" />
-			<class name="cn.lazy.newemployee.cases.TestNewEmployeeAssign" />
-			<class name="cn.lazy.newemployee.cases.TestNewEmployeeData" />
-			<class name="cn.lazy.newemployee.cases.TestNewEmployeeMarking" />
-			<class name="cn.lazy.newemployee.cases.TestToturAnalysis" />
+	    	<class name="newemployee.cases.TestNewEmployeeOpera" />
+			<class name="newemployee.cases.TestNewEmployeeTrain" />
+			<class name="newemployee.cases.TestNewEmployeeTrick" />
+			<class name="newemployee.cases.TestNewEmployeeAssign" />
+			<class name="newemployee.cases.TestNewEmployeeData" />
+			<class name="newemployee.cases.TestNewEmployeeMarking" />
+			<class name="newemployee.cases.TestToturAnalysis" />
 		</classes>
 	</test>
 </suite> 

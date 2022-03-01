@@ -2,7 +2,7 @@
 <suite name="付费支付模块" thread-count="2">
 	<test name="学习任务学习项目付费模式">
 		<classes>
-			<class name="cn.lazy.group.a.cases.TestStudyPay" />
+			<class name="group.a.cases.TestStudyPay" />
 		</classes>
 	</test>
 </suite>

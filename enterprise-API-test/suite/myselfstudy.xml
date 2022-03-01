@@ -2,7 +2,7 @@
 <suite name="酷学院我的自学模块" thread-count="2">
 	<test name="我的自学流程测试">
 		<classes>
-			<class name="cn.lazy.study.cases.TestMySelfStudy" />
+			<class name="study.cases.TestMySelfStudy" />
 		</classes>
 	</test>
 </suite>

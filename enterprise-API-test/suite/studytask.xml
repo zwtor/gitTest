@@ -2,27 +2,27 @@
 <suite name="酷学院学习任务模块" thread-count="1">
 	<test name="学习任务流程测试">
 		<classes>
-			<class name="cn.lazy.study.cases.TestExtremelyStudyTask" />
-			<class name="cn.lazy.study.cases.TestAppStudyTask" />
-			<class name="cn.lazy.study.cases.TestMixStudyTask" />
-			<class name="cn.lazy.study.cases.TestOfflineTypeStudyTask" />
-			<class name="cn.lazy.study.cases.TestOfflineTypeOutLecturerStudyTask" />
-			<class name="cn.lazy.study.cases.TestStudyTask" />
-			<class name="cn.lazy.study.cases.TestCheatFlagCutScreenCountOfExam" /> 
-			<class name="cn.lazy.study.cases.TestStudyStageTrick" />
-			<class name="cn.lazy.study.cases.TestAppStudyTaskTrick" /> 
-			<class name="cn.lazy.study.cases.TestStudyHigherExamResult" />
-			<class name="cn.lazy.study.cases.TestStudyNewHistoryResult" /> 
-			<class name="cn.lazy.study.cases.TestAuthorityRangeStudy" />
-			<class name="cn.lazy.study.cases.TestExamCheckTrue" />
-			<class name="cn.lazy.study.cases.TestSpecialStudy" />
-			<class name="cn.lazy.study.cases.TestStudyMyOperation" />
-			<class name="cn.lazy.group.a.cases.TestStudyPlanPublish" />
-			<class name="cn.lazy.study.cases.TestStudyOperationSaveDraft" />
-			<class name="cn.lazy.study.cases.TestSignManage" />
-			<class name="cn.lazy.group.a.cases.TestStudyPay" />
-			<class name="cn.lazy.group.a.cases.TestRecordSubmit" />
-			<class name="cn.lazy.group.a.cases.TestRepeatAddQuestion" />
+			<class name="study.cases.TestExtremelyStudyTask" />
+			<class name="study.cases.TestAppStudyTask" />
+			<class name="study.cases.TestMixStudyTask" />
+			<class name="study.cases.TestOfflineTypeStudyTask" />
+			<class name="study.cases.TestOfflineTypeOutLecturerStudyTask" />
+			<class name="study.cases.TestStudyTask" />
+			<class name="study.cases.TestCheatFlagCutScreenCountOfExam" />
+			<class name="study.cases.TestStudyStageTrick" />
+			<class name="study.cases.TestAppStudyTaskTrick" />
+			<class name="study.cases.TestStudyHigherExamResult" />
+			<class name="study.cases.TestStudyNewHistoryResult" />
+			<class name="study.cases.TestAuthorityRangeStudy" />
+			<class name="study.cases.TestExamCheckTrue" />
+			<class name="study.cases.TestSpecialStudy" />
+			<class name="study.cases.TestStudyMyOperation" />
+			<class name="group.a.cases.TestStudyPlanPublish" />
+			<class name="study.cases.TestStudyOperationSaveDraft" />
+			<class name="study.cases.TestSignManage" />
+			<class name="group.a.cases.TestStudyPay" />
+			<class name="group.a.cases.TestRecordSubmit" />
+			<class name="group.a.cases.TestRepeatAddQuestion" />
 		</classes>
 	</test>
 </suite>

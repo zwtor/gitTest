@@ -2,7 +2,7 @@
 <suite name="酷学院我的培训任务模块" thread-count="2">
 	<test name="我的培训任务流程测试">
 		<classes>
-			<class name="cn.lazy.study.cases.TestMyStudyTask" />
+			<class name="study.cases.TestMyStudyTask" />
 		</classes>
 	</test>
 </suite>
