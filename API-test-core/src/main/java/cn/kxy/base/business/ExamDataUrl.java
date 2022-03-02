@@ -8,12 +8,10 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class ExamDataUrl {
-
-
 	public static String getNewExamUrl() {
-		String type = readTxt(FilePath.getHome() + File.separator + "environmental.txt");
+		String env = System.getProperty("env");
 		String url = "";
-		switch (type) {
+		switch (env) {
 		case "GREEN":
 			url="https://grcoolapi.coolcollege.cn/exam-api/";
 			break;

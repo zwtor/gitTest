@@ -8,7 +8,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class TestQualificationArchives {
-
 	String user_name = UserBusiness.getUsername();
 	@Test(description="查看认证档案列表",priority=1)
 	public void testQueryQualificationArchivesList() {

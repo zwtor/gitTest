@@ -1,17 +1,10 @@
 package cn.kxy.base.business;
 
-import com.lazy.common.utils.FilePath;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-
 public class EnterpriseData {
 	public static String getEnterpriseId() {
-		String type = readTxt(FilePath.getHome() + File.separator + "environmental.txt");
+		String env = System.getProperty("env");
 		String id = "";
-		switch (type) {
+		switch (env) {
 		case "GREEN":
 			id="1016929454485803038";
 			break;
@@ -53,31 +46,5 @@ public class EnterpriseData {
 			break;
 		}
 		return id;
-	}
-
-	public static String readTxt(String fileName) {
-		File file = new File(fileName);
-		BufferedReader reader = null;
-		StringBuffer sbf = new StringBuffer();
-		try {
-			reader = new BufferedReader(new FileReader(file));
-			String tempStr;
-			while ((tempStr = reader.readLine()) != null) {
-				sbf.append(tempStr);
-			}
-			reader.close();
-			return sbf.toString();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			if (reader != null) {
-				try {
-					reader.close();
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-			}
-		}
-		return sbf.toString();
 	}
 }

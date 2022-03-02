@@ -22,12 +22,12 @@ import org.testng.TestListenerAdapter;
 import java.util.Iterator;
 
 /**
- * @ClassName: TestngListener
+ * @ClassName: TestngEventListener
  * @Description:TODO(重写testNg监听的方法)
  * @author: zhanglun
  */
-public class TestngListener extends TestListenerAdapter {
-    private static Logger logger = Logger.getLogger(TestngListener.class);
+public class TestNGEventListener extends TestListenerAdapter {
+    private static Logger logger = Logger.getLogger(TestNGEventListener.class);
 
     @Override
     public void onTestFailure(ITestResult tr) {

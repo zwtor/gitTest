@@ -9,7 +9,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class TestCertificateRanks {
-
 	String user_name = UserBusiness.getUsername();
 	@Test(description="根据用户名查看证书列表",priority=1)
 	public void testGetCertificateRankList() {

@@ -1,15 +1,25 @@
 package cn.kxy.homepage.business;
 
 import cn.kxy.base.business.EnterpriseDataUrl;
+import com.lazy.assured.utils.PostRequestTools;
 import com.lazy.httpclient.utils.HttpRequest;
+import io.restassured.RestAssured;
+import io.restassured.config.SSLConfig;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import static io.restassured.RestAssured.given;
 
 public class LoginBusiness {
 	
 	public static String platform_url = EnterpriseDataUrl.getPlatformUrl();
 	
-	public static String platform_login_url = platform_url + "login";
+	public static String platform_login_url = platform_url + "/v2/login";
 	
-	public static String platform_logout_url = platform_url + "logout";
+	public static String platform_logout_url = platform_url + "/v2/logout";
 	
 	/**   
 	 * @Title: logoutCrm   
@@ -31,9 +41,19 @@ public class LoginBusiness {
 	 * @return: String      
 	 * @throws   
 	 */  
-	public static String loginCrm(String username,String password) {
-		return HttpRequest.post(platform_login_url).form("username",username).form("password", password).send().body();
+	public static String loginCrm(String access_token) {
+		return HttpRequest.get(platform_login_url).query("access_token", access_token).send().body();
 	}
-	
+
+	public static String loginCoolColleague(String loginMobile, String password) {
+		Map requestBody = new LinkedHashMap<String, String>() {{
+			put("login_mobile", loginMobile);
+			put("password", password);
+			put("login_type", "password");
+		}};
+		Response response = given().config((RestAssured.config().sslConfig(new SSLConfig().relaxedHTTPSValidation()))).body(requestBody).post(platform_login_url);
+		response.then().statusCode(200);
+		return response.prettyPrint();
+	}
 	
 }

@@ -6,7 +6,6 @@ import cn.kxy.base.business.TokenData;
 import cn.kxy.setting.bussiness.UserBusiness;
 import com.lazy.common.utils.DateUtil;
 import com.lazy.httpclient.utils.HttpRequest;
-//import cn.lazy.interaction.cases.TestTinteraction;
 
 public class InteractionBusiness {
 
