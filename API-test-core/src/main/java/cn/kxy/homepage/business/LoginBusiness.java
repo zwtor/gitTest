@@ -1,12 +1,11 @@
 package cn.kxy.homepage.business;
 
 import cn.kxy.base.business.EnterpriseDataUrl;
-import com.lazy.assured.utils.PostRequestTools;
+import com.lazy.assured.utils.RestAssuredRequestHandler;
 import com.lazy.httpclient.utils.HttpRequest;
 import io.restassured.RestAssured;
 import io.restassured.config.SSLConfig;
 import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -14,11 +13,8 @@ import java.util.Map;
 import static io.restassured.RestAssured.given;
 
 public class LoginBusiness {
-	
 	public static String platform_url = EnterpriseDataUrl.getPlatformUrl();
-	
 	public static String platform_login_url = platform_url + "/v2/login";
-	
 	public static String platform_logout_url = platform_url + "/v2/logout";
 	
 	/**   
@@ -51,9 +47,9 @@ public class LoginBusiness {
 			put("password", password);
 			put("login_type", "password");
 		}};
-		Response response = given().config((RestAssured.config().sslConfig(new SSLConfig().relaxedHTTPSValidation()))).body(requestBody).post(platform_login_url);
-		response.then().statusCode(200);
-		return response.prettyPrint();
+//		Response response = RestAssured.given().config((RestAssured.config().sslConfig(new SSLConfig().relaxedHTTPSValidation()))).body(requestBody).post(platform_login_url);
+		RestAssuredRequestHandler requestHandler = new RestAssuredRequestHandler(false);
+		return requestHandler.sendPostRequest(platform_login_url, requestBody);
 	}
 	
 }
