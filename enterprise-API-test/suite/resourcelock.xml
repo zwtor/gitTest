@@ -2,7 +2,7 @@
 <suite name="学习项目模块" thread-count="2">
 	<test name="学习项目资源锁定模式">
 		<classes>
-			<class name="group.a.cases.TestResourceLock" />
+			<class name="group.cases.TestResourceLock" />
 		</classes>
 	</test>
 </suite>

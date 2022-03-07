@@ -17,12 +17,12 @@
 			<class name="study.cases.TestExamCheckTrue" />
 			<class name="study.cases.TestSpecialStudy" />
 			<class name="study.cases.TestStudyMyOperation" />
-			<class name="group.a.cases.TestStudyPlanPublish" />
+			<class name="group.cases.TestStudyPlanPublish" />
 			<class name="study.cases.TestStudyOperationSaveDraft" />
 			<class name="study.cases.TestSignManage" />
-			<class name="group.a.cases.TestStudyPay" />
-			<class name="group.a.cases.TestRecordSubmit" />
-			<class name="group.a.cases.TestRepeatAddQuestion" />
+			<class name="group.cases.TestStudyPay" />
+			<class name="group.cases.TestRecordSubmit" />
+			<class name="group.cases.TestRepeatAddQuestion" />
 		</classes>
 	</test>
 </suite>

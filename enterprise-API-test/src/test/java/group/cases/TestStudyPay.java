@@ -1,4 +1,4 @@
-package group.a.cases;
+package group.cases;
 
 import cn.kxy.group.a.business.StudyPayBusiness;
 import cn.kxy.setting.bussiness.ClassificationBusines;

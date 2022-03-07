@@ -13,7 +13,7 @@
 			<class name="studyproject.cases.TestStudyAuthRangeProject" />
 			<class name="studyproject.cases.TestStudyProjectCourseData" />
 			<class name="studyproject.cases.TestAppAddStudyProject" />
-			<class name="group.a.cases.TestResourceLock" />
+			<class name="group.cases.TestResourceLock" />
 		</classes>
 	</test>  
 </suite>

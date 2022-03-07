@@ -4,8 +4,8 @@
 		<classes>
 			<class name="archives.cases.TestStaffarchives" />
 			
-			<class name="group.a.cases.TestStationCostomTable"/>
-			<class name="group.a.cases.TestStationUserinfo"/>
+			<class name="group.cases.TestStationCostomTable"/>
+			<class name="group.cases.TestStationUserinfo"/>
 			
 		</classes>
 	</test>

@@ -1,4 +1,4 @@
-package group.a.cases;
+package group.cases;
 /**
  * @author wenlingzhi
  *2021年8月31日
