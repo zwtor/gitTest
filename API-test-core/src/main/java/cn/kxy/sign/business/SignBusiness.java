@@ -19,11 +19,12 @@ public class SignBusiness {
 	public static String sign_records_url = enterprise_url + "v2/enterprises/"+enterpriseId+"/users/"+user_id+"/sign/records";
 	
 	public static String sign_pop_url = enterprise_url + "v2/enterprises/"+enterpriseId+"/users/"+user_id+"/sign/pop";
-	
-	
+
 	public static String sign = enterprise_url + "v2/enterprises/"+enterpriseId+"/users/"+user_id+"/sign/today";
 	
 	public static String download_url =enterprise_url + "v2/enterprises/"+enterpriseId+"/sign/export";
+
+	public static String poster_url = enterprise_url + "v2/"+enterpriseId +"/users/"+user_id+"/poster";
 	
 	public static String sign() {
 		return HttpRequest.post(sign).contentType("application/json;charset=UTF-8").query("access_token", token).data("{\"access_token\":\""+token+"\"}").send().body();
@@ -94,5 +95,12 @@ public class SignBusiness {
 	public static String downloadSign(String start_time,String end_time,String name) {
 		return  HttpRequest.get(download_url).query("start_time",start_time).query("end_time", end_time).query("access_token", token)
 				.send().body();
+	}
+
+	public static String generatePoster(String number) {
+		return HttpRequest.post(poster_url).query("access_token", token).query("enterprise_id", enterpriseId).query("user_id",user_id)
+				.data("{\r\n" +
+						"	\"number\": "+number+"\r\n" +
+						"}").send().body();
 	}
 }

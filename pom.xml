@@ -11,6 +11,9 @@
     <modules>
         <module>API-test-core</module>
         <module>enterprise-API-test</module>
+        <module>exam-API-test</module>
+        <module>platform-API-test</module>
+        <module>micro-server-API-test</module>
     </modules>
     <name>APITestCollection</name>
 

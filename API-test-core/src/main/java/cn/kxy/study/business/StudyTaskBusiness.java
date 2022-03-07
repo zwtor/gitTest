@@ -693,21 +693,21 @@ public class StudyTaskBusiness {
 		return GetRequestTools.RequestQueryParamsByGet("queryTaskInfo", queryTaskInfo, "qualifiedStatus", qualifiedStatus,"keyword",keyword,
 				"taskStatus",taskStatus,"departmentId","1","planId",id,"pageNumber","1","pageSize","20","access_token",token,monitorsUrl(id));
 	}
-	
-	/**   
-	 * @Title: getStudyTaskList   
-	 * @Description: TODO(查看学习任务列表)   
+
+	/**
+	 * @Title: getStudyTaskList
+	 * @Description: TODO(查看学习任务列表)
 	 * @param: @param keyword
 	 * @param: @param onlySeeMe
 	 * @param: @param queryIntervalType
 	 * @param: @param projectId
 	 * @param: @return      
-	 * @return: String      
-	 * @throws   
-	 */ 
-	public static String getStudyTaskList(String keyword,String onlySeeMe,String queryIntervalType,String projectId,String planStatus) {
+	 * @return: String
+	 * @throws
+	 */
+	public static String getStudyTaskList(String keyword,String onlySeeMe,String queryIntervalType,String projectId) {
 		return GetRequestTools.RequestQueryParamsByGet("keyword", keyword, "onlySeeMe", onlySeeMe,"queryIntervalType",
-				queryIntervalType, "pageSize","20","pageNumber","1","projectId",projectId,"planStatus",planStatus,"access_token",token,getListUrl);
+				queryIntervalType, "pageSize","20","pageNumber","1","projectId",projectId,"access_token",token,getListUrl);
 	}
 	
 	/**   

@@ -36,9 +36,13 @@ public class LoginBusiness {
 	 * @param: @return      
 	 * @return: String      
 	 * @throws   
-	 */  
+	 */
 	public static String loginCrm(String access_token) {
 		return HttpRequest.get(platform_login_url).query("access_token", access_token).send().body();
+	}
+
+	public static String loginCrm(String username,String password) {
+		return HttpRequest.post(platform_login_url).form("username",username).form("password", password).send().body();
 	}
 
 	public static String loginCoolColleague(String loginMobile, String password) {
@@ -47,7 +51,7 @@ public class LoginBusiness {
 			put("password", password);
 			put("login_type", "password");
 		}};
-//		Response response = RestAssured.given().config((RestAssured.config().sslConfig(new SSLConfig().relaxedHTTPSValidation()))).body(requestBody).post(platform_login_url);
+
 		RestAssuredRequestHandler requestHandler = new RestAssuredRequestHandler(false);
 		return requestHandler.sendPostRequest(platform_login_url, requestBody);
 	}

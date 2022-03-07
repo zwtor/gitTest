@@ -154,5 +154,22 @@ public class CreationBusiness {
 	public static String queryAppMessageList () {
 		return HttpRequest.get(creation_url).header("x-access-token", token).query("page", "0").query("size", "10").query("access-token", token).send().body();
 	}
+
+	public static String pinkArtUrl(String id ,String type) {
+		return group_url + "article/"+id+"/pink/"+type;
+	}
+
+	public static String pinkAnswerUrl(String ques_id ,String answer_id ,String type) {
+		return group_url + "question/"+ques_id+"/answer/"+answer_id+"/pink/"+type;
+	}
+
+	public static String pinkAnswer (String ques_id ,String answer_id ,String type) {
+		return HttpRequest.post(pinkAnswerUrl(ques_id,answer_id,type)).header("x-access-token", token).query("access-token", token).
+				data("{\"access_token\":\""+token+"\"}").send().body();
+	}
+
+	public static String pinkArt(String id ,String type) {
+		return HttpRequest.post(pinkArtUrl(id,type)).header("x-access-token", token).query("access-token", token).data("{\"access_token\":\""+token+"\"}").send().body();
+	}
 	
 }

@@ -34,6 +34,17 @@ public class UploadCourseware {
 				+ "type="+type+"&msg=&status=&videoId=&isDoc="+isDoc+"&isCanceling=false&binaryFile="
 				+ "%7B%22id%22:%22wlbhmqo70060z5zh%22%7D&classifyId="+classifyId+"&bizType=0&access_token="+token, file);
 	}
+
+	public static String uploadZipFile(String name) {
+
+		File file = new File(FilePath.getDataDirectory() + name);
+
+		return UploadFile.httpClientUploadFile(enterpriseUrl + "/course/resource/add?"
+				+ "id=nbrjbxbtvntidjv5&name="+file.getName()+"&process=0&uploadedSize=0&size="+file.length()+"&"
+				+ "isError=false&type=html&msg=&status=&videoId=&isDoc=true&isCanceling=false&isLoading=false&binaryFile="
+				+ "%7B%22id%22:%22nbrjbxbtvntidjv5%22%7D&oldResourceId=&contentType=html&discriminate=html&notLibrary=false&classifyId=0&"
+				+ "bizType=0&old_resource_id=&access_token="+token, file);
+	}
 	
 	/**   
 	 * @Title: changeCourse   

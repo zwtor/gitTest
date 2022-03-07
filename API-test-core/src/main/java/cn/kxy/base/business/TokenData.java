@@ -9,10 +9,6 @@ public class TokenData {
 	private TokenData() {
 	}
 
-	public static String getToken() {
-		return token;
-	}
-
 	public static String getMangerToken() {
 		if(token == null || token.equals("")) {
 			if(System.getProperty("token") == null) {

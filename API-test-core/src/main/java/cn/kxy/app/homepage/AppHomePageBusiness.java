@@ -62,9 +62,18 @@ public class AppHomePageBusiness {
 	public static String today_scores_rank_url =enterprise_url + "v2/"+enterprise_id+"/users/"+user_id+"/scores";
 	
 	public static String get_home_menus_url = cmdb_url + "v2/"+enterprise_id+"/get_home_menus";
+
+	public static String is_need_url = enterprise_url + "v2/boot/is_need";
+
+	public static String face_query_url = enterprise_url + "v2/"+enterprise_id+"/users/"+user_id+"/face/query";
 	
 	public static int getHomeMenus() {
 		return HttpRequest.get(get_home_menus_url).query("keys", "notice,scoreList,lecturerDemeanor,versionUpdate").query("access_token", token).send().statusCode();
+	}
+
+	public static String judgeIsNeed() {
+		return HttpRequest.get(is_need_url).query("boot_name","create_project").query("access_token", token).
+				query("enterprise_id",enterprise_id).query("user_id",user_id).send().body();
 	}
 	
 	/**   
@@ -153,6 +162,11 @@ public class AppHomePageBusiness {
 	 */ 
 	public static String queryMenus() {
 		return GetRequestTools.RequestQueryParamsByGet("access_token", token,"enterprise_id", enterprise_id, "user_id",user_id, menus_url);
+	}
+
+	public static String queryFace () {
+		return HttpRequest.get(face_query_url).query("access_token", token).query("enterprise_id",enterprise_id).query("user_id",user_id)
+				.send().body();
 	}
 	
 	/**   
