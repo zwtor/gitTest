@@ -62,6 +62,13 @@ public class EnterpriseDataUrl {
         return getDomainName() + "tutor-manager/";
     }
 
+    public static String getTalentAbilityUrl() {
+        return getDomainName() + "talentability/";
+    }
+    public static String getDictionaryServiceUrl() {
+        return getDomainName() + "dictionary-service/";
+    }
+
     public static String getShareUrl() {
         String env = System.getProperty("env");
         String url = "";

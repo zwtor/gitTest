@@ -16,7 +16,7 @@ import cn.kxy.study.business.NewEmployeeTrainBusiness;
 import cn.kxy.study.business.StudyProjectBusiness;
 import cn.kxy.study.business.StudyTaskBusiness;
 import cn.kxy.study.business.TimerStudyTaskTemplate;
-import cn.lazy.init.cases.InitStudyAuthCourse;
+import init.cases.InitStudyAuthCourse;
 import com.alibaba.fastjson.JSONPath;
 import com.lazy.common.utils.CommonData;
 import com.lazy.common.utils.DateUtil;

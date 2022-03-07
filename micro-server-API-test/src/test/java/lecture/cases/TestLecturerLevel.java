@@ -1,7 +1,7 @@
 package lecture.cases;
 
 import cn.kxy.lecturer.business.LecturerLevelBusiness;
-import cn.lazy.init.cases.InitStudyAuthCourse;
+import init.cases.InitStudyAuthCourse;
 import com.alibaba.fastjson.JSONPath;
 import com.lazy.common.utils.CommonData;
 import org.testng.Assert;

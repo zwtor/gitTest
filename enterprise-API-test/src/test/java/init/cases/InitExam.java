@@ -5,7 +5,6 @@ import cn.kxy.base.business.BaseBusiness;
 import cn.kxy.setting.bussiness.ClassificationBusines;
 import com.alibaba.fastjson.JSONPath;
 import com.lazy.common.utils.CommonData;
-import com.lazy.common.utils.FilePath;
 import org.testng.annotations.BeforeSuite;
 
 public class InitExam {
@@ -15,7 +14,8 @@ public class InitExam {
 			ClassificationBusines
 					.addPrimaryClassification("class" + CommonData.getStringRandom(3) + CommonData.getStringRandom(1));
 		}
-		
+
+
 		String res2 = CertificateBusiness.queryCertificateList(BaseBusiness.certificate_name, "1");
 		int total2 = (int) JSONPath.read(res2, "$.total");
 		if (total2 == 0) {

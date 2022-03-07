@@ -3,7 +3,7 @@ package lecture.cases;
 import cn.kxy.base.business.BaseBusiness;
 import cn.kxy.lecturer.business.AppLecturerBusiness;
 import cn.kxy.lecturer.business.LecturerListBusiness;
-import cn.lazy.init.cases.InitStudyAuthCourse;
+import init.cases.InitStudyAuthCourse;
 import com.alibaba.fastjson.JSONPath;
 import com.lazy.common.utils.CommonData;
 import org.testng.Assert;

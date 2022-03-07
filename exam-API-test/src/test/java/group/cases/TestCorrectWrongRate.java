@@ -1,4 +1,4 @@
-package group.a.cases;
+package group.cases;
 
 import cn.kxy.group.a.business.CorrectWrongRateBusiness;
 import cn.kxy.setting.bussiness.ClassificationBusines;

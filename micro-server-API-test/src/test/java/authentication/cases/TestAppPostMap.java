@@ -6,7 +6,7 @@ import cn.kxy.course.resources.bussiness.ArticleBusiness;
 import cn.kxy.course.resources.bussiness.CourseBusiness;
 import cn.kxy.examination.business.PaperBusiness;
 import cn.kxy.my.business.AppMybusiness;
-import cn.lazy.init.cases.InitStudyAuthCourse;
+import init.cases.InitStudyAuthCourse;
 import com.alibaba.fastjson.JSONPath;
 import com.lazy.common.utils.CommonData;
 import org.testng.Assert;

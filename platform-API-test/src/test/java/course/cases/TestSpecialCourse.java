@@ -1,6 +1,6 @@
 package course.cases;
 
-import cn.lazy.init.cases.InitStudyAuthCourse;
+import init.cases.InitStudyAuthCourse;
 import com.lazy.common.utils.CommonData;
 import org.testng.annotations.Test;
 //import io.qameta.allure.Story;

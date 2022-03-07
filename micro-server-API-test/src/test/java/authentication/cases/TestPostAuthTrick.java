@@ -4,7 +4,7 @@ import cn.kxy.authentication.business.AppPostAuthenticationBusiness;
 import cn.kxy.authentication.business.CertificateBusiness;
 import cn.kxy.authentication.business.PostAuthenticationBusiness;
 import cn.kxy.course.resources.bussiness.ArticleBusiness;
-import cn.lazy.init.cases.InitStudyAuthCourse;
+import init.cases.InitStudyAuthCourse;
 import com.alibaba.fastjson.JSONPath;
 import com.lazy.common.utils.CommonData;
 import org.testng.Assert;

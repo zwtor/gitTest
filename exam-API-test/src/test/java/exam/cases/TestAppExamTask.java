@@ -17,8 +17,6 @@ import org.testng.annotations.Test;
 import java.math.BigDecimal;
 
 public class TestAppExamTask extends InitExam {
-
-
 	String un_id = "";
 	@Test(description = "新增考试后，在app端未完成列表进行查看", priority = 1)
 	public void testUntestList() {

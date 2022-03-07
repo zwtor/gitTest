@@ -701,13 +701,13 @@ public class StudyTaskBusiness {
 	 * @param: @param onlySeeMe
 	 * @param: @param queryIntervalType
 	 * @param: @param projectId
-	 * @param: @return      
+	 * @param: @return
 	 * @return: String
 	 * @throws
 	 */
-	public static String getStudyTaskList(String keyword,String onlySeeMe,String queryIntervalType,String projectId,String planStatus) {
+	public static String getStudyTaskList(String keyword,String onlySeeMe,String queryIntervalType,String projectId) {
 		return GetRequestTools.RequestQueryParamsByGet("keyword", keyword, "onlySeeMe", onlySeeMe,"queryIntervalType",
-				queryIntervalType, "pageSize","20","pageNumber","1","projectId",projectId,"planStatus",planStatus,"access_token",token,getListUrl);
+				queryIntervalType, "pageSize","20","pageNumber","1","projectId",projectId,"access_token",token,getListUrl);
 	}
 	
 	/**   

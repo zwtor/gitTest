@@ -7,7 +7,7 @@ import cn.kxy.lecturer.business.LecturerListBusiness;
 import cn.kxy.setting.bussiness.UserBusiness;
 import cn.kxy.study.business.MyStudyTask;
 import cn.kxy.study.business.StudyTaskBusiness;
-import cn.lazy.init.cases.InitStudyAuthCourse;
+import init.cases.InitStudyAuthCourse;
 import com.alibaba.fastjson.JSONPath;
 import com.lazy.common.utils.CommonData;
 import com.lazy.common.utils.DateUtil;
