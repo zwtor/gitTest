@@ -2,7 +2,7 @@ package exam.cases;
 
 import cn.kxy.examination.business.PaperBusiness;
 import cn.kxy.setting.bussiness.ClassificationBusines;
-import cn.lazy.init.cases.InitExam;
+import init.cases.InitExam;
 import com.alibaba.fastjson.JSONPath;
 import com.lazy.common.utils.CommonData;
 import org.testng.Assert;

@@ -19,6 +19,7 @@ public class TestCertificateRanks {
 	@Test(description="根据时间查看证书列表",priority=2)
 	public void testGetCertificateRankListByTime() {
 		String res = CertificateRanksBusiness.getCertificateRankList("", DateUtil.getTimeStamp(-90, ""),  DateUtil.getTimeStamp(-1, ""));
+		System.out.println(res);
 		int certificate_count = (int)JSONPath.read(res, "$.list[0].certificate_count");
 		Assert.assertTrue(certificate_count>=0,"根据时间查看证书列表"+res);
 	}

@@ -32,6 +32,8 @@ public class ExaminationBusines {
 	public static String setVisibilityRangeUrl = exam_url
 			+ "v2/"+enterprise_id+"/question_banks/visual_ranges/update";
 
+	public static String rate_user_export_url = exam_url + "v2/"+enterprise_id+"/rate_user_export";
+
 	public static String export_questionUrl (String id) {
 		return exam_url + "v2/"+enterprise_id+"/questionBanks/"+id+"/export_question";
 	}
@@ -143,6 +145,11 @@ public class ExaminationBusines {
 						+ ",\"access_token\":\"14825f466b4fb443cad6cd8870ffb604\"}",
 				token, setVisibilityRangeUrl);
 
+	}
+
+	public static String rateUserExport (String plan_id,String question_id ,String rate_type) {
+		return HttpRequest.get(rate_user_export_url).query("plan_id",plan_id).query("question_id",question_id).query("rate_type",rate_type)
+				.query("access_token",token).send().body();
 	}
 
 }

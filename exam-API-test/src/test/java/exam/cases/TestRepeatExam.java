@@ -5,7 +5,7 @@ import cn.kxy.examination.business.ExaminationTaskBusiness;
 import cn.kxy.examination.business.MyExamTaskBusiness;
 import cn.kxy.examination.business.PaperBusiness;
 import cn.kxy.setting.bussiness.UserBusiness;
-import cn.lazy.init.cases.InitExam;
+import init.cases.InitExam;
 import com.alibaba.fastjson.JSONPath;
 import com.lazy.common.utils.CommonData;
 import com.lazy.common.utils.DateUtil;

@@ -5,13 +5,13 @@ import cn.kxy.base.business.BaseBusiness;
 import cn.kxy.examination.business.*;
 import cn.kxy.my.business.MyBusiness;
 import cn.kxy.setting.bussiness.UserBusiness;
-import cn.lazy.init.cases.InitExam;
+import init.cases.InitExam;
 import com.alibaba.fastjson.JSONPath;
 import com.lazy.common.utils.CommonData;
 import com.lazy.common.utils.DateUtil;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import java.math.BigDecimal;
 
 public class TestExamTaskToPass extends InitExam {

@@ -291,12 +291,13 @@ public class ExaminationTaskBusiness {
 	}
 
 	// 查询列表
-	public static String queryList(String keyword, String queryIntervalType, String onlySeeMe) {
+	public static String queryList(String keyword, String queryIntervalType, String onlySeeMe,String publishStatus) {
 		return given().queryParam("keyword", keyword).queryParam("queryIntervalType", queryIntervalType)
 				.queryParam("sortName", "createTime").queryParam("timestamp", System.currentTimeMillis())
 				.queryParam("onlySeeMe", onlySeeMe).queryParam("access_token", token).get(queryListUrl)
 				.asString();
 	}
+
 	public static String submitPassByIdExam(String id) {
 		String res01 = GetRequestTools.RequestQueryParamsByGet("access_token", token,
 				MyExamTaskBusiness.queryInfoByIdUrl(id));
@@ -363,21 +364,21 @@ public class ExaminationTaskBusiness {
 
 	// 获取第一个id
 	public static String getIdByName(String name) {
-		String res = queryList(name, "0", "false");
+		String res = queryList(name, "0", "false","");
 		String id = (String) JSONPath.read(res, "$.list[0].id");
 		return id;
 	}
 
 	// 获取第一个name
 	public static String getFirstName() {
-		String res = queryList("", "0", "false");
+		String res = queryList("", "0", "false","");
 		String id = (String) JSONPath.read(res, "$.list[0].title");
 		return id;
 	}
 
 	// 通过关键字获取id
 	public static String getIdByKeyword(String name) {
-		String res = queryList(name, "0", "false");
+		String res = queryList(name, "0", "false","");
 		String id = (String) JSONPath.read(res, "$.list[0].id");
 		return id;
 	}
