@@ -43,7 +43,6 @@ public class RestAssuredRequestHandler {
     public Map<String, String> buildHeader(Map<String, String> newHeader) {
         if (newHeader != null) {
             requestHeader.clear();
-            requestHeader.put("Content-Type", "application/json");
             requestHeader.putAll(newHeader);
         }
         return requestHeader;
@@ -88,7 +87,7 @@ public class RestAssuredRequestHandler {
             request.formParams(parameterMap);
         }
 
-        Response response = request.body(requestBody).put(url);
+        Response response = (requestBody == null)? request.post(url) : request.body(requestBody).post(url);
         response.then().statusCode(COMMON_SUCCESS_CODE);
         return response.asString();
     }
@@ -100,7 +99,7 @@ public class RestAssuredRequestHandler {
             request.queryParam("access_token", token);
         }
 
-        Response response = request.put(url);
+        Response response = (requestBody == null)? request.post(url) : request.body(requestBody).post(url);
         response.then().statusCode(COMMON_SUCCESS_CODE);
         return response.asString();
     }
@@ -116,7 +115,7 @@ public class RestAssuredRequestHandler {
             request.formParams(parameterMap);
         }
 
-        Response response = request.body(requestBody).post(url);
+        Response response = (requestBody == null)? request.post(url) : request.body(requestBody).post(url);
         response.then().statusCode(COMMON_SUCCESS_CODE);
         return response.asString();
     }
@@ -128,7 +127,7 @@ public class RestAssuredRequestHandler {
             request.queryParam("access_token", token);
         }
 
-        Response response = request.post(url);
+        Response response = (requestBody == null)? request.post(url) : request.body(requestBody).post(url);
         response.then().statusCode(COMMON_SUCCESS_CODE);
         return response.asString();
     }

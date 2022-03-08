@@ -5,6 +5,7 @@ import cn.kxy.base.business.BaseBusiness;
 import cn.kxy.course.resources.bussiness.ArticleBusiness;
 import cn.kxy.course.resources.bussiness.CourseBusiness;
 import cn.kxy.course.resources.bussiness.CoursewareBusiness;
+import cn.kxy.homepage.business.LoginBusiness;
 import cn.kxy.lecturer.business.LecturerListBusiness;
 import com.alibaba.fastjson.JSONPath;
 import org.testng.annotations.BeforeSuite;
@@ -48,5 +49,9 @@ public class InitStudyAuthCourse {
 			 CertificateBusiness.creatCertificate(cert_name, "kxyTest0", "Sinpoes", "true", "chinese", "2");
 		}
 		System.out.println("add Certificate success");
+
+		// must choose a valid enterprise after login then this user can have permission to do operation
+		String response = LoginBusiness.chooseEnterprise();
+		System.out.println("choose enterprise successfully");
 	}
 }

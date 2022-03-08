@@ -1,22 +1,20 @@
 package cn.kxy.homepage.business;
 
+import cn.kxy.base.business.EnterpriseData;
 import cn.kxy.base.business.EnterpriseDataUrl;
 import com.lazy.assured.utils.RestAssuredRequestHandler;
 import com.lazy.httpclient.utils.HttpRequest;
-import io.restassured.RestAssured;
-import io.restassured.config.SSLConfig;
-import io.restassured.response.Response;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
-
-import static io.restassured.RestAssured.given;
 
 public class LoginBusiness {
 	public static String platform_url = EnterpriseDataUrl.getPlatformUrl();
 	public static String platform_login_url = platform_url + "/v2/login";
 	public static String platform_logout_url = platform_url + "/v2/logout";
-	
+	private final static String chooseEnterpriseURL = platform_url +"/chooseEnterprise";
+
 	/**   
 	 * @Title: logoutCrm   
 	 * @Description: TODO  退出crm系统
@@ -54,6 +52,15 @@ public class LoginBusiness {
 
 		RestAssuredRequestHandler requestHandler = new RestAssuredRequestHandler(false);
 		return requestHandler.sendPostRequest(platform_login_url, requestBody);
+	}
+
+	public static String chooseEnterprise() {
+		RestAssuredRequestHandler requestHandler = new RestAssuredRequestHandler(true);
+		Map<String, String> headerMap = new HashMap<String, String>() {{
+			put("Content-Type", "application/x-www-form-urlencoded");
+		}};
+		requestHandler.buildHeader(headerMap);
+		return requestHandler.sendPostRequest(chooseEnterpriseURL, null, "enterpriseId", EnterpriseData.getEnterpriseId(), "isMultiterminal", "true");
 	}
 	
 }
