@@ -18,7 +18,7 @@ public class StudyProjectBusiness {
 	
 	public static String add_url = enterpriseUrl + "v2/"+enterpriseId+"/study_projects/add";
 	
-	public static String list_url = enterpriseUrl+"v2/"+enterpriseId+"/study_projects";
+	public static String list_url = enterpriseUrl+"v2/"+enterpriseId+"/study_projects_fast";
 	
 	public static String class_id = ClassificationBusines.getPrimaryId();
 	
@@ -1045,11 +1045,11 @@ public class StudyProjectBusiness {
 	 * @throws   
 	 */ 
 	public static String queryLearningProjectList(String keyword,String classify_id) {
-		return GetRequestTools.RequestQueryParamsByGet("classify_id",classify_id,"access_token",token,"keyword",keyword, "page_size","20","page_number","1",list_url);
+		return GetRequestTools.RequestQueryParamsByGet("classify_id",classify_id,"access_token",token,"keyword",keyword, "page_size","20","page_number","1", "only_see_me", "true", list_url);
 	}
 	
 	public static String queryLearningProjectList(String status) {
-		return GetRequestTools.RequestQueryParamsByGet("status",status,"access_token",token,"keyword","", "page_size","20","page_number","1",list_url);
+		return GetRequestTools.RequestQueryParamsByGet("status",status,"access_token",token,"keyword","", "page_size","20","page_number","1","only_see_me", "true", list_url);
 	}
 	
 	/**   
