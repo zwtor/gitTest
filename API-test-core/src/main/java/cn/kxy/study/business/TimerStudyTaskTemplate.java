@@ -356,11 +356,11 @@ public class TimerStudyTaskTemplate {
 	 * @param: @param course_id
 	 * @param: @param paperId
 	 * @param: @param paperName
-	 * @param: @return      
+	 * @param: @return
 	 * @return: String
 	 * @throws
 	 */
-	public static String addSingleTimerStudy(String title,String next_time,String start_time,String resource_id,
+	public static String addSingleTimerStudy(String title,String next_time,String start_time,
 											 String course_id,String paperId,String paperName) {
 		return PostRequestTools.RequestBodyByPost("{\r\n" +
 				"  \"title\": \""+title+"\", \r\n" +
@@ -400,21 +400,15 @@ public class TimerStudyTaskTemplate {
 				"      \"sort\": 1, \r\n" +
 				"      \"course\": [\r\n" +
 				"        {\r\n" +
-				"          \"course_id\": \""+resource_id+"\", \r\n" +
-				"          \"course_sort\": 0, \r\n" +
-				"          \"course_type\": 3, \r\n" +
-				"          \"flag\": 1\r\n" +
-				"        }, \r\n" +
-				"        {\r\n" +
 				"          \"course_id\": \""+course_id+"\", \r\n" +
-				"          \"course_sort\": 1, \r\n" +
+				"          \"course_sort\": 0, \r\n" +
 				"          \"course_type\": 1, \r\n" +
 				"          \"flag\": 1\r\n" +
 				"        }, \r\n" +
 				"        {\r\n" +
 				"          \"flag\": 2, \r\n" +
 				"          \"type\": \"ex\", \r\n" +
-				"          \"course_sort\": 2, \r\n" +
+				"          \"course_sort\": 1, \r\n" +
 				"          \"course_id\": \"\", \r\n" +
 				"          \"title\": \"exam\", \r\n" +
 				"          \"cheat_flag\": 0, \r\n" +

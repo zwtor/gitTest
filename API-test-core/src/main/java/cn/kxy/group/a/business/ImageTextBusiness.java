@@ -47,17 +47,15 @@ public class ImageTextBusiness {
 	 * @throws UnsupportedEncodingException
 	 * @Title: ImageTextAdd
 	 * @Description: TODO  创建图文课
-	 * @param: @return      
+	 * @param: @return
 	 * @return: String
 	 * @throws
 	 */
-	public static String ImageTextAdd(String baseCover,String contentJson,String init_type,String teacherId, String title,
-									  String linkSwitch,String url) throws UnsupportedEncodingException {
+	public static String ImageTextAdd(String baseCover,String contentJson,String init_type,String teacherId, String title) throws UnsupportedEncodingException {
 		return HttpRequest.post(imagetext_add_url).query("access_token", token).query("baseCover",baseCover).query("biz_type","6").query("contentJson",URLEncoder.encode(contentJson, "utf-8"))
 				.query("cover","").query("coverType","1").query("credit","0").query("departmentIds","").query("groupIds","").query("init_type",init_type)
-				.query("isAll","1").query("original","1").query("studyTimeLimit","").query("teacherId",teacherId).query("title",title).query("linkSwitch",linkSwitch)
-				.query("url",url)
-				.send().body();
+				.query("isAll","1").query("original","1").query("studyTimeLimit","").query("teacherId",teacherId).query("title",title).
+				send().body();
 	}
 
 

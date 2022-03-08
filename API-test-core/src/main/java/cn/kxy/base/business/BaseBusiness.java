@@ -9,7 +9,6 @@ import cn.kxy.setting.bussiness.ClassificationBusines;
 import cn.kxy.setting.bussiness.UserBusiness;
 import com.lazy.assured.utils.GetRequestTools;
 import com.lazy.assured.utils.PostRequestTools;
-import com.lazy.httpclient.utils.HttpRequest;
 
 import com.alibaba.fastjson.JSONPath;
 

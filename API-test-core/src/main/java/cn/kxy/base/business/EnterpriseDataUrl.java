@@ -138,7 +138,6 @@ public class EnterpriseDataUrl {
 
     public static String getDomainName() {
         String env = System.getProperty("env");
-        System.out.println("Environment: " + env);
         String url = "";
         switch (env) {
             case "GREEN":

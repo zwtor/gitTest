@@ -705,9 +705,9 @@ public class StudyTaskBusiness {
 	 * @return: String
 	 * @throws
 	 */
-	public static String getStudyTaskList(String keyword,String onlySeeMe,String queryIntervalType,String projectId) {
+	public static String getStudyTaskList(String keyword,String onlySeeMe,String queryIntervalType,String projectId,String planStatus) {
 		return GetRequestTools.RequestQueryParamsByGet("keyword", keyword, "onlySeeMe", onlySeeMe,"queryIntervalType",
-				queryIntervalType, "pageSize","20","pageNumber","1","projectId",projectId,"access_token",token,getListUrl);
+				queryIntervalType, "pageSize","20","pageNumber","1","projectId",projectId,"planStatus",planStatus,"access_token",token,getListUrl);
 	}
 	
 	/**   

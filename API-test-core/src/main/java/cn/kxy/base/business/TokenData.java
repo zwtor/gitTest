@@ -13,7 +13,7 @@ public class TokenData {
 		if(token == null || token.equals("")) {
 			if(System.getProperty("token") == null) {
 				String response = LoginBusiness.loginCoolColleague(System.getProperty("loginMobile"), System.getProperty("password"));
-				token = (String) JSONPath.read(response, "$.action_token");
+				token = String.valueOf(JSONPath.read(response, "$.action_token"));
 			} else {
 				token = System.getProperty("token");
 			}

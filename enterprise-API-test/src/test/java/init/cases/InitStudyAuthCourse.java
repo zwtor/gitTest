@@ -24,7 +24,7 @@ public class InitStudyAuthCourse {
 		BaseBusiness.addLecturerLevel();
 		String res = LecturerListBusiness.queryLecturerList(outer_name, "1", "");
 		int total = (int) JSONPath.read(res, "$.total");
-		if (Integer.valueOf(total) == 0) {
+		if (total == 0) {
 			LecturerListBusiness.addLecturer(outer_name, "1", "13526231231", "outside", "", BaseBusiness.lecturerLevel,
 					"auto", "jmeter");
 		}
