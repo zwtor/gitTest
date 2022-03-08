@@ -3,7 +3,6 @@
 	<test name="学习项目流程测试">
 		<classes>
 			<class name="studyproject.cases.TestAppNewStudyProject" />
-			<class name="studyproject.cases.TestNewStudyProject2" />
 			<class name="studyproject.cases.TestNewStudyProject" />
 			<class name="studyproject.cases.TestStudyProject" />
 			<class name="studyproject.cases.TestStudyProjectSignUpWebApprove" />

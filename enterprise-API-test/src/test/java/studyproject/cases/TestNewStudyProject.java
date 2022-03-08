@@ -7,6 +7,8 @@ import cn.kxy.investigationresearch.business.QuestionnaireBusiness;
 import cn.kxy.setting.bussiness.ClassificationBusines;
 import cn.kxy.study.business.StudyProjectBusiness;
 import cn.kxy.study.business.StudyProjectNewBusinesss;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import init.cases.InitStudyAuthCourse;
 import com.alibaba.fastjson.JSONPath;
 import com.lazy.common.utils.CommonData;
@@ -21,7 +23,6 @@ public class TestNewStudyProject extends InitStudyAuthCourse{
 	@Test(description = "新增学习项目2.0的基础信息",priority = 1)
 	public void testSaveBaseInfo() {
 		String res = StudyProjectNewBusinesss.saveBaseInfo(title, class_id);
-		System.out.println(res);
 		id = (String)JSONPath.read(res, "$.id");
 		course_id = (String)JSONPath.read(res, "$.course_id");
 		Assert.assertTrue(res.contains("true"),"新增学习项目2.0的基础信息"+res);
@@ -35,9 +36,11 @@ public class TestNewStudyProject extends InitStudyAuthCourse{
 	
 	@Test(description = "查看学习项目列表",priority = 3)
 	public void testQueryLearningProjectList(){
-		String list_res = StudyProjectBusiness.queryLearningProjectList(title, "");
-		String status = (String)JSONPath.read(list_res, "$.list[0].status");
-		Assert.assertEquals(status, "draft","查看学习项目列表"+list_res);
+		String response = StudyProjectBusiness.queryLearningProjectList(title, "");
+		JSONArray studyProjectList = JSON.parseObject(response).getJSONArray("list");
+		Assert.assertTrue(studyProjectList.size() > 0, "查看学习项目列表: " + response);
+		String status = String.valueOf(JSONPath.read(response, "$.list[0].status"));
+		Assert.assertEquals(status, "draft","查看学习项目列表: " + response);
 	}
 	
 	@Test(description= "保存阶段的内容",priority = 4)
@@ -101,7 +104,7 @@ public class TestNewStudyProject extends InitStudyAuthCourse{
 	@Test(description = "删除学习项目", priority = 11)
 	public void testDeleteStudyProject() {
 		String res = StudyProjectBusiness.deleteStudyProject(id);
-		String deleted = (String) JSONPath.read(res, "$.deleted");
+		String deleted = (String) JSONPath.read(res, "$.data.deleted");
 		Assert.assertEquals(deleted, "true", "删除学习项目,实际返回结果：" + res);
 	}
 }

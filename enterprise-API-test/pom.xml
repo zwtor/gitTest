@@ -46,8 +46,8 @@
                         <!--是否忽略html，解释见下图。与之后在reportNg报告上显示截图相关。当前已经使用allure了，这里可以直接去掉啦 -->
                         <org.uncommons.reportng.escape-output>false</org.uncommons.reportng.escape-output>
                         <env>FAT2</env>
-                        <loginMobile>15829659080</loginMobile>
-                        <password>Tuochao860810</password>
+                        <loginMobile></loginMobile>
+                        <password></password>
                     </systemPropertyVariables>
                     <!--测试失败后，是否忽略并继续测试 -->
                     <testFailureIgnore>true</testFailureIgnore>
