@@ -709,6 +709,11 @@ public class StudyTaskBusiness {
 		return GetRequestTools.RequestQueryParamsByGet("keyword", keyword, "onlySeeMe", onlySeeMe,"queryIntervalType",
 				queryIntervalType, "pageSize","20","pageNumber","1","projectId",projectId,"planStatus",planStatus,"access_token",token,getListUrl);
 	}
+
+	public static String getStudyTaskList(String keyword,String onlySeeMe,String queryIntervalType,String projectId) {
+		return GetRequestTools.RequestQueryParamsByGet("keyword", keyword, "onlySeeMe", onlySeeMe,"queryIntervalType",
+				queryIntervalType, "pageSize","20","pageNumber","1","projectId",projectId,"access_token",token,getListUrl);
+	}
 	
 	/**   
 	 * @Title: changeStudyUsers   

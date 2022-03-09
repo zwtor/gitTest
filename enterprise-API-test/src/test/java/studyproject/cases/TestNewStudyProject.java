@@ -15,7 +15,7 @@ import com.lazy.common.utils.CommonData;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TestNewStudyProject extends InitStudyAuthCourse{
+public class TestNewStudyProject extends InitStudyAuthCourse {
 	String title = "NewStudyProject"+CommonData.getStringRandom(5);
 	String class_id = ClassificationBusines.getPrimaryId();
 	String id = "";
@@ -37,8 +37,7 @@ public class TestNewStudyProject extends InitStudyAuthCourse{
 	@Test(description = "查看学习项目列表",priority = 3)
 	public void testQueryLearningProjectList(){
 		String response = StudyProjectBusiness.queryLearningProjectList(title, "");
-		JSONArray studyProjectList = JSON.parseObject(response).getJSONArray("list");
-		Assert.assertTrue(studyProjectList.size() > 0, "查看学习项目列表: " + response);
+		Assert.assertTrue((Integer) JSONPath.read(response, "$.extend.total_count") > 0, response);
 		String status = String.valueOf(JSONPath.read(response, "$.list[0].status"));
 		Assert.assertEquals(status, "draft","查看学习项目列表: " + response);
 	}

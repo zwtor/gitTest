@@ -447,6 +447,100 @@ public class TimerStudyTaskTemplate {
 				"  \"access_token\": \""+token+"\"\r\n" +
 				"}", token, addUrl);
 	}
+
+	public static String addSingleTimerStudy(String title,String next_time,String start_time,String resource_id,
+											 String course_id,String paperId,String paperName) {
+		return PostRequestTools.RequestBodyByPost("{\r\n" +
+				"  \"title\": \""+title+"\", \r\n" +
+				"  \"ding_img_url\": \"\", \r\n" +
+				"  \"get_score\": true, \r\n" +
+				"  \"plan_certificate_id\": \"\", \r\n" +
+				"  \"progress\": 100, \r\n" +
+				"  \"get_score_info\": {\r\n" +
+				"    \"finish_score\": 0, \r\n" +
+				"    \"unfinish_score\": 0\r\n" +
+				"  }, \r\n" +
+				"  \"department_ids\": \"\", \r\n" +
+				"  \"group_ids\": \"\", \r\n" +
+				"  \"plan_term\": 5, \r\n" +
+				"  \"post_ids\": \"\", \r\n" +
+				"  \"scheduler_json\": {\r\n" +
+				"    \"interval\": 0, \r\n" +
+				"    \"next_time\": \""+next_time+"\", \r\n" +
+				"    \"start_time\": \""+start_time+"\", \r\n" +
+				"    \"times\": 0, \r\n" +
+				"    \"type\": \"once\", \r\n" +
+				"    \"scheduler_id\": \"\", \r\n" +
+				"    \"status\": \"on\"\r\n" +
+				"  }, \r\n" +
+				"  \"is_all_in\": false, \r\n" +
+				"  \"study_time_limit\": 0, \r\n" +
+				"  \"supervisor_id\": \""+userId+"\", \r\n" +
+				"  \"supervisor_paper_read\": \"true\", \r\n" +
+				"  \"term_type\": \"D\", \r\n" +
+				"  \"times\": \"\", \r\n" +
+				"  \"user_ids\": \""+userId+"\", \r\n" +
+				"  \"stage_json\": [\r\n" +
+				"    {\r\n" +
+				"      \"content\": \"\", \r\n" +
+				"      \"stage_name\": \"step one\", \r\n" +
+				"      \"order\": \"false\", \r\n" +
+				"      \"sort\": 1, \r\n" +
+				"      \"course\": [\r\n" +
+				"        {\r\n" +
+				"          \"course_id\": \""+resource_id+"\", \r\n" +
+				"          \"course_sort\": 0, \r\n" +
+				"          \"course_type\": 3, \r\n" +
+				"          \"flag\": 1\r\n" +
+				"        }, \r\n" +
+				"        {\r\n" +
+				"          \"course_id\": \""+course_id+"\", \r\n" +
+				"          \"course_sort\": 1, \r\n" +
+				"          \"course_type\": 1, \r\n" +
+				"          \"flag\": 1\r\n" +
+				"        }, \r\n" +
+				"        {\r\n" +
+				"          \"flag\": 2, \r\n" +
+				"          \"type\": \"ex\", \r\n" +
+				"          \"course_sort\": 2, \r\n" +
+				"          \"course_id\": \"\", \r\n" +
+				"          \"title\": \"exam\", \r\n" +
+				"          \"cheat_flag\": 0, \r\n" +
+				"          \"exam_duration\": 45, \r\n" +
+				"          \"mark_type\": 1, \r\n" +
+				"          \"paper_id\": \""+paperId+"\", \r\n" +
+				"          \"paper_title\": \""+paperName+"\", \r\n" +
+				"          \"summary\":\"this is a summary\",\r\n"+
+				"          \"pass_line\": 60, \r\n" +
+				"          \"question_bank_list\": \"\", \r\n" +
+				"          \"question_mode\": 1, \r\n" +
+				"          \"show_knowledge\": \"show\", \r\n" +
+				"          \"s_repeat_exam\": \"true\", \r\n" +
+				"          \"multiple_count\": \"\", \r\n" +
+				"          \"multiple_unit_score\": \"\", \r\n" +
+				"          \"fill_blank_count\": \"\", \r\n" +
+				"          \"fill_blank_unit_score\": \"\", \r\n" +
+				"          \"short_answer_count\": \"\", \r\n" +
+				"          \"short_answer_unit_score\": \"\", \r\n" +
+				"          \"single_count\": \"\", \r\n" +
+				"          \"single_unit_score\": \"\", \r\n" +
+				"          \"true_or_false_count\": \"\", \r\n" +
+				"          \"true_or_false_unit_score\": \"\", \r\n" +
+				"          \"total_score\": 100, \r\n" +
+				"          \"answer_parsing\": 5, \r\n" +
+				"          \"passing_score\": \"60.0\", \r\n" +
+				"          \"cut_screen_count\": 0, \r\n" +
+				"          \"re_exam_rule\": 0, \r\n" +
+				"          \"re_exam_number\": 0, \r\n" +
+				"          \"view_rule\": 1, \r\n" +
+				"          \"score_rule\": 0\r\n" +
+				"        }\r\n" +
+				"      ]\r\n" +
+				"    }\r\n" +
+				"  ], \r\n" +
+				"  \"access_token\": \""+token+"\"\r\n" +
+				"}", token, addUrl);
+	}
 	
 	/**   
 	 * @Title: querySchedulers   
