@@ -17,7 +17,7 @@ public class InitStudyAuthCourse {
 	public static String course_name = "Physics";
 	public String cert_name = "Coo_cert";
 
-	@BeforeSuite
+	@BeforeSuite(alwaysRun = true)
 	public void init() {
 		String surrounding = System.getProperty("env");
 		System.out.println("Now cases is running in "+surrounding);

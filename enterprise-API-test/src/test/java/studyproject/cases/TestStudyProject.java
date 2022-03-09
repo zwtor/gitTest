@@ -16,15 +16,15 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class TestStudyProject extends InitStudyAuthCourse {
-
+@Test(groups = {"CI"})
+public class TestStudyProject extends InitStudyAuthCourse{
 	String study_name = "Study_Project" + CommonData.getStringRandom(5);
-
 	String user_name = UserBusiness.getUsername();
 	String user_id = UserBusiness.getUserId();
 	String classification_id = ClassificationBusines.getPrimaryId();
 	String id = "";
 	String mon_id = "";
+
 	@Test(description = "新增学习项目", priority = 1)
 	public void testAddStudyProject() {
 		String res = StudyProjectNewBusinesss.addStudyProject(study_name, classification_id,
@@ -166,7 +166,7 @@ public class TestStudyProject extends InitStudyAuthCourse {
 	@Test(description = "删除学习项目", priority = 16)
 	public void testDeleteStudyProject() {
 		String res = StudyProjectBusiness.deleteStudyProject(id);
-		String deleted = (String) JSONPath.read(res, "$.deleted");
+		String deleted = (String) JSONPath.read(res, "$.data.deleted");
 		Assert.assertEquals(deleted, "true", "删除学习项目,实际返回结果：" + res);
 	}
 	

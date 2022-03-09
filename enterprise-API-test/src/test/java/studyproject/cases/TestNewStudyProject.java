@@ -7,19 +7,19 @@ import cn.kxy.investigationresearch.business.QuestionnaireBusiness;
 import cn.kxy.setting.bussiness.ClassificationBusines;
 import cn.kxy.study.business.StudyProjectBusiness;
 import cn.kxy.study.business.StudyProjectNewBusinesss;
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
 import init.cases.InitStudyAuthCourse;
 import com.alibaba.fastjson.JSONPath;
 import com.lazy.common.utils.CommonData;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TestNewStudyProject extends InitStudyAuthCourse {
+@Test(groups = {"CI"})
+public class TestNewStudyProject extends InitStudyAuthCourse{
 	String title = "NewStudyProject"+CommonData.getStringRandom(5);
 	String class_id = ClassificationBusines.getPrimaryId();
 	String id = "";
 	String course_id = "";
+
 	@Test(description = "新增学习项目2.0的基础信息",priority = 1)
 	public void testSaveBaseInfo() {
 		String res = StudyProjectNewBusinesss.saveBaseInfo(title, class_id);
