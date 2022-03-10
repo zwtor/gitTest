@@ -1032,8 +1032,8 @@ public class StudyProjectBusiness {
 	 * @return: String      
 	 * @throws   
 	 */ 
-	public static String updateStatus(String id,String type) {
-		return PostRequestTools.RequestBodyByPost("{\"type\":\""+type+"\",\"access_token\":\""+token+"\"}", token, updateStatusUrl(id));
+	public static String updateStatus(String id,String status) {
+		return PostRequestTools.RequestBodyByPost("{\"status\":\""+status+"\",\"access_token\":\""+token+"\"}", token, updateStatusUrl(id));
 	}
 	
 	/**   

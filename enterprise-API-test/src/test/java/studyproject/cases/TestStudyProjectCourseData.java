@@ -17,12 +17,11 @@ import com.lazy.common.utils.CommonData;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+@Test(groups = {"CI"})
 public class TestStudyProjectCourseData extends InitStudyAuthCourse{
-	
 	String self_name = "StudyProjectCourse"+CommonData.getStringRandom(5);
 	String classification_id = ClassificationBusines.getPrimaryId();
 	String study_course_id = "";
-//	String cour_id = "";
 	String user_name = UserBusiness.getUsername();
 	String courseId="";
 	String exam_id ="";
@@ -30,6 +29,7 @@ public class TestStudyProjectCourseData extends InitStudyAuthCourse{
 	String ques_id ="";
 	String study_project_id = "";
 	String mon_id = "";
+
 	@Test(description = "新增学习项目", priority = 1)
 	public void testAddStudyProject() {
 		//新增学习项目

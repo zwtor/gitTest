@@ -20,11 +20,12 @@ public class RestAssuredRequestHandler {
 
     //By default token is required
     public RestAssuredRequestHandler() {
+        token = TokenData.getMangerToken();
+        isRequireToken = true;
         requestHeader = new HashMap<String, String>() {{
             put("Content-Type", "application/json");
+            put("access_token", token);
         }};
-        isRequireToken = true;
-        token = TokenData.getMangerToken();
     }
 
     //if not get token firstly, use this constructor to login and get token
@@ -36,6 +37,7 @@ public class RestAssuredRequestHandler {
         // only get token when token is required
         if(isRequireToken) {
             token = TokenData.getMangerToken();
+            requestHeader.put("access_token", token);
         }
     }
 
@@ -43,6 +45,7 @@ public class RestAssuredRequestHandler {
     public Map<String, String> buildHeader(Map<String, String> newHeader) {
         if (newHeader != null) {
             requestHeader.clear();
+            requestHeader.put("access_token", token);
             requestHeader.putAll(newHeader);
         }
         return requestHeader;
