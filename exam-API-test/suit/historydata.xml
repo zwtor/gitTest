@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="酷学院考试-学习历史数据" thread-count="2">
+	<test name="考试历史数据">
+		<classes>
+			<class name="historydata.cases.TestExamHistoryData" />
+		</classes>
+	</test>
+</suite>

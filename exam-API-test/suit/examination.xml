@@ -1,0 +1,69 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="酷学院考试管理" thread-count="1">
+	
+	<test name="考试查看历史成绩">
+		<classes>
+			<class name="exam.cases.TestHistoryRecord" />
+		</classes>
+	</test> 
+	
+	<test name="考试匿名阅卷测试">
+		<classes>
+			<class name="group.a.cases.TestAnonymousMarking" />
+		</classes>
+	</test>
+	<test name="重新阅卷">
+		<classes>
+			<class name="exam.cases.TestReMarking" />
+		</classes>
+	</test>
+	
+	<test name="考试设置结果测试">
+		<classes>
+			<class name="group.a.cases.TestShowResult" />
+		</classes>
+	</test>
+	<test name="考试任务模块流程测试">
+		<classes>
+			<class name="exam.cases.TestExamTaskToPass" />
+			<class name="exam.cases.TestExaminationTask" />
+			<class name="exam.cases.TestRepeatExam" />
+			<class name="exam.cases.TestFailExamTask" />
+			<class name="exam.cases.TestExamTaskUntestedCheckInfo" />
+			<class name="exam.cases.TestMakeupExam" />
+			<class name="exam.cases.TestAppExamTask" />
+			<class name="exam.cases.TestAuthRangeExam" />
+			<class name="exam.cases.TestExamDelay" />
+			<class name="exam.cases.TestAccuracyRate" />
+			<class name="exam.cases.TestMarkingTypeExam" />
+			<class name="exam.cases.TestExamPublic" />
+			<class name="exam.cases.TestExamNegativeScore" />
+			<class name="exam.cases.TestExamClassify" />
+			 <class name="group.a.cases.TestProportional" />
+			<!-- <class name="group.a.cases.TestExamMakeUp" /> -->
+		</classes>
+	</test>
+	
+	<test name="考试漏题给分测试">
+		<classes>
+			<class name="group.a.cases.TestCorrectWrongRate" />
+		</classes>
+	</test>
+	
+	<test name="随时试卷按题给分测试">
+		<classes>
+			<class name="group.a.cases.TestScoringByQuestion" />
+		</classes>
+	</test>
+	<test name="我的考试任务流程测试">
+		<classes>
+			<class name="exam.cases.TestMyExamTask" />
+		</classes>
+	</test>
+	<test name="考试微服务新接口测试">
+		<classes>
+			<class name="exam.cases.TestSoaExam" />
+		</classes>
+	</test> 
+
+</suite>

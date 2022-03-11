@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="酷学院考试-题库管理" thread-count="2">
+	<test name="题库管理模块流程测试">
+		<classes>
+			<class name="exam.cases.TesteExamQuestion" />
+			<class name="exam.cases.TestExtremelyQuestionBank" />
+		</classes>
+	</test>
+	<test name="试题模块流程测试">
+		<classes>
+			<class name="exam.cases.TestQuestions" />
+		</classes>
+	</test>
+</suite>

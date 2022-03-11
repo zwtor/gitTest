@@ -1,0 +1,28 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="酷学院全栈异常删除" thread-count="2">
+	<test name="问卷被引用删除测试">
+		<classes>
+			<class name="extremely.cases.TestQuestionnaireDelete" />
+		</classes>
+	</test>	  
+	<test name="考试被引用删除测试">
+		<classes>
+			<class name="extremely.cases.TestPaperDelete" />
+		</classes>
+	</test>	
+	<test name="试题被引用删除测试">
+		<classes>
+			<class name="extremely.cases.TestQuestionBankDelete" />
+		</classes>
+	</test>	
+	<test name="分类被引用删除测试">
+		<classes>
+			<class name="extremely.cases.TestClassificationDelete" />
+		</classes>
+	</test>
+<!-- 	<test name="题库被引用删除测试">
+		<classes>
+			<class name="extremely.cases.TestQuestionBankByStudyProjectDelete" />
+		</classes>
+	</test>		 -->
+</suite>

@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="考试模块" thread-count="2">
+	<test name="随时试卷按权重抽题测试">
+		<classes>
+			<class name="group.a.cases.TestProportional" />
+		</classes>
+	</test>
+</suite>

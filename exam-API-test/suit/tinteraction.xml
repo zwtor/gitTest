@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="酷学院考试-pk赛" thread-count="2">
+		<test name="考试Pk赛流程测试">
+		<classes>
+			<class name="group.a.cases.TestTinteraction" />
+		</classes>
+	</test>
+</suite>
