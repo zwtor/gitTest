@@ -1,6 +1,6 @@
 package setting.cases;
 
-import cn.lazy.init.cases.InitExam;
+import init.cases.InitExam;
 import com.lazy.common.utils.CommonData;
 import org.testng.annotations.Test;
 
