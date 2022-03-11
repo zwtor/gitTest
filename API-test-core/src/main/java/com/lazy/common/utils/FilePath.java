@@ -1,31 +1,17 @@
 package com.lazy.common.utils;
 
 import java.io.File;
+import java.util.Properties;
 
-/**
- * 
- * @ClassName:  FilePath   
- * @Description:TODO(获取文件夹路径)   
- * @author: zhanglun
- *     
- */
 public class FilePath {
-	/**
-	 * 
-	 * @Title: getHomeDirectory   
-	 * @Description: TODO(获取项目主目录)   
-	 * @param: @return      
-	 * @return: String
-	 */
 	public static String getHome(){
 		String homeDir = System.getProperty("user.dir");
-		homeDir = homeDir.substring(0, homeDir.length() - 6);
-		System.out.println(homeDir);
+//		homeDir = homeDir.substring(0, homeDir.length() - 6);
 		return homeDir;
 	}
 	
 	
-	public static String getHomeDirectory() {
+	public static String getResourceDirectory() {
 		return getHome()+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator;
 	}
 	
@@ -41,34 +27,38 @@ public class FilePath {
 	}
 	
 	public static String getScreenShotDirectory(){
-		String ScreenShotpath=FilePath.getHomeDirectory()+"creenShot"+File.separator;
+		String ScreenShotpath=FilePath.getResourceDirectory()+"creenShot"+File.separator;
 		return ScreenShotpath;
 	}
 	
 	
 	public static String gettoolDirectory(){
-		String driverpath=FilePath.getHomeDirectory()+"tool"+File.separator;
+		String driverpath=FilePath.getResourceDirectory()+"tool"+File.separator;
 		return driverpath;
 	}
 	
 	public static String getdriverDirectory(){
-		String driverpath=FilePath.getHomeDirectory()+"drivers"+File.separator;
+		String driverpath=FilePath.getResourceDirectory()+"drivers"+File.separator;
 		return driverpath;
 	}
 	
 	public static String getConfigDirectory(){
-		String configpath=FilePath.getHomeDirectory()+"config"+File.separator;
+		String configpath=FilePath.getResourceDirectory()+"config"+File.separator;
 		return configpath;
 	}
 
 	public static String getDataDirectory(){
-		String configpath=FilePath.getHomeDirectory()+"testdata"+File.separator;
+		String configpath=FilePath.getResourceDirectory()+"testdata"+File.separator;
 		return configpath;
 	}
-	public static void main(String[] args) {
-		
-		System.out.println(File.separator);
 
+	public static String getURLFilePath(String fileName) {
+		return FilePath.getResourceDirectory() + "url" + File.separator + fileName;
+	}
+
+	public static void main(String[] args) {
+		Properties properties = System.getProperties();
+		System.out.println(getURLFilePath("new-exam-url.json"));
 	}
 
 }

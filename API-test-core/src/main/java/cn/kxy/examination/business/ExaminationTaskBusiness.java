@@ -101,6 +101,8 @@ public class ExaminationTaskBusiness {
 	}
 	
 	public static String exam_rate_user_url = exam_url + "v2/"+enterpriseId+"/rate_user";
+
+	public static String publish_status_url =exam_url + "plan/exam/update/publishStatus";
 	
 	/**   
 	 * @Title: queryExamRateUser   
@@ -328,31 +330,6 @@ public class ExaminationTaskBusiness {
 				"status", "manual", submitExamUrl(name));
 		return res;
 	}
-	//直接考试通过
-	public static String passToDoExam(String name) {
-		ExaminationTaskBusiness.creatRewardExamTask("1", "hide", "10", "100", "1", name,
-				DateUtil.getRegularDate(0), DateUtil.getRegularDate(2), "false", UserBusiness.getUserId(),
-				PaperBusiness.getIdByKeyword(BaseBusiness.pass_paper_name), "60", "0", "false", "2",
-				CertificateBusiness.getIdByKeyword(BaseBusiness.certificate_name), "12", "0", "0", "0", "0", "true", "false",
-				UserBusiness.getUserId(), "{\"missScore\":4,\"passScore\":6,\"unPassScore\":2}");
-		// 交卷
-		ExaminationTaskBusiness.submitPassExam(name);
-		// 阅卷
-		String res = ExaminationTaskBusiness.getExamPlanPendingList(name);
-		String id =(String)JSONPath.read(res, "$.data.paperVo.showQuestionInfo[0].answer.bizQuestionOptionList[0].questionId");
-		String res0 = ExaminationTaskBusiness.submitMarkingPaper(ExaminationTaskBusiness.getIdByKeyword(name), id, "60");
-		return res0;
-	}
-	//直接考试失败
-	public static String failToDoExam(String name) {
-		ExaminationTaskBusiness.creatRewardExamTask("1", "show", "60", "100", "2", name,
-				DateUtil.getRegularDate(0), DateUtil.getRegularDate(2), "false", UserBusiness.getUserId(),
-				PaperBusiness.getIdByKeyword(BaseBusiness.paper_name), "60", "", "true", "1",
-				CertificateBusiness.getIdByKeyword(BaseBusiness.certificate_name), "12", "0", "0", "0", "0", "true", "false",
-				UserBusiness.getUserId(), "{\"missScore\":4,\"passScore\":6,\"unPassScore\":2}");
-		String res = MyExamTaskBusiness.submitFailBlankExam(name);
-		return res;
-	}
 	
 	// 获取试卷id
 	public static String getPaperId() {
@@ -485,15 +462,41 @@ public class ExaminationTaskBusiness {
 	}
 	
 	// 查看考试任务详情
-		public static String queryInfo(String name) {
-			return GetRequestTools.RequestQueryParamsByGet("access_token", token, getInfoUrl(getIdByKeyword(name)));
+	public static String queryInfo(String name) {
+		return GetRequestTools.RequestQueryParamsByGet("access_token", token, getInfoUrl(getIdByKeyword(name)));
 
-		}
-		
-		public static String queryInfoById(String id) {
-			return GetRequestTools.RequestQueryParamsByGet("access_token", token, getInfoUrl(id));
+	}
 
-		}
+	public static String queryInfoById(String id) {
+		return GetRequestTools.RequestQueryParamsByGet("access_token", token, getInfoUrl(id));
+
+	}
+
+	//直接考试通过
+	public static String passToDoExam(String name) {
+		ExaminationTaskBusiness.creatRewardExamTask("1", "hide", "10", "100", "1", name,
+				DateUtil.getRegularDate(0), DateUtil.getRegularDate(2), "false", UserBusiness.getUserId(),
+				PaperBusiness.getIdByKeyword(BaseBusiness.pass_paper_name), "60", "0", "false", "2",
+				CertificateBusiness.getIdByKeyword(BaseBusiness.certificate_name), "12", "0", "0", "0", "0", "true", "false",
+				UserBusiness.getUserId(), "{\"missScore\":4,\"passScore\":6,\"unPassScore\":2}");
+		// 交卷
+		ExaminationTaskBusiness.submitPassExam(name);
+		// 阅卷
+		String res = ExaminationTaskBusiness.getExamPlanPendingList(name);
+		String id =(String)JSONPath.read(res, "$.data.paperVo.showQuestionInfo[0].answer.bizQuestionOptionList[0].questionId");
+		String res0 = ExaminationTaskBusiness.submitMarkingPaper(ExaminationTaskBusiness.getIdByKeyword(name), id, "60");
+		return res0;
+	}
+	//直接考试失败
+	public static String failToDoExam(String name) {
+		ExaminationTaskBusiness.creatRewardExamTask("1", "show", "60", "100", "2", name,
+				DateUtil.getRegularDate(0), DateUtil.getRegularDate(2), "false", UserBusiness.getUserId(),
+				PaperBusiness.getIdByKeyword(BaseBusiness.paper_name), "60", "", "true", "1",
+				CertificateBusiness.getIdByKeyword(BaseBusiness.certificate_name), "12", "0", "0", "0", "0", "true", "false",
+				UserBusiness.getUserId(), "{\"missScore\":4,\"passScore\":6,\"unPassScore\":2}");
+		String res = MyExamTaskBusiness.submitFailBlankExam(name);
+		return res;
+	}
 
 	// 新增常规流程使用考试任务
 	public static String creatRewardExamTask(String questionMode, String showKnowledge, String passLine,
@@ -513,6 +516,25 @@ public class ExaminationTaskBusiness {
 				.formParam("reExamNumber", reExamNumber).formParam("scoreRule", scoreRule)
 				.formParam("isGetScore", isGetScore).formParam("supervisorPaper", supervisorPaper)
 				.formParam("supervisorId", supervisorId).formParam("examScore", examScore).post(addUrl).asString();
+	}
+
+	public static String creatRewardExamTask(String questionMode, String showKnowledge, String passLine,
+											 String totalScore, String answerParsing, String title, String beginTime, String endTime, String isAllIn,
+											 String userIds, String paperId, String examDuration, String cheatFlag, String repeatExam, String markType,
+											 String examCertificateId, String passingScore, String cutScreenCount, String reExamRule,
+											 String reExamNumber, String scoreRule, String isGetScore, String supervisorPaper, String supervisorId,
+											 String examScore,String classifyId) {
+		return given().queryParam("access_token", token).formParam("questionMode", questionMode)
+				.formParam("showKnowledge", showKnowledge).formParam("passLine", passLine)
+				.formParam("totalScore", totalScore).formParam("answerParsing", answerParsing).formParam("title", title)
+				.formParam("beginTime", beginTime).formParam("endTime", endTime).formParam("isAllIn", isAllIn)
+				.formParam("userIds", userIds).formParam("paperId", paperId).formParam("examDuration", examDuration)
+				.formParam("cheatFlag", cheatFlag).formParam("repeatExam", repeatExam).formParam("markType", markType)
+				.formParam("examCertificateId", examCertificateId).formParam("passingScore", passingScore)
+				.formParam("cutScreenCount", 5).formParam("reExamRule", reExamRule)
+				.formParam("reExamNumber", reExamNumber).formParam("scoreRule", scoreRule)
+				.formParam("isGetScore", isGetScore).formParam("supervisorPaper", supervisorPaper)
+				.formParam("supervisorId", supervisorId).formParam("examScore", examScore).formParam("classifyId",classifyId).post(addUrl).asString();
 	}
 
 	// 编辑考试任务
@@ -560,7 +582,11 @@ public class ExaminationTaskBusiness {
 	// 删除考试任务
 	public static String deleteExamTask(String id) {
 		return PostRequestTools.RequestFormDataByPost(token, "id", id, deleteUrl);
+	}
 
+	public static String publishExam(String examId,String publishStatus) {
+		return HttpRequest.post(publish_status_url).query("examId",examId).query("publishStatus",publishStatus).query("access_token",token).
+				data("{\"access_token\":\""+token+"\"}").send().body();
 	}
 
 }

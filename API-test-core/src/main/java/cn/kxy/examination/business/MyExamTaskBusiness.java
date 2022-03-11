@@ -217,4 +217,13 @@ public class MyExamTaskBusiness {
 		return GetRequestTools.RequestQueryParamsByGet("access_token", token, checkUrl(name));
 	}
 
+	public static String checkUrlById(String id ) {
+		return exam_url + "v2/" + enterpriseId + "/users/" + user_id+ "/exams/"
+				+ id + "/check";
+	}
+
+	public static String checkIsCanExamById(String id) {
+		return GetRequestTools.RequestQueryParamsByGet("access_token", token, checkUrlById(id));
+	}
+
 }
