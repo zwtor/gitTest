@@ -2,7 +2,7 @@
 <suite name="考试模块" thread-count="2">
 	<test name="随时试卷按权重抽题测试">
 		<classes>
-			<class name="group.a.cases.TestProportional" />
+			<class name="group.cases.TestProportional" />
 		</classes>
 	</test>
 </suite>

@@ -9,7 +9,7 @@
 	
 	<test name="考试匿名阅卷测试">
 		<classes>
-			<class name="group.a.cases.TestAnonymousMarking" />
+			<class name="group.cases.TestAnonymousMarking" />
 		</classes>
 	</test>
 	<test name="重新阅卷">
@@ -20,7 +20,7 @@
 	
 	<test name="考试设置结果测试">
 		<classes>
-			<class name="group.a.cases.TestShowResult" />
+			<class name="group.cases.TestShowResult" />
 		</classes>
 	</test>
 	<test name="考试任务模块流程测试">
@@ -39,20 +39,20 @@
 			<class name="exam.cases.TestExamPublic" />
 			<class name="exam.cases.TestExamNegativeScore" />
 			<class name="exam.cases.TestExamClassify" />
-			 <class name="group.a.cases.TestProportional" />
-			<!-- <class name="group.a.cases.TestExamMakeUp" /> -->
+			 <class name="group.cases.TestProportional" />
+			<!-- <class name="group.cases.TestExamMakeUp" /> -->
 		</classes>
 	</test>
 	
 	<test name="考试漏题给分测试">
 		<classes>
-			<class name="group.a.cases.TestCorrectWrongRate" />
+			<class name="group.cases.TestCorrectWrongRate" />
 		</classes>
 	</test>
 	
 	<test name="随时试卷按题给分测试">
 		<classes>
-			<class name="group.a.cases.TestScoringByQuestion" />
+			<class name="group.cases.TestScoringByQuestion" />
 		</classes>
 	</test>
 	<test name="我的考试任务流程测试">
