@@ -1,0 +1,4 @@
+{
+  "addNewExam": "/new-exam-api/v2/enterprises/{enterprise-id}/paper/add",
+  "test": "/test/{section}/{id}"
+}
