@@ -58,7 +58,7 @@ public class FilePath {
 
 	public static void main(String[] args) {
 		Properties properties = System.getProperties();
-		System.out.println(getURLFilePath("new-exam-url.json"));
+		System.out.println(getURLFilePath("newExamURL.json"));
 	}
 
 }

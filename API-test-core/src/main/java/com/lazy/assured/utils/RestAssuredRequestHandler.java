@@ -1,6 +1,9 @@
 package com.lazy.assured.utils;
 
+import cn.kxy.base.business.EnvironmentData;
 import cn.kxy.base.business.TokenData;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSONPath;
 import io.restassured.RestAssured;
 import io.restassured.config.SSLConfig;
 import io.restassured.response.Response;
@@ -51,6 +54,7 @@ public class RestAssuredRequestHandler {
         return requestHeader;
     }
 
+    // parameter format: parameter1, value1, parameter2, value2...
     public String sendGetRequest(String url, String... queryParameters) {
         RequestSpecification request = RestAssured.given();
         request.config((RestAssured.config().sslConfig(new SSLConfig().relaxedHTTPSValidation()))).headers(requestHeader);
@@ -63,8 +67,8 @@ public class RestAssuredRequestHandler {
         }
 
         Response response = request.get(url);
-        response.then().statusCode(COMMON_SUCCESS_CODE);
-        return response.asString();
+        verifyStatusCode(response, COMMON_SUCCESS_CODE);
+        return response.body().asString();
     }
 
     public String sendGetRequest(String url, Map<String, Object> queryParameterMap) {
@@ -75,10 +79,11 @@ public class RestAssuredRequestHandler {
         }
 
         Response response = request.get(url);
-        response.then().statusCode(COMMON_SUCCESS_CODE);
-        return response.asString();
+        verifyStatusCode(response, COMMON_SUCCESS_CODE);
+        return response.body().asString();
     }
 
+    // parameter format: parameter1, value1, parameter2, value2...
     public String sendPutRequest(String url, Map<String, Object> requestBody, String... formParameters) {
         RequestSpecification request = RestAssured.given();
         request.config((RestAssured.config().sslConfig(new SSLConfig().relaxedHTTPSValidation()))).headers(requestHeader);
@@ -91,8 +96,8 @@ public class RestAssuredRequestHandler {
         }
 
         Response response = (requestBody == null)? request.post(url) : request.body(requestBody).post(url);
-        response.then().statusCode(COMMON_SUCCESS_CODE);
-        return response.asString();
+        verifyStatusCode(response, COMMON_SUCCESS_CODE);
+        return response.body().asString();
     }
 
     public String sendPutRequest(String url, Map<Object, Object> requestBody, Map<String, Object> formParameterMap) {
@@ -103,10 +108,11 @@ public class RestAssuredRequestHandler {
         }
 
         Response response = (requestBody == null)? request.post(url) : request.body(requestBody).post(url);
-        response.then().statusCode(COMMON_SUCCESS_CODE);
-        return response.asString();
+        verifyStatusCode(response, COMMON_SUCCESS_CODE);
+        return response.body().asString();
     }
 
+    // parameter format: parameter1, value1, parameter2, value2...
     public String sendPostRequest(String url, Map<String, Object> requestBody, String... formParameters) {
         RequestSpecification request = RestAssured.given();
         request.config((RestAssured.config().sslConfig(new SSLConfig().relaxedHTTPSValidation()))).headers(requestHeader);
@@ -119,8 +125,8 @@ public class RestAssuredRequestHandler {
         }
 
         Response response = (requestBody == null)? request.post(url) : request.body(requestBody).post(url);
-        response.then().statusCode(COMMON_SUCCESS_CODE);
-        return response.asString();
+        verifyStatusCode(response, COMMON_SUCCESS_CODE);
+        return response.body().asString();
     }
 
     public String sendPostRequest(String url, Map<Object, Object> requestBody, Map<String, Object> formParameterMap) {
@@ -131,10 +137,11 @@ public class RestAssuredRequestHandler {
         }
 
         Response response = (requestBody == null)? request.post(url) : request.body(requestBody).post(url);
-        response.then().statusCode(COMMON_SUCCESS_CODE);
-        return response.asString();
+        verifyStatusCode(response, COMMON_SUCCESS_CODE);
+        return response.body().asString();
     }
 
+    // parameter format: parameter1, value1, parameter2, value2...
     public String sendDeleteRequest(String url, String... queryParameters) {
         RequestSpecification request = RestAssured.given();
         request.config((RestAssured.config().sslConfig(new SSLConfig().relaxedHTTPSValidation()))).headers(requestHeader);
@@ -147,8 +154,8 @@ public class RestAssuredRequestHandler {
         }
 
         Response response = request.delete(url);
-        response.then().statusCode(DELETE_SUCCESS_CODE);
-        return response.asString();
+        verifyStatusCode(response, DELETE_SUCCESS_CODE);
+        return response.body().asString();
     }
 
     public String sendDeleteRequest(String url, Map<String, Object> queryParameterMap) {
@@ -159,8 +166,8 @@ public class RestAssuredRequestHandler {
         }
 
         Response response = request.delete(url);
-        response.then().statusCode(DELETE_SUCCESS_CODE);
-        return response.asString();
+        verifyStatusCode(response, DELETE_SUCCESS_CODE);
+        return response.body().asString();
     }
 
     private Map<String, Object> formatParameters(String... parameters) {
@@ -174,6 +181,68 @@ public class RestAssuredRequestHandler {
             parameterMap.put(parameters[i], parameters[++i]);
         }
         return parameterMap;
+    }
+
+    private void verifyStatusCode(Response response, Integer successCode) {
+        try {
+            response.then().statusCode(successCode);
+        } catch (java.lang.AssertionError error) {
+            response.body().prettyPrint();
+            throw error;
+        }
+    }
+
+    // provide a new empty request to business
+    public RequestSpecification getNewRequest() {
+        RequestSpecification request = RestAssured.given();
+        request.config((RestAssured.config().sslConfig(new SSLConfig().relaxedHTTPSValidation()))).headers(requestHeader);
+        return request;
+    }
+
+    // parameter format: path1, value1, path2, value2...
+    public static JSONObject setJsonBodyValue(JSONObject body, String... parameters) {
+        if (parameters == null || (parameters.length % 2 != 0)) {
+            System.err.println("The parameter format is wrong!It should be like: path1, value1, path2, value2...");
+            return null;
+        }
+
+        for (int i = 0; i < parameters.length; i++) {
+            JSONPath.set(body, parameters[i], parameters[++i]);
+        }
+        return body;
+    }
+
+    // key is path and value is the value to be set
+    public static JSONObject setJsonBodyValue(JSONObject body, Map<String, String> valueMap) {
+        if (valueMap == null) {
+            System.err.println("The value map is null!");
+            return null;
+        }
+
+        for (String key : valueMap.keySet()) {
+            JSONPath.set(body, key, valueMap.get(key));
+        }
+        return body;
+    }
+
+    // format URL like: /test/{section}/{id} with arguments: post, 2
+    // output will be: /test/post/2
+    public static String buildURL(String baseURL, String... args) {
+        baseURL = EnvironmentData.getHost() + baseURL;
+
+        if (args == null) {
+            System.err.println("The arguments format is wrong!It should be like: parameter1, value1, parameter2, value2...");
+            return null;
+        }
+
+        String result = baseURL;
+        if(args.length > 0) {
+            String regex = "(\\{+(\\w|-|_)+}+)";
+            for(String arg : args) {
+                result = result.replaceFirst(regex, arg);
+            }
+        }
+        return result;
     }
 }
 

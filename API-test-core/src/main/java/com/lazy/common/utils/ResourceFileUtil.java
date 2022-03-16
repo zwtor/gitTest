@@ -34,11 +34,10 @@ public class ResourceFileUtil {
     private List<File> readAllFiles(String folder) {
         ClassLoader classLoader = getClass().getClassLoader();
         URL resource = classLoader.getResource(folder);
-        JSONObject jsonObject = new JSONObject();
 
         List<File> fileList = new ArrayList<>();
         try {
-            // walk the root path, we will walk all the classes
+            // walk through all the classes
             fileList = Files.walk(Paths.get(resource.toURI()))
                     .filter(Files::isRegularFile)
                     .map(x -> x.toFile())
@@ -60,7 +59,6 @@ public class ResourceFileUtil {
         JSONObject jsonObject = new JSONObject();
         for (File file : fileList) {
             StringBuilder stringBuilder = new StringBuilder();
-            System.out.println("file : " + file);
             List<String> lines;
             try {
                 lines = Files.readAllLines(file.toPath(), StandardCharsets.UTF_8);
@@ -70,8 +68,6 @@ public class ResourceFileUtil {
                 e.printStackTrace();
             }
         }
-
-        System.out.println(jsonObject.toJSONString());
         return jsonObject;
     }
 }

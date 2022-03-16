@@ -1,0 +1,4 @@
+{
+  "addNewPaper": "/new-exam-api/v2/enterprises/{{enterprise_id}}/paper/add",
+  "getNewPaperList": "/new-exam-api/v2/enterprises/{{enterprise_id}}/paper/list"
+}

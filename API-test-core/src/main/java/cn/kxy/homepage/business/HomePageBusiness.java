@@ -1,7 +1,9 @@
 package cn.kxy.homepage.business;
 
+import cn.kxy.base.business.EnterpriseData;
 import cn.kxy.base.business.EnterpriseDataUrl;
 import cn.kxy.base.business.TokenData;
+import cn.kxy.setting.bussiness.UserBusiness;
 import com.lazy.assured.utils.GetRequestTools;
 import com.lazy.httpclient.utils.HttpRequest;
 
@@ -9,6 +11,9 @@ public class HomePageBusiness {
 	public static String token = TokenData.getMangerToken();
 	public static String platform_url = EnterpriseDataUrl.getPlatformUrl();
 	public static String enterprise_url = EnterpriseDataUrl.getEnterpriseUrl();
+	public static String cmdb_url = EnterpriseDataUrl.getCmdbUrl();
+	public static String enterprise_id = EnterpriseData.getEnterpriseId();
+	public static String user_id = UserBusiness.getUserId();
 	
 	public static String enterpriseMonthList_url = platform_url + "index/param/platform/enterpriseMonthList";
 	public static String enterpriseWeekList_url = platform_url + "index/param/platform/enterpriseWeekList";
@@ -31,6 +36,18 @@ public class HomePageBusiness {
 	public static String position_url =platform_url + "index/param/position/orderList";
 	
 	public static String data_pic_url = enterprise_url + "v2/home_page/data_pic";
+
+	public static String menus_exists_url = cmdb_url + "v2/"+enterprise_id+"/menus/exists";
+
+	public static String evaluation_is_vip_url = EnterpriseDataUrl.getEvaluationUrl() + "v1/"+enterprise_id+"/evaluation/is_vip";
+
+	public static String close_sign_url =  enterprise_url + "v2/enterprises/"+enterprise_id+"/users/"+user_id+"/sign/close";
+
+	public static String continuity_sign_url = enterprise_url + "v2/enterprises/"+enterprise_id+"/users/"+user_id+"/sign/continuity_sign";
+
+	public static String blackwhite_url = enterprise_url + "v1/blackwhite/list";
+
+	public static String sign_week_list_url = enterprise_url + "/v2/enterprises/"+enterprise_id+"/user/"+user_id+"/sign/week_list";
 	
 	public static String queryDataPic() {
 		return HttpRequest.get(data_pic_url).query("access_token", token).send().body();
@@ -176,6 +193,36 @@ public class HomePageBusiness {
 	 */  
 	public static String queryEnterpriseMonthList() {
 		return HttpRequest.get(enterpriseMonthList_url).query("access_token", token).send().body();
+	}
+
+	public static String queryBlackwhite () {
+		return HttpRequest.get(blackwhite_url).query("access_token",token).query("type","dingTalkLive").send().body();
+	}
+
+	public static String queryContinuitySign () {
+		return HttpRequest.get(continuity_sign_url).query("access_token",token).send().body();
+	}
+
+	public static String judgeEvaluationIsVip () {
+		return HttpRequest.get(evaluation_is_vip_url).query("access_token",token).send().body();
+	}
+
+	public static String queryMenusExist (String menus_id) {
+		return HttpRequest.post(menus_exists_url).query("access_token",token).data("{\n" +
+				"    \"menus\": [\n" +
+				"        \""+menus_id+"\"\n" +
+				"     \n" +
+				"    ],\n" +
+				"    \"access_token\": \""+token+"\"\n" +
+				"}").send().body();
+	}
+
+	public static String closeSign () {
+		return HttpRequest.post(close_sign_url).query("access_token",token).data("{\"client\":\"pc\",\"access_token\":\""+token+"\"}").send().body();
+	}
+
+	public static String querySignWeek () {
+		return HttpRequest.get(sign_week_list_url).query("access_token",token).query("date","20210330").send().body();
 	}
 	
 }
