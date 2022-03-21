@@ -1,7 +1,7 @@
 package exam.cases;
 
-import cn.kxy.examination.business.NewExamPaper;
-import cn.kxy.examination.business.NewQuestion;
+import newexam.paper.NewExamPaper;
+import newexam.question.NewQuestion;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.JSONPath;
@@ -9,6 +9,7 @@ import com.lazy.common.utils.CommonData;
 import com.lazy.common.utils.ResourceFileUtil;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.File;
@@ -31,12 +32,21 @@ public class TestNewExamPaper {
         paperTitle = "Automation" + CommonData.getStringRandom(3);
     }
 
+    @DataProvider
+    public Object[][] paperTitleProvider() {
+        Object[][] provider = new Object[2][1];
+        provider[0][0] = "Automation1";
+        provider[1][0] = "Automation2";
+        return provider;
+    }
+
     @Test(description = "add new exam paper", priority = 1)
     public void testAddNewExamPaper() {
         String response = newExamPaper.addNewPaper(paperTitle);
         paperId = JSONPath.read(response, "$.data").toString();
         Assert.assertEquals("true", JSONPath.read(response,"$.success").toString());
-        System.out.println("new paper id: " + paperId);
+        System.out.println("paper title: " + paperTitle);
+        System.out.println("paper ID: " + paperId);
     }
 
     @Test(description = "get new exam paper detail", dependsOnMethods ="testAddNewExamPaper", priority = 2)

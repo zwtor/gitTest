@@ -1,4 +1,4 @@
-package cn.kxy.examination.business;
+package newexam.paper;
 
 import cn.kxy.base.business.EnterpriseData;
 import cn.kxy.setting.bussiness.ClassificationBusines;

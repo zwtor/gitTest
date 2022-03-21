@@ -1,4 +1,4 @@
-package cn.kxy.examination.business;
+package newexam.question;
 
 import cn.kxy.base.business.EnterpriseData;
 import com.alibaba.fastjson.JSONObject;
