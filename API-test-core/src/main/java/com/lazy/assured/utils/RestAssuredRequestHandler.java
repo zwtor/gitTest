@@ -100,11 +100,17 @@ public class RestAssuredRequestHandler {
         return response.body().asString();
     }
 
-    public String sendPutRequest(String url, Map<Object, Object> requestBody, Map<String, Object> formParameterMap) {
+    public String sendPutRequest(String url, Map<Object, Object> requestBody, Map<String, String> queryParameterMap, Map<String, Object> formParameterMap) {
         RequestSpecification request = RestAssured.given();
-        request.config((RestAssured.config().sslConfig(new SSLConfig().relaxedHTTPSValidation()))).headers(requestHeader).formParams(formParameterMap).body(requestBody);
+        request.config((RestAssured.config().sslConfig(new SSLConfig().relaxedHTTPSValidation()))).headers(requestHeader);
         if(isRequireToken) {
             request.queryParam("access_token", token);
+        }
+        if(queryParameterMap != null && queryParameterMap.size() > 0) {
+            request.queryParams(queryParameterMap);
+        }
+        if(formParameterMap != null && formParameterMap.size() > 0) {
+            request.formParams(formParameterMap);
         }
 
         Response response = (requestBody == null)? request.post(url) : request.body(requestBody).post(url);
@@ -129,11 +135,18 @@ public class RestAssuredRequestHandler {
         return response.body().asString();
     }
 
-    public String sendPostRequest(String url, Map<Object, Object> requestBody, Map<String, Object> formParameterMap) {
+    public String sendPostRequest(String url, Map<Object, Object> requestBody, Map<String, String> queryParameterMap, Map<String, Object> formParameterMap) {
         RequestSpecification request = RestAssured.given();
-        request.config((RestAssured.config().sslConfig(new SSLConfig().relaxedHTTPSValidation()))).headers(requestHeader).formParams(formParameterMap).body(requestBody);
+        request.config((RestAssured.config().sslConfig(new SSLConfig().relaxedHTTPSValidation()))).headers(requestHeader);
+
         if(isRequireToken) {
             request.queryParam("access_token", token);
+        }
+        if(queryParameterMap != null && queryParameterMap.size() > 0) {
+            request.queryParams(queryParameterMap);
+        }
+        if(formParameterMap != null && formParameterMap.size() > 0) {
+            request.formParams(formParameterMap);
         }
 
         Response response = (requestBody == null)? request.post(url) : request.body(requestBody).post(url);
