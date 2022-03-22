@@ -3,7 +3,7 @@ package com.lazy.common.utils;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
-// This class is used to load test from json file, and provide result as data provider for test case
+// This class is used to load test data from json file, and provide result as data provider for test case
 public class DataDrivenLoader {
     public static Object[][] loadTestData(String fileName, String methodName) {
         ResourceFileUtil resourceFileUtil = new ResourceFileUtil();
