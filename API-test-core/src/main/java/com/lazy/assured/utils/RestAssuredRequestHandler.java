@@ -257,5 +257,9 @@ public class RestAssuredRequestHandler {
         }
         return result;
     }
+
+    public int getCOMMON_SUCCESS_CODE() {
+        return COMMON_SUCCESS_CODE;
+    }
 }
 

@@ -1,5 +1,6 @@
 package exam.cases;
 
+import com.lazy.common.utils.DataDrivenLoader;
 import newexam.paper.NewExamPaper;
 import newexam.question.NewQuestion;
 import com.alibaba.fastjson.JSONArray;
@@ -13,6 +14,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.File;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,8 +42,14 @@ public class TestNewExamPaper {
         return provider;
     }
 
-    @Test(description = "add new exam paper", priority = 1)
-    public void testAddNewExamPaper() {
+    @DataProvider
+    public Object[][] commonDataProvider(Method method) {
+        Object[][] provider = DataDrivenLoader.loadTestData("TestNexExamPaperData.json", method.getName());
+        return provider;
+    }
+
+    @Test(description = "add new exam paper", dataProvider = "commonDataProvider", priority = 1)
+    public void testAddNewExamPaper(String paperTitle) {
         String response = newExamPaper.addNewPaper(paperTitle);
         paperId = JSONPath.read(response, "$.data").toString();
         Assert.assertEquals("true", JSONPath.read(response,"$.success").toString());

@@ -1,0 +1,24 @@
+{
+  "caseMethodName": [
+    {
+      "name1": "value1-1",
+      "name2": "value2-1",
+      "name3": "value3-1",
+      "name4": "value4-1"
+    },
+    {
+      "name1": "value1-2",
+      "name2": "value2-2",
+      "name3": "value3-2",
+      "name4": "value4-2"
+    }
+  ],
+  "testAddNewExamPaper": [
+    {
+      "paperTitle": "Automation1"
+    },
+    {
+      "paperTitle": "Automation2"
+    }
+  ]
+}
