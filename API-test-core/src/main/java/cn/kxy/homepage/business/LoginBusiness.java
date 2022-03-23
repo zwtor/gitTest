@@ -60,7 +60,11 @@ public class LoginBusiness {
 			put("Content-Type", "application/x-www-form-urlencoded");
 		}};
 		requestHandler.buildHeader(headerMap);
-		return requestHandler.sendPostRequest(chooseEnterpriseURL, null, "enterpriseId", EnterpriseData.getEnterpriseId(), "isMultiterminal", "true");
+		Map<String, String> formParameterMap = new HashMap<String, String>() {{
+			put("enterpriseId", EnterpriseData.getEnterpriseId());
+			put("isMultiterminal", "true");
+		}};
+		return requestHandler.sendPostRequest(chooseEnterpriseURL, null, null, formParameterMap);
 	}
 	
 }

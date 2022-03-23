@@ -71,7 +71,7 @@ public class RestAssuredRequestHandler {
         return response.body().asString();
     }
 
-    public String sendGetRequest(String url, Map<String, Object> queryParameterMap) {
+    public String sendGetRequest(String url, Map queryParameterMap) {
         RequestSpecification request = RestAssured.given();
         request.config((RestAssured.config().sslConfig(new SSLConfig().relaxedHTTPSValidation()))).headers(requestHeader).queryParams(queryParameterMap);
         if(isRequireToken) {
@@ -84,15 +84,15 @@ public class RestAssuredRequestHandler {
     }
 
     // parameter format: parameter1, value1, parameter2, value2...
-    public String sendPutRequest(String url, Map<String, Object> requestBody, String... formParameters) {
+    public String sendPutRequest(String url, Map<String, Object> requestBody, String... queryParameters) {
         RequestSpecification request = RestAssured.given();
         request.config((RestAssured.config().sslConfig(new SSLConfig().relaxedHTTPSValidation()))).headers(requestHeader);
         if(isRequireToken) {
             request.queryParam("access_token", token);
         }
-        if(formParameters != null && formParameters.length > 0) {
-            Map<String, Object> parameterMap = formatParameters(formParameters);
-            request.formParams(parameterMap);
+        if(queryParameters != null && queryParameters.length > 0) {
+            Map<String, Object> parameterMap = formatParameters(queryParameters);
+            request.queryParams(parameterMap);
         }
 
         Response response = (requestBody == null)? request.post(url) : request.body(requestBody).post(url);
@@ -100,7 +100,7 @@ public class RestAssuredRequestHandler {
         return response.body().asString();
     }
 
-    public String sendPutRequest(String url, Map<Object, Object> requestBody, Map<String, String> queryParameterMap, Map<String, Object> formParameterMap) {
+    public String sendPutRequest(String url, Map<String, Object> requestBody, Map queryParameterMap, Map formParameterMap) {
         RequestSpecification request = RestAssured.given();
         request.config((RestAssured.config().sslConfig(new SSLConfig().relaxedHTTPSValidation()))).headers(requestHeader);
         if(isRequireToken) {
@@ -119,15 +119,15 @@ public class RestAssuredRequestHandler {
     }
 
     // parameter format: parameter1, value1, parameter2, value2...
-    public String sendPostRequest(String url, Map<String, Object> requestBody, String... formParameters) {
+    public String sendPostRequest(String url, Map<String, Object> requestBody, String... queryParameters) {
         RequestSpecification request = RestAssured.given();
         request.config((RestAssured.config().sslConfig(new SSLConfig().relaxedHTTPSValidation()))).headers(requestHeader);
         if(isRequireToken) {
             request.queryParam("access_token", token);
         }
-        if(formParameters != null && formParameters.length > 0) {
-            Map<String, Object> parameterMap = formatParameters(formParameters);
-            request.formParams(parameterMap);
+        if(queryParameters != null && queryParameters.length > 0) {
+            Map<String, Object> parameterMap = formatParameters(queryParameters);
+            request.queryParams(parameterMap);
         }
 
         Response response = (requestBody == null)? request.post(url) : request.body(requestBody).post(url);
@@ -135,7 +135,7 @@ public class RestAssuredRequestHandler {
         return response.body().asString();
     }
 
-    public String sendPostRequest(String url, Map<Object, Object> requestBody, Map<String, String> queryParameterMap, Map<String, Object> formParameterMap) {
+    public String sendPostRequest(String url, Map<String, Object> requestBody, Map queryParameterMap, Map formParameterMap) {
         RequestSpecification request = RestAssured.given();
         request.config((RestAssured.config().sslConfig(new SSLConfig().relaxedHTTPSValidation()))).headers(requestHeader);
 
@@ -171,7 +171,7 @@ public class RestAssuredRequestHandler {
         return response.body().asString();
     }
 
-    public String sendDeleteRequest(String url, Map<String, Object> queryParameterMap) {
+    public String sendDeleteRequest(String url, Map queryParameterMap) {
         RequestSpecification request = RestAssured.given();
         request.config((RestAssured.config().sslConfig(new SSLConfig().relaxedHTTPSValidation()))).headers(requestHeader).queryParams(queryParameterMap);
         if(isRequireToken) {
