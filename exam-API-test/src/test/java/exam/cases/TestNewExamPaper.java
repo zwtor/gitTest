@@ -48,8 +48,8 @@ public class TestNewExamPaper {
         return provider;
     }
 
-    @Test(description = "add new exam paper", dataProvider = "commonDataProvider", priority = 1)
-    public void testAddNewExamPaper(String paperTitle) {
+    @Test(description = "add new exam paper", priority = 1)
+    public void testAddNewExamPaper() {
         String response = newExamPaper.addNewPaper(paperTitle);
         paperId = JSONPath.read(response, "$.data").toString();
         Assert.assertEquals("true", JSONPath.read(response,"$.success").toString());

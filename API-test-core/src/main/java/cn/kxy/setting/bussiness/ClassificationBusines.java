@@ -1,5 +1,6 @@
 package cn.kxy.setting.bussiness;
 
+import cn.kxy.base.business.EnterpriseData;
 import cn.kxy.base.business.EnterpriseDataUrl;
 import cn.kxy.base.business.TokenData;
 import com.alibaba.fastjson.JSONPath;
@@ -18,7 +19,8 @@ public class ClassificationBusines {
 
 	public static String DeleteUrl = classificaUrl + "admin/classify/delete";
 
-	public static String QueryUrl = classificaUrl + "admin/classify/getTree";
+//	public static String QueryUrl = classificaUrl + "admin/classify/getTree";
+	public static String QueryUrl = classificaUrl + "v2/" + EnterpriseData.getEnterpriseId() +"/resource_classify/list";
 
 	public static String DragUrl = classificaUrl + "admin/classify/drag_drop";
 
@@ -57,7 +59,7 @@ public class ClassificationBusines {
 	// 查询分类
 
 	public static String queryClassification() {
-		return GetRequestTools.RequestQueryParamsByGet("parentId", 0, "access_token", token, QueryUrl);
+		return GetRequestTools.RequestQueryParamsByGet("parentId", 0, "include_unclassified", "false", "access_token", token, QueryUrl);
 
 	}
 	
@@ -87,7 +89,7 @@ public class ClassificationBusines {
 	//获取一级分类的name
 	public static String getPrimaryName() {
 		String body =ClassificationBusines.queryClassification();
-		String name=(String) JSONPath.read(body, "$[0].name");
+		String name=(String) JSONPath.read(body, "$.list[0].name");
 		return name;
 		
 	}
@@ -95,28 +97,28 @@ public class ClassificationBusines {
 	
 	public static String getPrimaryId() {
 		String body =ClassificationBusines.queryClassification();
-		String id=(String) JSONPath.read(body, "$[0].id");
+		String id=(String) JSONPath.read(body, "$.list[0].id");
 		return id;
 		
 	}
 	//获取一级第二个分类id
 	public static String getPrimarySecondId() {
 		String body =ClassificationBusines.queryClassification();
-		String id=(String) JSONPath.read(body, "$[1].id");
+		String id=(String) JSONPath.read(body, "$.list[1].id");
 		return id;
 		
 	}
 	//获取二级分类的name
 	public static String getSecondaryName() {
 		String body =ClassificationBusines.queryClassification();
-		String name=(String) JSONPath.read(body, "$[0].children[0].name");
+		String name=(String) JSONPath.read(body, "$.list[0].children[0].name");
 		return name;
 		
 	}
 	//获取二级分类的id
 		public static String getSecondaryId() {
 			String body =ClassificationBusines.queryClassification();
-			String name=(String) JSONPath.read(body, "$[0].children[0].id");
+			String name=(String) JSONPath.read(body, "$.list[0].children[0].id");
 			return name;
 			
 		}
