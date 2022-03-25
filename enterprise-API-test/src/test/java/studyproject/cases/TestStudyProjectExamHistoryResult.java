@@ -140,10 +140,10 @@ public class TestStudyProjectExamHistoryResult {
 		BigDecimal result = new BigDecimal("100.0");
 		Assert.assertEquals(score, result,"查询第三次考试的结果"+res);
 	}
-	@Test(description = "删除学习项目" , priority = 13)
+	@Test(description = "删除学习项目" , dependsOnMethods = "testAddHistoryResultProject", priority = 13)
 	public void testDeleteStudyTask() {
 		String res = StudyProjectBusiness.deleteStudyProject(id);
-		String msg = (String) JSONPath.read(res, "$.deleted");
+		String msg = (String) JSONPath.read(res, "$.data.deleted");
 		Assert.assertEquals(msg, "true", "删除学习项目，实际返回结果:" + res);
 	}
 }
