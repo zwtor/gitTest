@@ -18,6 +18,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
+@Test(groups = {"CI"})
 public class TestNewExamPaper {
     private NewExamPaper newExamPaper;
     private NewQuestion newQuestion;
@@ -108,7 +109,7 @@ public class TestNewExamPaper {
         Assert.assertEquals("success", JSONPath.read(response, "$.data"));
     }
 
-    @Test(description = "enable and disable new exam paper", dependsOnMethods ={"testAddNewExamPaper", "testAddQuestionToPaper"}, priority = 5)
+    @Test(description = "enable and disable new exam paper", dependsOnMethods = {"testAddNewExamPaper", "testAddQuestionToPaper"}, priority = 5)
     public void testUpdateExamPaperStatus() {
         String testStatus1 = "disable";
         String testStatus2 = "enable";
@@ -124,7 +125,7 @@ public class TestNewExamPaper {
         Assert.assertEquals(testStatus2, JSONPath.read(response, "$.data.status"));
     }
 
-    @Test(description = "delete new created exam paper", dependsOnMethods ="testAddNewExamPaper", priority = 6)
+    @Test(description = "delete new created exam paper", dependsOnMethods = "testAddNewExamPaper", priority = 6)
     public void testDeleteNewExamPaper() {
         String response = newExamPaper.deleteNewPaper(paperId);
         Assert.assertEquals("success", JSONPath.read(response, "$.data"));

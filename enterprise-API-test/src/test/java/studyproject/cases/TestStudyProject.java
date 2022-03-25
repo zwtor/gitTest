@@ -34,6 +34,7 @@ public class TestStudyProject extends InitStudyAuthCourse{
 				QuestionnaireBusiness.getIdByKeyword(BaseBusiness.questionnaireName, "release"));
 		id= (String)JSONPath.read(res, "$.id");
 		mon_id = (String)JSONPath.read(res, "$.course_id");
+		System.out.println("study project name:" + study_name);
 	}
 
 	@Test(description = "查看学习项目列表", priority = 2)
@@ -127,7 +128,7 @@ public class TestStudyProject extends InitStudyAuthCourse{
 		Assert.assertNotNull(title,  "检查资源check_resource接口，标题进行校验：" + res);
 	}
 
-	@Test(description = "启用学习项目", priority = 11)
+	@Test(description = "启用学习项目", dependsOnMethods = "testAddStudyProject", priority = 11)
 	public void testUpdateOpenStatus() {
 		String res = StudyProjectBusiness.updateStatus(id, "normal");
 		String update = (String) JSONPath.read(res, "$.update");
@@ -141,12 +142,11 @@ public class TestStudyProject extends InitStudyAuthCourse{
 		Assert.assertEquals(status, "normal", "启用学习项目后，查看学习项目列表，状态进行校验：" + list_res);
 	}
 
-	@Test(description = "停用学习项目", priority = 13)
+	@Test(description = "停用学习项目", dependsOnMethods = "testAddStudyProject", priority = 13)
 	public void testUpdateCloeStatus() {
 		String res = StudyProjectBusiness.updateStatus(id, "disabled");
 		String update = (String) JSONPath.read(res, "$.update");
 		Assert.assertEquals(update, "true", "停用学习项目后,实际返回结果：" + res);
-
 	}
 
 	@Test(description = "停用学习项目后，查看学习项目列表", priority = 14)
