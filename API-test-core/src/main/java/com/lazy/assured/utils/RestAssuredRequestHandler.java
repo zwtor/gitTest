@@ -54,6 +54,11 @@ public class RestAssuredRequestHandler {
         return requestHeader;
     }
 
+    public Map<String, String> addHeader(String key, String value) {
+        requestHeader.put(key, value);
+        return requestHeader;
+    }
+
     // parameter format: parameter1, value1, parameter2, value2...
     public String sendGetRequest(String url, String... queryParameters) {
         RequestSpecification request = RestAssured.given();
