@@ -14,6 +14,27 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class ResourceFileUtil {
+    public InputStream getInputStream(String folder, String fileName) {
+        String wholeFilePath = folder + File.separator + fileName;
+        ClassLoader classLoader = getClass().getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream(wholeFilePath);
+        return inputStream;
+    }
+
+    public FileOutputStream getOutPutStream(String folder, String fileName) {
+        String wholeFilePath = folder + "/" + fileName;
+        ClassLoader classLoader = getClass().getClassLoader();
+        File file = new File(classLoader.getResource(wholeFilePath).getFile());
+        try {
+            FileOutputStream outputStream = new FileOutputStream(file);
+            return outputStream;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
     public String readSingleFile(String folder, String fileName) {
         String wholeFilePath = folder + File.separator + fileName;
         ClassLoader classLoader = getClass().getClassLoader();

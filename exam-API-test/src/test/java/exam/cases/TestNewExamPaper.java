@@ -32,11 +32,12 @@ public class TestNewExamPaper {
         newExamPaper = new NewExamPaper();
         newQuestion = new NewQuestion();
         resourceFileUtil = new ResourceFileUtil();
-        paperTitle = "Automation" + CommonData.getStringRandom(3);
+//        paperTitle = "Automation" + CommonData.getStringRandom(3);
     }
 
     @DataProvider
-    public Object[][] paperTitleProvider() {
+    public Object[][] simpleDataProvider() {
+//        Object[][] provider = new Object[][] {{"Automation1"}, {"Automation2"}};
         Object[][] provider = new Object[2][1];
         provider[0][0] = "Automation1";
         provider[1][0] = "Automation2";
@@ -44,28 +45,33 @@ public class TestNewExamPaper {
     }
 
     @DataProvider
-    public Object[][] commonDataProvider(Method method) {
-        Object[][] provider = DataDrivenLoader.loadTestData("TestNexExamPaperData.json", method.getName());
-        return provider;
+    public Object[][] excelDataProvider(Method method) {
+        Object[][] testData = DataDrivenLoader.loadExcelData("TestNewExamPaperData.xlsx", method.getDeclaringClass().getName(), method.getName());
+        return testData;
     }
 
-    @Test(description = "add new exam paper", priority = 1)
-    public void testAddNewExamPaper() {
+    @Test(description = "add new exam paper", dataProvider = "excelDataProvider", priority = 1)
+    public void testAddNewExamPaper(String paperTitle, String test) {
         String response = newExamPaper.addNewPaper(paperTitle);
         paperId = JSONPath.read(response, "$.data").toString();
         Assert.assertEquals("true", JSONPath.read(response,"$.success").toString());
         System.out.println("paper title: " + paperTitle);
         System.out.println("paper ID: " + paperId);
+        System.out.println(test);
+        DataDrivenLoader.updateTestData("TestNewExamPaperData.xlsx", "exam.cases.TestNewExamPaper", "testGetNewExamPaper", "paperId", paperId);
+        DataDrivenLoader.updateTestData("TestNewExamPaperData.xlsx", "exam.cases.TestNewExamPaper", "testDeleteNewExamPaper", "paperId", paperId);
     }
 
-    @Test(description = "get new exam paper detail", dependsOnMethods ="testAddNewExamPaper", priority = 2)
-    public void testGetNewExamPaper() {
+    @Test(description = "get new exam paper detail", dataProvider = "excelDataProvider", dependsOnMethods = "testAddNewExamPaper", priority = 2)
+    public void testGetNewExamPaper(String paperTitle, String paperId) {
         String response = newExamPaper.getNewPaperDetail(paperId);
         Assert.assertEquals(paperId, JSONPath.read(response, "$.data.id").toString());
         Assert.assertEquals(paperTitle, JSONPath.read(response, "$.data.title").toString());
+        System.out.println("-------in testGetNewExamPaper method---------");
+        System.out.println(paperId);
     }
 
-    @Test(description = "add new exam papers list created by me", dependsOnMethods ="testAddNewExamPaper", priority = 3)
+    @Test(description = "get new exam papers list created by me", dependsOnMethods ="testAddNewExamPaper", priority = 3)
     public void testGetNewExamPaperList() {
         String response = newExamPaper.getNewPaperList();
         Integer count = Integer.valueOf(JSONPath.read(response,"$.data.total").toString());
@@ -125,8 +131,8 @@ public class TestNewExamPaper {
         Assert.assertEquals(testStatus2, JSONPath.read(response, "$.data.status"));
     }
 
-    @Test(description = "delete new created exam paper", dependsOnMethods = "testAddNewExamPaper", priority = 6)
-    public void testDeleteNewExamPaper() {
+    @Test(description = "delete new created exam paper", dataProvider = "excelDataProvider", dependsOnMethods = "testAddNewExamPaper", priority = 6)
+    public void testDeleteNewExamPaper(String paperId) {
         String response = newExamPaper.deleteNewPaper(paperId);
         Assert.assertEquals("success", JSONPath.read(response, "$.data"));
     }
