@@ -27,7 +27,7 @@ public class NewExamPaper {
 
     public String addNewPaper(String title) {
         String addNewPaperURL = RestAssuredRequestHandler.buildURL(newExamURLObject.getString("addNewPaper"), EnterpriseData.getEnterpriseId());
-        JSONObject requestBody = RestAssuredRequestHandler.setJsonBodyValue(resourceFileUtil.parseJsonFile(requestBodyFolder, "addNewExamPaper.json"),
+        JSONObject requestBody = ResourceFileUtil.setJsonBodyValue(resourceFileUtil.parseJsonFile(requestBodyFolder, "addNewExamPaper.json"),
                 "$.title", title,
                 "$.classify_id", classificationId,
                 "$.classify_name", classificationName);

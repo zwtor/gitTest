@@ -1,6 +1,7 @@
 package com.lazy.common.utils;
 
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSONPath;
 
 import java.io.*;
 import java.net.URL;
@@ -9,6 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class ResourceFileUtil {
@@ -69,5 +71,31 @@ public class ResourceFileUtil {
             }
         }
         return jsonObject;
+    }
+
+    // parameter format: path1, value1, path2, value2...
+    public static JSONObject setJsonBodyValue(JSONObject body, String... parameters) {
+        if (parameters == null || (parameters.length % 2 != 0)) {
+            System.err.println("The parameter format is wrong!It should be like: path1, value1, path2, value2...");
+            return null;
+        }
+
+        for (int i = 0; i < parameters.length; i++) {
+            JSONPath.set(body, parameters[i], parameters[++i]);
+        }
+        return body;
+    }
+
+    // key is path and value is the value to be set
+    public static JSONObject setJsonBodyValue(JSONObject body, Map<String, String> valueMap) {
+        if (valueMap == null) {
+            System.err.println("The value map is null!");
+            return null;
+        }
+
+        for (String key : valueMap.keySet()) {
+            JSONPath.set(body, key, valueMap.get(key));
+        }
+        return body;
     }
 }
