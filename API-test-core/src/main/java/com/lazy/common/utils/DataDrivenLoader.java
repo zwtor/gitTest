@@ -11,6 +11,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 // This class is used to load test data from json file, and provide result as data provider for test case
 public class DataDrivenLoader {
@@ -33,39 +34,17 @@ public class DataDrivenLoader {
                 sheet = workbook.getSheet(suiteName);
             }
 
-            // get row count, except the head row
-            int totalRowCount = sheet.getPhysicalNumberOfRows();
-            ArrayList<Integer> caseRowIndexList = new ArrayList<>();
-            for(int i = 0;i <totalRowCount;i++) {
-                Cell cell = sheet.getRow(i).getCell(0);
-                if(cell == null || cell.getStringCellValue() == null || cell.getStringCellValue().isEmpty()) {
-                    continue;
-                }
-
-                if(cell.getStringCellValue().equals(caseName)) {
-                    caseRowIndexList.add(i);
-                }
-            }
+            // get row index list
+            List<Integer> caseRowIndexList = getRowIndexList(sheet, caseName);
             int rowCount = caseRowIndexList.size();
 
             // get column count
-            int columnCount = 0;
-            XSSFRow tempRow1 = sheet.getRow(caseRowIndexList.get(0));
-            for(int i = 0;i < tempRow1.getPhysicalNumberOfCells();i++) {
-                Cell cell = tempRow1.getCell(i);
-                if(cell == null || cell.getStringCellValue() == null ||cell.getStringCellValue().isEmpty()){
-                    columnCount = i - 1;
-                    break;
-                }
-            }
-            if(columnCount == 0) {
-                columnCount = tempRow1.getPhysicalNumberOfCells() - 1;
-            }
+            int columnCount = getColumnCount(sheet, caseRowIndexList);
 
             data = new Object[rowCount][columnCount];
             // reade data from excel to data provider object
             int i = 0;
-            FormulaEvaluator formulaEvaluator=workbook.getCreationHelper().createFormulaEvaluator();
+            FormulaEvaluator formulaEvaluator = workbook.getCreationHelper().createFormulaEvaluator();
             for(Integer index : caseRowIndexList) {
                 XSSFRow tempRow2 = sheet.getRow(index);
                 for(int j = 1;j <= columnCount;j++) {
@@ -111,34 +90,13 @@ public class DataDrivenLoader {
                 sheet = workbook.getSheet(suiteName);
             }
 
-            // get row count, except the head row
-            int totalRowCount = sheet.getPhysicalNumberOfRows();
-            ArrayList<Integer> caseRowIndexList = new ArrayList<>();
-            for (int i = 0; i < totalRowCount; i++) {
-                Cell cell = sheet.getRow(i).getCell(0);
-                if (cell == null || cell.getStringCellValue() == null || cell.getStringCellValue().isEmpty()) {
-                    continue;
-                }
+            // get row index list
+            List<Integer> caseRowIndexList = getRowIndexList(sheet, caseName);
 
-                if (cell.getStringCellValue().equals(caseName)) {
-                    caseRowIndexList.add(i);
-                }
-            }
+            // get column count
+            int columnCount = getColumnCount(sheet, caseRowIndexList);
 
-            // get column count and index
-            int columnCount = 0;
-            XSSFRow tempRow1 = sheet.getRow(caseRowIndexList.get(0));
-            for(int i = 0;i < tempRow1.getPhysicalNumberOfCells() - 1;i++) {
-                Cell cell = tempRow1.getCell(i);
-                if(cell == null || cell.getStringCellValue() == null || cell.getStringCellValue().isEmpty()){
-                    columnCount = i - 1;
-                }
-                break;
-            }
-            if(columnCount == 0) {
-                columnCount = tempRow1.getPhysicalNumberOfCells() - 1;
-            }
-
+            // get specific column index
             int columnIndex = 0;
             for(int i = 1;i <= columnCount;i++) {
                 XSSFRow row = sheet.getRow(caseRowIndexList.get(0) - 1);
@@ -147,6 +105,7 @@ public class DataDrivenLoader {
                 }
             }
 
+            //update test data in excel
             for(Integer rowIndex : caseRowIndexList) {
                 XSSFRow tempRow2 = sheet.getRow(rowIndex);
                 Cell cell = tempRow2.getCell(columnIndex);
@@ -167,4 +126,37 @@ public class DataDrivenLoader {
         }
     }
 
+    //record the row index of specific case
+    private static List<Integer> getRowIndexList(XSSFSheet sheet, String caseName) {
+        int totalRowCount = sheet.getPhysicalNumberOfRows();
+        List<Integer> rowIndexList = new ArrayList<>();
+        for (int i = 0; i < totalRowCount; i++) {
+            Cell cell = sheet.getRow(i).getCell(0);
+            if (cell == null || cell.getStringCellValue() == null || cell.getStringCellValue().isEmpty()) {
+                continue;
+            }
+
+            if (cell.getStringCellValue().equals(caseName)) {
+                rowIndexList.add(i);
+            }
+        }
+        return rowIndexList;
+    }
+
+    //get the column count, which is th parameter count
+    private static int getColumnCount(XSSFSheet sheet, List<Integer> rowIndexList) {
+        int columnCount = 0;
+        XSSFRow tempRow1 = sheet.getRow(rowIndexList.get(0));
+        for(int i = 0;i < tempRow1.getPhysicalNumberOfCells() - 1;i++) {
+            Cell cell = tempRow1.getCell(i);
+            if(cell == null || cell.getStringCellValue() == null || cell.getStringCellValue().isEmpty()){
+                columnCount = i - 1;
+            }
+            break;
+        }
+        if(columnCount == 0) {
+            columnCount = tempRow1.getPhysicalNumberOfCells() - 1;
+        }
+        return columnCount;
+    }
 }

@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 public class ResourceFileUtil {
     public InputStream getInputStream(String folder, String fileName) {
-        String wholeFilePath = folder + File.separator + fileName;
+        String wholeFilePath = folder + "/" + fileName;
         ClassLoader classLoader = getClass().getClassLoader();
         InputStream inputStream = classLoader.getResourceAsStream(wholeFilePath);
         return inputStream;
