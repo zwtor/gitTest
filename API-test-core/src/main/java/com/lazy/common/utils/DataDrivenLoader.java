@@ -1,9 +1,6 @@
 package com.lazy.common.utils;
 
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.FormulaEvaluator;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -147,12 +144,12 @@ public class DataDrivenLoader {
     private static int getColumnCount(XSSFSheet sheet, List<Integer> rowIndexList) {
         int columnCount = 0;
         XSSFRow tempRow1 = sheet.getRow(rowIndexList.get(0));
-        for(int i = 0;i < tempRow1.getPhysicalNumberOfCells() - 1;i++) {
+        for(int i = 0;i < tempRow1.getPhysicalNumberOfCells();i++) {
             Cell cell = tempRow1.getCell(i);
             if(cell == null || cell.getStringCellValue() == null || cell.getStringCellValue().isEmpty()){
                 columnCount = i - 1;
+                break;
             }
-            break;
         }
         if(columnCount == 0) {
             columnCount = tempRow1.getPhysicalNumberOfCells() - 1;
