@@ -6,7 +6,6 @@ import newexam.question.NewQuestion;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.JSONPath;
-import com.lazy.common.utils.CommonData;
 import com.lazy.common.utils.ResourceFileUtil;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -56,8 +55,8 @@ public class TestNewExamPaper {
         paperId = JSONPath.read(response, "$.data").toString();
         Assert.assertEquals("true", JSONPath.read(response,"$.success").toString());
         System.out.println("paper title: " + paperTitle);
-        System.out.println("paper ID: " + paperId);
         System.out.println(test);
+        System.out.println("paper ID: " + paperId);
         DataDrivenLoader.updateTestData("TestNewExamPaperData.xlsx", "exam.cases.TestNewExamPaper", "testGetNewExamPaper", "paperId", paperId);
         DataDrivenLoader.updateTestData("TestNewExamPaperData.xlsx", "exam.cases.TestNewExamPaper", "testDeleteNewExamPaper", "paperId", paperId);
     }
@@ -115,7 +114,7 @@ public class TestNewExamPaper {
         Assert.assertEquals("success", JSONPath.read(response, "$.data"));
     }
 
-    @Test(description = "enable and disable new exam paper", dependsOnMethods = {"testAddNewExamPaper", "testAddQuestionToPaper"}, priority = 5)
+    @Test(description = "disable and enable new exam paper", dependsOnMethods = {"testAddNewExamPaper", "testAddQuestionToPaper"}, priority = 5)
     public void testUpdateExamPaperStatus() {
         String testStatus1 = "disable";
         String testStatus2 = "enable";
