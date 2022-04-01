@@ -113,6 +113,7 @@ public class TestAnonymousMarking {
  		String cover = "https://oss.coolcollege.cn/1810048818682974377.png";
         String base_cover= "https://oss.coolcollege.cn/1810048818682974377.png";
  		String resFirst = AnonymousMarkingBusiness.StudyProjectSaveBaseInfo(project_title,classification_id,"normal",cover,base_cover);
+		 System.out.println(resFirst);
  		project_id = (String) JSONPath.read(resFirst, "$.id"); 
  		projectCourse_id = (String) JSONPath.read(resFirst, "$.course_id");	
  		String resSecond = AnonymousMarkingBusiness.StudyProjectSaveStageContent(project_id,title1,"2",questionBank_id,"1","10","1","10",
@@ -440,12 +441,11 @@ public class TestAnonymousMarking {
  	}
  	
  	
- 	@Test(description="21.删除学习项目接口", priority=21)
+ 	@Test(description="21.删除学习项目接口", dependsOnMethods = "testStudyProjectSave", priority=21)
  	public void testDeleteProject()  {
  		String res = AnonymousMarkingBusiness.DeleteProject(project_id);
- 		String deleted = (String) JSONPath.read(res, "$.deleted");
- 		System.out.println("21.删除学习项目接口:"+"deleted="+deleted);
- 		Assert.assertEquals(deleted, "true","21.删除学习项目接口" + deleted);
+ 		String deleted = (String) JSONPath.read(res, "$.data.deleted");
+ 		Assert.assertEquals(deleted, "true","21.删除学习项目接口" + res);
  	}
  	
  	@Test(description="22.删除新员工培训任务接口", priority=22)
