@@ -6,29 +6,37 @@ import cn.kxy.examination.business.ExaminationTaskBusiness;
 import cn.kxy.examination.business.PaperBusiness;
 import cn.kxy.setting.bussiness.UserBusiness;
 import com.alibaba.fastjson.JSONPath;
+import com.lazy.common.utils.CommonData;
 import com.lazy.common.utils.DateUtil;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class TestExamHistoryData {
 
-	static String exam_pass_name = "ExamHistoryData";
+	static String exam_pass_name = "ExamHistoryData" + CommonData.getStringRandom(3);
 	String id = "";
 	@BeforeClass
 	public void init() {
+		ExaminationTaskBusiness.creatRewardExamTask("1", "hide", "10", "100", "1", exam_pass_name,
+				DateUtil.getRegularDate(0), DateUtil.getRegularDate(360), "false", UserBusiness.getUserId(),
+				PaperBusiness.getIdByKeyword(BaseBusiness.pass_paper_name), "60", "0", "true", "2",
+				CertificateBusiness.getIdByKeyword(BaseBusiness.certificate_name), "12", "0", "1", "0", "0", "true", "true",
+				UserBusiness.getUserId(), "{\"missScore\":4,\"passScore\":6,\"unPassScore\":2}");
 		id = ExaminationTaskBusiness.getIdByKeyword(exam_pass_name);
-		if (id==null || id =="") {
-			System.out.println("历史考试不存在，重新新增考试");
-			ExaminationTaskBusiness.creatRewardExamTask("1", "hide", "10", "100", "1", exam_pass_name,
-					DateUtil.getRegularDate(0), DateUtil.getRegularDate(360), "false", UserBusiness.getUserId(),
-					PaperBusiness.getIdByKeyword(BaseBusiness.pass_paper_name), "60", "0", "true", "2",
-					CertificateBusiness.getIdByKeyword(BaseBusiness.certificate_name), "12", "0", "1", "0", "0", "true", "true",
-					UserBusiness.getUserId(), "{\"missScore\":4,\"passScore\":6,\"unPassScore\":2}");
-			id = ExaminationTaskBusiness.getIdByKeyword(exam_pass_name);
-		}else {
-			System.out.println("历史考试存在，无需新增考试");
-		}
+//		id = ExaminationTaskBusiness.getIdByKeyword(exam_pass_name);
+//		if (id==null || id.equals("")) {
+//			System.out.println("历史考试不存在，重新新增考试");
+//			ExaminationTaskBusiness.creatRewardExamTask("1", "hide", "10", "100", "1", exam_pass_name,
+//					DateUtil.getRegularDate(0), DateUtil.getRegularDate(360), "false", UserBusiness.getUserId(),
+//					PaperBusiness.getIdByKeyword(BaseBusiness.pass_paper_name), "60", "0", "true", "2",
+//					CertificateBusiness.getIdByKeyword(BaseBusiness.certificate_name), "12", "0", "1", "0", "0", "true", "true",
+//					UserBusiness.getUserId(), "{\"missScore\":4,\"passScore\":6,\"unPassScore\":2}");
+//			id = ExaminationTaskBusiness.getIdByKeyword(exam_pass_name);
+//		}else {
+//			System.out.println("历史考试存在，无需新增考试");
+//		}
 	}
 	@Test(description = "对历史考试数据重新考试",priority = 1)
 	public void testReExamHistoryData() {
@@ -82,5 +90,10 @@ public class TestExamHistoryData {
  		String msg = (String)JSONPath.read(res, "$.msg");
  		Assert.assertEquals(msg,"Ok！","查看补考明细,考试次数进行校验"+res);
  	}
+
+	 @AfterClass
+	public void deleteHistoryExam() {
+		ExaminationTaskBusiness.deleteExamTask(id);
+	 }
 	
 }
