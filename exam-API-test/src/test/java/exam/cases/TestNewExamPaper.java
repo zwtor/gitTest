@@ -24,7 +24,6 @@ public class TestNewExamPaper {
     private ResourceFileUtil resourceFileUtil;
     private String paperTitle;
     private String paperId;
-    String questionBankId;
 
     @BeforeClass
     public void setUp() {
@@ -97,7 +96,7 @@ public class TestNewExamPaper {
         List<JSONObject> sendQuestionList = new ArrayList<>();
 
         String response = newQuestion.getQuestionBankList();
-        questionBankId = JSONPath.read(response, "$.data.list[0].id").toString();
+        String questionBankId = JSONPath.read(response, "$.data.list[0].id").toString();
         response = newQuestion.getQuestionList(questionBankId);
         JSONArray receivedQuestionList = JSONArray.parseArray(JSONPath.read(response, "$.data.list").toString());
         for(int i = 0;i <scoreList.size();i++) {

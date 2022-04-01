@@ -5,16 +5,9 @@ import cn.kxy.base.business.BaseBusiness;
 import cn.kxy.setting.bussiness.ClassificationBusines;
 import com.alibaba.fastjson.JSONPath;
 import com.lazy.common.utils.CommonData;
-import com.lazy.common.utils.FilePath;
 import org.testng.annotations.BeforeSuite;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-
 public class InitExam {
-	
 	@BeforeSuite
 	public void initSuit() {
 		if (ClassificationBusines.getPrimaryId() == null) {
@@ -28,8 +21,7 @@ public class InitExam {
 			CertificateBusiness.creatCertificate(BaseBusiness.certificate_name, "kxyTest0", "Sinpoes", "true", "chinese", "2");
 		}
 		
-		String surrounding = readTxt(FilePath.getHome() + File.separator + "environmental.txt");
-		System.out.println("Now cases is running in "+surrounding);
+		System.out.println("Now cases is running in "+ System.getProperty("env"));
 		BaseBusiness.addQuestionnaire();
 		System.out.println("init add Questionnaire success!!");
 		BaseBusiness.addPassExamToPractice();
@@ -42,30 +34,5 @@ public class InitExam {
 		System.out.println("init add Exam success!!");
 		BaseBusiness.addPaper();
 		System.out.println("init add Paper success!!it is running test");
-	}
-	public static  String readTxt(String fileName) {
-	    File file = new File(fileName);
-	    BufferedReader reader = null;
-	    StringBuffer sbf = new StringBuffer();
-	    try {
-	        reader = new BufferedReader(new FileReader(file));
-	        String tempStr;
-	        while ((tempStr = reader.readLine()) != null) {
-	            sbf.append(tempStr);
-	        }
-	        reader.close();
-	        return sbf.toString();
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    } finally {
-	        if (reader != null) {
-	            try {
-	                reader.close();
-	            } catch (IOException e1) {
-	                e1.printStackTrace();
-	            }
-	        }
-	    }
-	    return sbf.toString();
 	}
 }

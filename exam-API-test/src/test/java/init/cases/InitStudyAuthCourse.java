@@ -24,8 +24,7 @@ public class InitStudyAuthCourse {
 
 	@BeforeSuite
 	public void init() {
-		String surrounding = readTxt(FilePath.getHome() + File.separator + "environmental.txt");
-		System.out.println("Now cases is running in "+surrounding);
+		System.out.println("Now cases is running in "+ System.getProperty("env"));
 		System.out.println("start init data");
 		BaseBusiness.addLecturerLevel();
 		String res = LecturerListBusiness.queryLecturerList(outer_name, "1", "");
@@ -60,31 +59,5 @@ public class InitStudyAuthCourse {
 		}
 		System.out.println("add Certificate success");
 
-	}
-	
-	public static  String readTxt(String fileName) {
-	    File file = new File(fileName);
-	    BufferedReader reader = null;
-	    StringBuffer sbf = new StringBuffer();
-	    try {
-	        reader = new BufferedReader(new FileReader(file));
-	        String tempStr;
-	        while ((tempStr = reader.readLine()) != null) {
-	            sbf.append(tempStr);
-	        }
-	        reader.close();
-	        return sbf.toString();
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    } finally {
-	        if (reader != null) {
-	            try {
-	                reader.close();
-	            } catch (IOException e1) {
-	                e1.printStackTrace();
-	            }
-	        }
-	    }
-	    return sbf.toString();
 	}
 }

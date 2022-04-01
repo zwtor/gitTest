@@ -48,6 +48,7 @@
                         <env>FAT2</env>
                         <loginMobile></loginMobile>
                         <password></password>
+                        <token></token>
                     </systemPropertyVariables>
                     <!--测试失败后，是否忽略并继续测试 -->
                     <testFailureIgnore>true</testFailureIgnore>
@@ -83,7 +84,6 @@
                     <fork>true</fork>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 </project>
