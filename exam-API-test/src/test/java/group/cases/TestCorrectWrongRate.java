@@ -403,8 +403,7 @@ public class TestCorrectWrongRate {
  	@Test(description="23.删除学习项目接口", priority=23)
  	public void testDeleteProject()  {
  		String res = CorrectWrongRateBusiness.DeleteProject(project_id);
- 		String deleted = (String) JSONPath.read(res, "$.deleted");
- 		System.out.println("23.删除学习项目接口:"+"deleted="+deleted);
+ 		String deleted = (String) JSONPath.read(res, "$.data.deleted");
  		Assert.assertEquals(deleted, "true","23.删除学习项目接口" + deleted);
  	}
  	
