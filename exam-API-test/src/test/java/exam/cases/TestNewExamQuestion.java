@@ -52,7 +52,7 @@ public class TestNewExamQuestion {
     
 
     @Test(description = "add new exam question bank", priority = 1)
-    public void testAddNewExamPaper(){
+    public void testAddNewExamQuestionBank(){
         String response = newQuestion.addNewQuestionBank(questionBankTitle);
         questionId = JSONPath.read(response, "$.data").toString();
         Assert.assertEquals("true", JSONPath.read(response,"$.success").toString());
@@ -62,7 +62,7 @@ public class TestNewExamQuestion {
 
     
 
-    @Test(description = "delete new created exam question bank",priority = 6)
+    @Test(description = "delete new created exam question bank",dependsOnMethods ="testAddNewExamQuestionBank",priority = 2)
     public void testDeleteNewExamQuestionBank() {
         String response = newQuestion.deleteNewQuestionBank(questionId);
         Assert.assertEquals("true", JSONPath.read(response, "$.success"));
