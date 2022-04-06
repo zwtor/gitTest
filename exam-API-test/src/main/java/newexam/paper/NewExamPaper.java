@@ -18,7 +18,7 @@ public class NewExamPaper {
     private RestAssuredRequestHandler requestHandler;
     private ResourceFileUtil resourceFileUtil;
 
-    private String requestBodyFolder = "requestbody" + File.separator + "newExamPaper";
+    private String requestBodyFolder = "requestbody/newExamPaper";
 
     public NewExamPaper() {
         requestHandler = new RestAssuredRequestHandler();

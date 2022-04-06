@@ -1,0 +1,19 @@
+{
+  "content": "",
+  "stageName": "{{stage_name}}",
+  "isOrder": false,
+  "stageSort": "{{stage_sort}}",
+  "stageId": "",
+  "startTime": null,
+  "endTime": null,
+  "course": [
+    {
+      "courseId": "{{course_id}}",
+      "courseSort": 0,
+      "courseType": 1,
+      "flag": 1,
+      "mappingId": "",
+      "resource_lock": false
+    }
+  ]
+}

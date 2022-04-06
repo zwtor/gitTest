@@ -1,0 +1,66 @@
+{
+  "content": "",
+  "stageName": "{{stage_name}}",
+  "isOrder": false,
+  "stageSort": "{{stage_sort}}",
+  "stageId": "",
+  "startTime": null,
+  "endTime": null,
+  "course": [
+    {
+      "courseSort": 0,
+      "title": "task name",
+      "type": "ex",
+      "cheatFlag": 0,
+      "faceRecognition": "off",
+      "examDuration": 20,
+      "summary": "description",
+      "flag": 2,
+      "mappingId": "",
+      "courseId": "",
+      "markType": 1,
+      "paperId": "",
+      "paperTitle": "",
+      "passLine": 60,
+      "questionBankList": "{{questionBankId1,questionBankId2}}",
+      "questionMode": 2,
+      "showKnowledge": "show",
+      "repeatExam": true,
+      "multipleCount": 1,
+      "multipleUnitScore": 5,
+      "fillBlankCount": 1,
+      "fillBlankUnitScore": 1,
+      "fillBlankType": 1,
+      "shortAnswerCount": 1,
+      "shortAnswerUnitScore": 1,
+      "shortAnswerType": 1,
+      "singleCount": 1,
+      "singleUnitScore": 5,
+      "trueOrFalseCount": 1,
+      "trueOrFalseUnitScore": 5,
+      "totalScore": "",
+      "answerParsing": 5,
+      "passingScore": 60,
+      "cutScreenCount": -1,
+      "reExamRule": 0,
+      "reExamNumber": 0,
+      "scoreRule": 0,
+      "viewRule": 1,
+      "proportional": [
+        {
+          "proportion": "{{proportion1}}",
+          "name": "ProportionalBank2",
+          "id": ""
+        },
+        {
+          "proportion": "{{proportion2}}",
+          "name": "ProportionalBank1",
+          "id": ""
+        }
+      ],
+      "anonymousMarking": "undefined",
+      "show_result": true,
+      "resource_lock": false
+    }
+  ]
+}

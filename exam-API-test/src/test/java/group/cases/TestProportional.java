@@ -1,5 +1,6 @@
 package group.cases;
 
+import cn.kxy.authentication.business.PositionAuthentication;
 import cn.kxy.group.a.business.ScoringByQuestionBusiness;
 import cn.kxy.setting.bussiness.ClassificationBusines;
 import com.alibaba.fastjson.JSONArray;
@@ -326,70 +327,37 @@ public class TestProportional {
  	
  	
  	@Test(description="14.新建岗位认证-按权重抽题，各题库够抽接口", priority=14)
- 	public void testQualificationsAddproportional() throws UnsupportedEncodingException  {
- 		String scopesTemp = "{\"department_list\":[],\"user_list\":[],\"group_list\":[],\"post_list\":[]}";
- 		String scopes = JSONObject.parseObject(scopesTemp).toJSONString();
- 		String questionMode = "2";
- 		String fillBlankUnitScore = "14";
- 		String fillBlankType = "2";
- 		String shortAnswerUnitScore = "15";
- 		String shortAnswerType = "2"; 	
- 		Integer proportion1 = 20;
- 		Integer proportion2 = 80;
- 		String stageJsonTemp = "[{\"content\":\"\",\"stageName\":\"阶段1\",\"isOrder\":false,\"stageSort\":1,\"stageId\":\"\","
- 				+ "\"startTime\":null,\"endTime\":null,\"course\":[{\"courseSort\":0,\"title\":\"权重\",\"type\":\"ex\",\"cheatFlag\":0,"
- 				+ "\"faceRecognition\":\"off\",\"examDuration\":20,\"summary\":\"\",\"flag\":2,\"mappingId\":\"\",\"courseId\":\"\","
- 				+ "\"markType\":1,\"paperId\":\"\",\"paperTitle\":\"\",\"passLine\":100,"
- 				+ "\"questionBankList\":\""+proportional_questionBank_id+"\",\"questionMode\":\""+questionMode+"\","
- 						+ "\"showKnowledge\":\"show\","+ "\"repeatExam\":true,\"multipleCount\":1,\"multipleUnitScore\":10,"
- 								+ "\"fillBlankCount\":1,\"fillBlankUnitScore\":\""+fillBlankUnitScore+"\","
- 				+ "\"fillBlankType\":\""+fillBlankType+"\",\"shortAnswerCount\":1,\"shortAnswerUnitScore\":\""+shortAnswerUnitScore+"\","
- 						+ "\"shortAnswerType\":\""+shortAnswerType+"\",\"singleCount\":\""+singleCount+"\","
- 				+ "\"singleUnitScore\":5,\"trueOrFalseCount\":1,\"trueOrFalseUnitScore\":10,\"totalScore\":\"\",\"answerParsing\":5,"
- 				+ "\"passingScore\":60,\"cutScreenCount\":-1,\"reExamRule\":0,\"reExamNumber\":0,\"scoreRule\":0,\"viewRule\":1,"
- 				+ "\"proportional\":[{\"id\":\""+proportional_questionBank_id1+"\",\"name\":\"ProportionalBank2\","
- 						+ "\"proportion\":\""+proportion1+"\"},"+ "{\"id\":\""+proportional_questionBank_id2+"\","
- 								+ "\"name\":\"ProportionalBank1\",\"proportion\":\""+proportion2+"\"}],"+ "\"resource_lock\":false}]}]";
- 		String stageJson = JSONObject.parseArray(stageJsonTemp).toJSONString();
- 		System.out.println("certificate_id="+certificate_id+","+"scopes="+scopes+"stageJson="+stageJson+","+
- 		"proportional_title_qualifications="+proportional_title_qualifications);
- 		String res = ScoringByQuestionBusiness.QualificationsAdd(certificate_id,scopes,stageJson,proportional_title_qualifications);
+ 	public void testQualificationsAddproportional() {
+		PositionAuthentication positionAuthentication = new PositionAuthentication();
+		String proportion1 = "20";
+		String proportion2 = "80";
+
+		JSONArray stageJsonList = new JSONArray();
+		JSONObject randomPaperObject = positionAuthentication.createRandomPaperStageInAuthentication(1, proportion1, proportion2);
+		stageJsonList.add(randomPaperObject);
+
+		String authenticationTitle = "Automation" + CommonData.getStringRandom(3);
+		String res = positionAuthentication.createAuthentication(authenticationTitle, stageJsonList);
  		String msg = (String) JSONPath.read(res, "$.msg");
  		proportional_qualifications_id = (String) JSONPath.read(res, "$.data");
- 		System.out.println("14.新建岗位认证-按权重抽题，各题库够抽接口:"+"msg="+msg+","+"proportional_qualifications_id="+proportional_qualifications_id);
+ 		System.out.println("14.新建岗位认证-按权重抽题，各题库够抽接口:"+"msg="+msg+","+"proportional_qualifications_id="+ proportional_qualifications_id);
  		Assert.assertEquals(msg, "新增计划成功！","14.新建岗位认证-按权重抽题，各题库够抽接口" + res);
  	}
  	
  	
  	@Test(description="15.新建岗位认证-按权重抽题-小题库权重大不够抽接口", priority=15)
  	public void testQualificationsAddlowproportional() throws UnsupportedEncodingException  {
- 		String scopesTemp = "{\"department_list\":[],\"user_list\":[],\"group_list\":[],\"post_list\":[]}";
- 		String scopes = JSONObject.parseObject(scopesTemp).toJSONString();
- 		String questionMode = "2";
- 		String fillBlankUnitScore = "14";
- 		String fillBlankType = "2";
- 		String shortAnswerUnitScore = "15";
- 		String shortAnswerType = "2"; 	
- 		Integer proportion1 = 80;
- 		Integer proportion2 = 20;
- 		String title = proportional_title_qualifications + "-小题库权重大";
- 		String stageJsonTemp = "[{\"content\":\"\",\"stageName\":\"阶段1\",\"isOrder\":false,\"stageSort\":1,\"stageId\":\"\","
- 				+ "\"startTime\":null,\"endTime\":null,\"course\":[{\"courseSort\":0,\"title\":\"权重\",\"type\":\"ex\",\"cheatFlag\":0,"
- 				+ "\"faceRecognition\":\"off\",\"examDuration\":20,\"summary\":\"\",\"flag\":2,\"mappingId\":\"\",\"courseId\":\"\","
- 				+ "\"markType\":1,\"paperId\":\"\",\"paperTitle\":\"\",\"passLine\":100,"
- 				+ "\"questionBankList\":\""+proportional_questionBank_id+"\",\"questionMode\":\""+questionMode+"\","
- 						+ "\"showKnowledge\":\"show\","+ "\"repeatExam\":true,\"multipleCount\":1,\"multipleUnitScore\":10,"
- 								+ "\"fillBlankCount\":1,\"fillBlankUnitScore\":\""+fillBlankUnitScore+"\","
- 				+ "\"fillBlankType\":\""+fillBlankType+"\",\"shortAnswerCount\":1,\"shortAnswerUnitScore\":\""+shortAnswerUnitScore+"\","
- 						+ "\"shortAnswerType\":\""+shortAnswerType+"\",\"singleCount\":\""+singleCount+"\","
- 				+ "\"singleUnitScore\":5,\"trueOrFalseCount\":1,\"trueOrFalseUnitScore\":10,\"totalScore\":\"\",\"answerParsing\":5,"
- 				+ "\"passingScore\":60,\"cutScreenCount\":-1,\"reExamRule\":0,\"reExamNumber\":0,\"scoreRule\":0,\"viewRule\":1,"
- 				+ "\"proportional\":[{\"id\":\""+proportional_questionBank_id1+"\",\"name\":\"ProportionalBank2\","
- 						+ "\"proportion\":\""+proportion1+"\"},"+ "{\"id\":\""+proportional_questionBank_id2+"\","
- 								+ "\"name\":\"ProportionalBank1\",\"proportion\":\""+proportion2+"\"}],"+ "\"resource_lock\":false}]}]";
- 		String stageJson = JSONObject.parseArray(stageJsonTemp).toJSONString();
- 		String res = ScoringByQuestionBusiness.QualificationsAdd(certificate_id,scopes,stageJson,title);
- 		String msg = (String) JSONPath.read(res, "$.msg");
+		PositionAuthentication positionAuthentication = new PositionAuthentication();
+		String proportion1 = "80";
+		String proportion2 = "20";
+
+		JSONArray stageJsonList = new JSONArray();
+		JSONObject randomPaperObject = positionAuthentication.createRandomPaperStageInAuthentication(1, proportion1, proportion2);
+		stageJsonList.add(randomPaperObject);
+
+		String authenticationTitle = "Automation" + CommonData.getStringRandom(3);
+		String res = positionAuthentication.createAuthentication(authenticationTitle, stageJsonList);
+		String msg = (String) JSONPath.read(res, "$.msg");
  		lowProportional_qualifications_id = (String) JSONPath.read(res, "$.data");
  		System.out.println("15.新建岗位认证-按权重抽题-小题库权重大不够抽接口:"+"msg="+msg+","+"lowProportional_qualifications_id="+lowProportional_qualifications_id);
  		Assert.assertEquals(msg, "新增计划成功！","15.新建岗位认证-按权重抽题-小题库权重大不够抽接口" + res);
@@ -398,33 +366,17 @@ public class TestProportional {
  	
  	@Test(description="16.新建岗位认证-按权重抽题-存在0权重题库，非0权重的题库不够抽接口", priority=16)
  	public void testQualificationsAddzeroproportional() throws UnsupportedEncodingException  {
- 		String scopesTemp = "{\"department_list\":[],\"user_list\":[],\"group_list\":[],\"post_list\":[]}";
- 		String scopes = JSONObject.parseObject(scopesTemp).toJSONString();
- 		String questionMode = "2";
- 		String fillBlankUnitScore = "14";
- 		String fillBlankType = "2";
- 		String shortAnswerUnitScore = "15";
- 		String shortAnswerType = "2"; 	
- 		Integer proportion1 = 80;
- 		Integer proportion2 = 0;
- 		String title = proportional_title_qualifications + "-权重存在0";
- 		String stageJsonTemp = "[{\"content\":\"\",\"stageName\":\"阶段1\",\"isOrder\":false,\"stageSort\":1,\"stageId\":\"\","
- 				+ "\"startTime\":null,\"endTime\":null,\"course\":[{\"courseSort\":0,\"title\":\"权重\",\"type\":\"ex\",\"cheatFlag\":0,"
- 				+ "\"faceRecognition\":\"off\",\"examDuration\":20,\"summary\":\"\",\"flag\":2,\"mappingId\":\"\",\"courseId\":\"\","
- 				+ "\"markType\":1,\"paperId\":\"\",\"paperTitle\":\"\",\"passLine\":100,"
- 				+ "\"questionBankList\":\""+proportional_questionBank_id+"\",\"questionMode\":\""+questionMode+"\","
- 						+ "\"showKnowledge\":\"show\","+ "\"repeatExam\":true,\"multipleCount\":1,\"multipleUnitScore\":10,"
- 								+ "\"fillBlankCount\":1,\"fillBlankUnitScore\":\""+fillBlankUnitScore+"\","
- 				+ "\"fillBlankType\":\""+fillBlankType+"\",\"shortAnswerCount\":1,\"shortAnswerUnitScore\":\""+shortAnswerUnitScore+"\","
- 						+ "\"shortAnswerType\":\""+shortAnswerType+"\",\"singleCount\":\""+singleCount+"\","
- 				+ "\"singleUnitScore\":5,\"trueOrFalseCount\":1,\"trueOrFalseUnitScore\":10,\"totalScore\":\"\",\"answerParsing\":5,"
- 				+ "\"passingScore\":60,\"cutScreenCount\":-1,\"reExamRule\":0,\"reExamNumber\":0,\"scoreRule\":0,\"viewRule\":1,"
- 				+ "\"proportional\":[{\"id\":\""+proportional_questionBank_id1+"\",\"name\":\"ProportionalBank2\","
- 						+ "\"proportion\":\""+proportion1+"\"},"+ "{\"id\":\""+proportional_questionBank_id2+"\","
- 								+ "\"name\":\"ProportionalBank1\",\"proportion\":\""+proportion2+"\"}],"+ "\"resource_lock\":false}]}]";
- 		String stageJson = JSONObject.parseArray(stageJsonTemp).toJSONString();
- 		String res = ScoringByQuestionBusiness.QualificationsAdd(certificate_id,scopes,stageJson,title);
- 		String msg = (String) JSONPath.read(res, "$.msg");
+		PositionAuthentication positionAuthentication = new PositionAuthentication();
+		String proportion1 = "80";
+		String proportion2 = "0";
+
+		JSONArray stageJsonList = new JSONArray();
+		JSONObject randomPaperObject = positionAuthentication.createRandomPaperStageInAuthentication(1, proportion1, proportion2);
+		stageJsonList.add(randomPaperObject);
+
+		String authenticationTitle = "Automation" + CommonData.getStringRandom(3);
+		String res = positionAuthentication.createAuthentication(authenticationTitle, stageJsonList);
+		String msg = (String) JSONPath.read(res, "$.msg");
  		zeroProportional_qualifications_id = (String) JSONPath.read(res, "$.data");
  		System.out.println("16.新建岗位认证-按权重抽题-存在0权重题库，非0权重的题库不够抽接口:"+"msg="+msg+","+"zeroProportional_qualifications_id="
  		+zeroProportional_qualifications_id);
