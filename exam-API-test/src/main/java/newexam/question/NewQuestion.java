@@ -32,7 +32,7 @@ public class NewQuestion {
 
     public String getQuestionBankList() {
         String getQuestionBankListURL = RestAssuredRequestHandler.buildURL(newExamURLObject.getString("getQuestionBankList"), EnterpriseData.getEnterpriseId());
-        return requestHandler.sendGetRequest(getQuestionBankListURL, "status", "enable", "page_number", "1", "page_size", "15");
+        return requestHandler.sendGetRequest(getQuestionBankListURL, "status", "enable", "page_number", "1", "page_size", "15", "only_see_me", "true");
     }
 
     public String getQuestionList(String questionBankId) {

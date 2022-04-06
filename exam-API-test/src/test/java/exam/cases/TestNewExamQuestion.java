@@ -24,14 +24,12 @@ public class TestNewExamQuestion {
     private ResourceFileUtil resourceFileUtil;
     private String questionId;
     private String questionBankTitle;
-    
 
     @BeforeClass
     public void setUp() {
         newQuestion = new NewQuestion();
         resourceFileUtil = new ResourceFileUtil();
         questionBankTitle = "questionBankAutomation" + CommonData.getStringRandom(3);
-        
     }
 
 //    @DataProvider
@@ -48,8 +46,7 @@ public class TestNewExamQuestion {
 //        Object[][] testData = DataDrivenLoader.loadExcelData("TestNewExamPaperData.xlsx", method.getDeclaringClass().getName(), method.getName());
 //        return testData;
 //    }
-    
-    
+
 
     @Test(description = "add new exam question bank", priority = 1)
     public void testAddNewExamQuestionBank(){
@@ -60,13 +57,9 @@ public class TestNewExamQuestion {
         System.out.println("questionId: " + questionId);
     }
 
-    
-
     @Test(description = "delete new created exam question bank",dependsOnMethods ="testAddNewExamQuestionBank",priority = 2)
     public void testDeleteNewExamQuestionBank() {
         String response = newQuestion.deleteNewQuestionBank(questionId);
         Assert.assertEquals("true", JSONPath.read(response, "$.success"));
     }
-    
-    
 }
