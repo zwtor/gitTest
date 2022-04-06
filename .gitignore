@@ -4,4 +4,9 @@ allure-results/
 */target/
 */.idea/
 */allure-results/
+.project
+.settings/
+*/.project
+*/.settings/
+*/.classpath
 
