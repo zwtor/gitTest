@@ -69,6 +69,10 @@ public class EnterpriseDataUrl {
         return getDomainName() + "dictionary-service/";
     }
 
+    public static String getOpenPlatFormUrl() {
+        return getDomainName() + "openapi/";
+    }
+
     public static String getShareUrl() {
         String env = System.getProperty("env");
         String url = "";

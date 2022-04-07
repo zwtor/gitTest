@@ -79,6 +79,10 @@ public class MobileSettingBusiness {
 	public static String getModuleSetting() {
 		return HttpRequest.get(module_setting_url).query("access_token", token).query("enterprise_id",enterprise_id).query("user_id",UserBusiness.getUserId()).send().body();
 	}
+
+	public static String queryCustom (String type) {
+		return HttpRequest.get(module_setting_url).query( "access_token",token).query("department_id","1").query("type",type).send().body();
+	}
 	
 	
 }

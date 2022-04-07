@@ -4,6 +4,7 @@ import cn.kxy.base.business.EnterpriseData;
 import cn.kxy.base.business.EnterpriseDataUrl;
 import cn.kxy.base.business.TokenData;
 import com.lazy.assured.utils.GetRequestTools;
+import com.lazy.httpclient.utils.HttpRequest;
 import io.restassured.RestAssured;
 import io.restassured.config.SSLConfig;
 
@@ -13,12 +14,46 @@ public class EnterpriseSettingBusiness {
 	public static String token = TokenData.getMangerToken();
 	public static String enterpriseId = EnterpriseData.getEnterpriseId();
 	public static String enterpriseUrl = EnterpriseDataUrl.getEnterpriseUrl();
+	public static String userId = UserBusiness.getUserId();
 
 	public static String setUrl = enterpriseUrl + "profile/setConfig";
 
 	public static String getUrl = enterpriseUrl + "profile/getConfig";
 
-	
+	public static String online_customer_service_switch_url = enterpriseUrl  + "v2/"+enterpriseId+"/settings/online_customer_service_switch";
+
+	public static String sync_standard_url =  enterpriseUrl + "v2/"+enterpriseId+"/multi_terminal_login/sync_standard";
+
+	public static String home_customize_url = enterpriseUrl + "v2/"+enterpriseId+"/home_customize/departments";
+
+	public static String query_index_score_rank_url = enterpriseUrl + "v2/"+enterpriseId+"/query_index_score_rank";
+
+	public static String home_lecturers_url = enterpriseUrl +  "v2/"+enterpriseId+"/home_lecturers";
+
+	public static String queryHomeLecturers() {
+		return HttpRequest.get(home_lecturers_url).query("page_number","1").query("page_size", "4").
+				query("status","1").query("access_token", token).send().body();
+	}
+
+
+	public static String queryIndexScoreRank() {
+		return HttpRequest.get(query_index_score_rank_url).query("user_id",userId).query("access_token", token).send().body();
+	}
+
+	public static String  queryHomeCustomize() {
+		return HttpRequest.get(home_customize_url).query("type","pc").query("access_token", token).send().body();
+	}
+
+
+	public static String  queryCstomerServiceSwitch() {
+		return HttpRequest.get(online_customer_service_switch_url).query("access_token", token).send().body();
+	}
+
+	public static String  querySyncStandard() {
+		return HttpRequest.get(sync_standard_url).query("access_token", token).send().body();
+	}
+
+
 	/**   
 	 * @Title: getEnterpriseSetting   
 	 * @Description: TODO(获取企业设置)   

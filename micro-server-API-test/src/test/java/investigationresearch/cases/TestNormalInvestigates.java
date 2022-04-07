@@ -2,7 +2,7 @@ package investigationresearch.cases;
 
 import cn.kxy.base.business.BaseBusiness;
 import cn.kxy.investigationresearch.business.InvestigatesBusiness;
-import cn.lazy.init.cases.InitExam;
+import init.cases.InitExam;
 import com.alibaba.fastjson.JSONPath;
 import com.lazy.common.utils.CommonData;
 import org.testng.Assert;

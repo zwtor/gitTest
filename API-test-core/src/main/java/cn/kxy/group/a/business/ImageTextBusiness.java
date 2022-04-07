@@ -58,6 +58,15 @@ public class ImageTextBusiness {
 				send().body();
 	}
 
+	public static String ImageTextAdd(String baseCover,String contentJson,String init_type,String teacherId, String title,
+									  String linkSwitch,String url) throws UnsupportedEncodingException {
+		return HttpRequest.post(imagetext_add_url).query("access_token", token).query("baseCover",baseCover).query("biz_type","6").query("contentJson",URLEncoder.encode(contentJson, "utf-8"))
+				.query("cover","").query("coverType","1").query("credit","0").query("departmentIds","").query("groupIds","").query("init_type",init_type)
+				.query("isAll","1").query("original","1").query("studyTimeLimit","").query("teacherId",teacherId).query("title",title).query("linkSwitch",linkSwitch)
+				.query("url",url)
+				.send().body();
+	}
+
 
 
 	/**
@@ -75,6 +84,13 @@ public class ImageTextBusiness {
 				.query("isAll","1").query("original","1").query("studyTimeLimit","").query("teacherId",teacherId).query("title",title).query("id",imagetext_id)
 				.query("linkSwitch",linkSwitch).query("url",url)
 				.send().body();
+	}
+
+	public static String ImageTextEdit(String baseCover,String contentJson,String teacherId, String title,String imagetext_id) throws UnsupportedEncodingException {
+		return HttpRequest.post(imagetext_edit_url).query("access_token", token).query("baseCover",baseCover).query("biz_type","6").query("contentJson",URLEncoder.encode(contentJson, "utf-8"))
+				.query("cover","").query("coverType","1").query("credit","0").query("departmentIds","").query("groupIds","").query("init_type","release")
+				.query("isAll","1").query("original","1").query("studyTimeLimit","").query("teacherId",teacherId).query("title",title).query("id",imagetext_id).
+				send().body();
 	}
 	
 	/**   
