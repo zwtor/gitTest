@@ -51,7 +51,7 @@
                         <token></token>
                     </systemPropertyVariables>
                     <!--测试失败后，是否忽略并继续测试 -->
-                    <testFailureIgnore>true</testFailureIgnore>
+                    <testFailureIgnore>false</testFailureIgnore>
                     <properties>
                         <property>
                             <name>usedefaultlisteners</name>
