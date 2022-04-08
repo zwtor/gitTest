@@ -5,7 +5,7 @@ import live.LiveClass;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-@Test()
+
 public class TestLiveClass {
     private LiveClass liveClass;
 
