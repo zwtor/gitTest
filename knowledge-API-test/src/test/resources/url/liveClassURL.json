@@ -1,0 +1,3 @@
+{
+  "getLiveClassList": "/enterprise-api/v1/{enterprise-id}/course/live/list_fast"
+}
