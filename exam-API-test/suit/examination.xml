@@ -64,6 +64,11 @@
 		<classes>
 			<class name="exam.cases.TestSoaExam" />
 		</classes>
-	</test> 
+	</test>
+	<test name="新考试任务测试">
+		<classes>
+			<class name="exam.cases.TestNewExamPlan" />
+		</classes>
+	</test>
 
 </suite>
