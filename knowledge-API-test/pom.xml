@@ -48,7 +48,7 @@
                         <env>FAT5</env>
                         <loginMobile></loginMobile>
                         <password></password>
-                        <token>ec04f1ce0c9d653727642bb72996d805</token>
+                        <token></token>
                     </systemPropertyVariables>
                     <!--测试失败后，是否忽略并继续测试 -->
                     <testFailureIgnore>false</testFailureIgnore>
@@ -64,10 +64,9 @@
                     </properties>
                     <argLine>-Dfile.encoding=UTF-8</argLine>
                     <workingDirectory>target</workingDirectory>
-                <!--    <suiteXmlFiles>
-                        <suiteXmlFile>suite/archives.xml</suiteXmlFile>
-
-                    </suiteXmlFiles> -->
+                    <suiteXmlFiles>
+                        <suiteXmlFile>suite/liveClass.xml</suiteXmlFile>
+                    </suiteXmlFiles>
                 </configuration>
             </plugin>
 
