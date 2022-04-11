@@ -86,6 +86,9 @@ public class EnvironmentData {
                 case "T":
                     host = "https://jccoolapi.coolcollege.cn";
                     break;
+                case "FAT12":
+                    host = "https://ct12coolapi.coolcollege.cn";
+                    break;
                 case "FAT10":
                     host = "https://ct10coolapi.coolcollege.cn";
                     break;

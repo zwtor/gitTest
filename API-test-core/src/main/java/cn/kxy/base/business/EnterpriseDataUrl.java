@@ -65,6 +65,7 @@ public class EnterpriseDataUrl {
     public static String getTalentAbilityUrl() {
         return getDomainName() + "talentability/";
     }
+
     public static String getDictionaryServiceUrl() {
         return getDomainName() + "dictionary-service/";
     }
@@ -151,6 +152,9 @@ public class EnterpriseDataUrl {
                 break;
             case "T":
                 url = "https://jccoolapi.coolcollege.cn/";
+                break;
+            case "FAT12":
+                url = "https://ct12coolapi.coolcollege.cn/";
                 break;
             case "FAT10":
                 url = "https://ct10coolapi.coolcollege.cn/";
