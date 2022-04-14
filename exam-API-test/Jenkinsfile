@@ -33,7 +33,7 @@ pipeline {
 
     post {
         always {
-            allure includeProperties: false, jdk: '', results: [[path: 'exam-API-test/allure-results']]
+            allure includeProperties: false, jdk: '', results: [[path: 'exam-API-test/target/allure-results']]
         }
     }
 
