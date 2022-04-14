@@ -1,0 +1,34 @@
+pipeline {
+    agent {
+    }
+
+    tools {
+        jdk 'default'
+        maven 'maven354'
+    }
+
+    stages {
+        stage('check out code') {
+            steps {
+                git credentialsId: '019208c4-d053-4052-8b5d-fd9825c70595', url: 'http://gitlab.coolcollege.cn/qa/api-test-collection.git'
+            }
+        }
+        stage('build project') {
+            steps {
+                sh "mvn install -Dmaven.test.skip=true"
+            }
+        }
+        stage('run test') {
+            steps {
+                sh "cd exam-API-test"
+                sh "mvn clean compile"
+                sh "mvn test -Denv=${environment} -Dtest=${testCase} -DloginMobile=${loginMobile} -Dpassword=${password}"
+            }
+        }
+    }
+
+    post {
+        allure includeProperties: false, jdk: '', results: [[path: 'exam-API-test/allure-results']]
+    }
+
+}
