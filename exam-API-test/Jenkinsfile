@@ -1,7 +1,4 @@
 pipeline {
-    agent {
-    }
-
     tools {
         jdk 'default'
         maven 'maven354'
@@ -33,7 +30,9 @@ pipeline {
     }
 
     post {
-        allure includeProperties: false, jdk: '', results: [[path: 'exam-API-test/allure-results']]
+        always {
+            allure includeProperties: false, jdk: '', results: [[path: 'exam-API-test/allure-results']]
+        }
     }
 
 }
