@@ -7,6 +7,11 @@ pipeline {
         maven 'maven354'
     }
 
+    parameters {
+        string defaultValue: 'FAT2', description: '''PRO, UAT, T, FAT9, FAT6, FAT5, FAT4, FAT3, FAT2, FAT1, DEV''', name: 'environment', trim: false
+        string defaultValue: 'exam.cases.TestNewExamPlan', description: '', name: 'testCase', trim: false
+    }
+
     stages {
         stage('check out code') {
             steps {
@@ -22,7 +27,7 @@ pipeline {
             steps {
                 sh "cd exam-API-test"
                 sh "mvn clean compile"
-                sh "mvn test -Denv=${environment} -Dtest=${testCase} -DloginMobile=${loginMobile} -Dpassword=${password}"
+                sh "mvn test -Denv=${params.environment} -Dtest=${params.testCase} -DloginMobile=${loginMobile} -Dpassword=${password}"
             }
         }
     }
