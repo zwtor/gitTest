@@ -23,8 +23,8 @@ pipeline {
         }
         stage('run test') {
             steps {
-                sh("mvn clean compile -pl exam-API-test")
-                dir('exam-API-test') {
+                sh("mvn clean compile -pl enterprise-API-test")
+                dir('enterprise-API-test') {
                     sh('mvn test -Denv=$environment -Dtest=$testCase -DloginMobile=$loginMobile -Dpassword=$password')
                 }
             }
