@@ -23,14 +23,7 @@ public class TestCopyExamPaper {
         newPaperId = JSONPath.read(newExamPaper.getNewPaperList(),"$.data.list[0].id").toString();
 
     }
-//
-//
-//    @Test(description = "ceshi")
-//    public void testQuestionList(){
-//        String res=newExamPaper.getNewPaperList();
-//        System.out.println(res);
-//
-//    }
+/
 
 
     @Test(description = "复制试卷", priority = 1)
@@ -42,7 +35,7 @@ public class TestCopyExamPaper {
         System.out.println("SUCCESS!");
     }
 
-    @Test(description = "删除复制的试卷", priority = 2)
+    @Test(description = "删除复制的试卷",dependsOnMethods="testCopyExamPaper",priority = 2)
     public void testDeleteExamPaper(){
         String res=newExamPaper.deleteNewPaper(copyPaperId);
         String data=JSONPath.read(res,"$.data").toString();
