@@ -10,6 +10,10 @@ pipeline {
         string defaultValue: '', description: 'like exam.cases.TestNewExamPlan or exam.cases.TestNewExamPaper#testAddNewExamPaper', name: 'testCase', trim: false
     }
 
+    triggers {
+      cron 'H 1 * * *'
+    }
+
     stages {
         stage('check out code') {
             steps {
