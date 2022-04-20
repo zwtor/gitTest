@@ -65,7 +65,6 @@ public class TestNewExamPaper {
         String response = newExamPaper.getNewPaperDetail(paperId);
         Assert.assertEquals(paperId, JSONPath.read(response, "$.data.id").toString());
         Assert.assertEquals(paperTitle, JSONPath.read(response, "$.data.title").toString());
-        System.out.println("-------in testGetNewExamPaper method---------");
         System.out.println(paperId);
     }
 
@@ -131,7 +130,6 @@ public class TestNewExamPaper {
 
     @Test(description = "delete new created exam paper", dataProvider = "excelDataProvider", dependsOnMethods = "testAddNewExamPaper", priority = 6)
     public void testDeleteNewExamPaper(String paperId) {
-        System.out.println("paper to be deleted: " + paperId);
         String response = newExamPaper.deleteNewPaper(paperId);
         Assert.assertEquals("success", JSONPath.read(response, "$.data"));
     }

@@ -5,9 +5,9 @@
 			<class name="exam.cases.TestItemBankExercise" />
 		</classes>
 	</test>
-	<test name="题库练习App端流程测试">
-		<classes>
-			<class name="exam.cases.TestAppPractice" />
-		</classes>
-	</test>
+<!--	<test name="题库练习App端流程测试">-->
+<!--		<classes>-->
+<!--			<class name="exam.cases.TestAppPractice" />-->
+<!--		</classes>-->
+<!--	</test>-->
 </suite>
