@@ -1,7 +1,10 @@
 package exam.cases;
 
 import com.alibaba.fastjson.JSONPath;
+import com.lazy.common.utils.ResourceFileUtil;
 import newexam.examPlan.NewExamPlan;
+import newexam.paper.NewExamPaper;
+import newexam.question.NewQuestion;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -11,7 +14,8 @@ public class TestNewExamPlan {
     private NewExamPlan newExamPlan;
     private String planId;
 
-    public TestNewExamPlan() {
+    @BeforeClass
+    public void setUp() {
         newExamPlan = new NewExamPlan();
     }
 
