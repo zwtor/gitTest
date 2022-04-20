@@ -23,8 +23,6 @@ public class TestCopyExamPaper {
         newPaperId = JSONPath.read(newExamPaper.getNewPaperList(),"$.data.list[0].id").toString();
 
     }
-/
-
 
     @Test(description = "复制试卷", priority = 1)
     public void testCopyExamPaper(){
