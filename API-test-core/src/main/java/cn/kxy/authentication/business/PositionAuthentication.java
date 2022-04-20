@@ -64,4 +64,15 @@ public class PositionAuthentication {
         return examObject;
     }
 
+    public JSONObject createFixedPaperStageInAuthentication(int stageSort, String title, String paperId, String paperTitle, boolean isShowResult) {
+        JSONObject examObject = resourceFileUtil.parseJsonFile(requestBodyFolder, "fixedPaperStageInAuthentication.json");
+        examObject = ResourceFileUtil.setJsonBodyValue(examObject, "$.stageSort", stageSort,
+                "$.stageName", "阶段" + String.valueOf(stageSort),
+                "$.course[0].title", title,
+                "$.course[0].paperId", paperId,
+                "$.course[0].paperTitle", paperTitle,
+                "$.course[0].show_result", isShowResult);
+        return examObject;
+    }
+
 }

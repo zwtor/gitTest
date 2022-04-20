@@ -50,7 +50,7 @@
 		</classes>
 	</test>
 	
-	<test name="随时试卷按题给分测试">
+	<test name="随机试卷按题给分测试">
 		<classes>
 			<class name="group.cases.TestScoringByQuestion" />
 		</classes>

@@ -19,8 +19,8 @@
       "mappingId": "",
       "courseId": "",
       "markType": 1,
-      "paperId": "{{paper_id}}",
-      "paperTitle": "{{paper_title}}",
+      "paperId": "{{paperId}}",
+      "paperTitle": "{{paperTitle}}",
       "passLine": 90,
       "questionBankList": "",
       "questionMode": 1,
@@ -49,7 +49,7 @@
       "viewRule": 1,
       "proportional": [],
       "anonymousMarking": "undefined",
-      "show_result": true,
+      "show_result": "{isShowResult)}",
       "resource_lock": false
     }
   ]
