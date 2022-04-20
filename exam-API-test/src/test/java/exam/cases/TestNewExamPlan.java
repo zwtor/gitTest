@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 @Test(groups = {"CI"})
 public class TestNewExamPlan {
     private NewExamPlan newExamPlan;
+    private String planId;
 
     public TestNewExamPlan() {
         newExamPlan = new NewExamPlan();
@@ -19,6 +20,13 @@ public class TestNewExamPlan {
         String response = newExamPlan.getNewExamPlanList();
         Integer count = Integer.valueOf(JSONPath.read(response,"$.data.total").toString());
         Assert.assertTrue(count > 0);
-//        Assert.assertTrue(JSONPath.read(response,"$.data.list[0].title").toString().startsWith("Automation"), String.format("result of get exam list is: %s", response));
+       // Assert.assertTrue(JSONPath.read(response,"$.data.list[0].title").toString().startsWith("Automation"), String.format("result of get exam list is: %s", response));
+        planId = JSONPath.read(response,"$.data.list[0].id").toString();
+        System.out.println("examID: " + planId);
+    }
+    @Test(description = "copy new exam plan", dependsOnMethods ="testGetNewExamPaperList",priority = 2)
+    public void testCopyNewExamPlan() {
+        String response = newExamPlan.copyNewExamPlan(planId);
+        Assert.assertEquals("true", JSONPath.read(response,"$.success").toString());
     }
 }
