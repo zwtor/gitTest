@@ -64,4 +64,9 @@ public class NewExamPaper {
         String deleteNewPaperURL = RestAssuredRequestHandler.buildURL(newExamURLObject.getString("deleteNewPaper"), EnterpriseData.getEnterpriseId(), id);
         return requestHandler.sendPostRequest(deleteNewPaperURL, null);
     }
+
+    public String copyExamPaper(String paperId){
+        String copyExamPaperURL= RestAssuredRequestHandler.buildURL(newExamURLObject.getString("copyPaper"),EnterpriseData.getEnterpriseId(),paperId);
+        return requestHandler.sendPostRequest(copyExamPaperURL,null);
+    }
 }

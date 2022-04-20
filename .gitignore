@@ -9,4 +9,6 @@ allure-results/
 */.project
 */.settings/
 */.classpath
+*.iml
+*/*.iml
 
