@@ -16,7 +16,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-@Test(groups = {"CI"})
+@Test(groups = {"studyProject"})
 public class TestStudyProject extends InitStudyAuthCourse{
 	String study_name = "Study_Project" + CommonData.getStringRandom(5);
 	String user_name = UserBusiness.getUsername();

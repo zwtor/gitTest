@@ -14,6 +14,7 @@ import org.testng.annotations.Test;
 
 import java.math.BigDecimal;
 
+@Test(groups = {"studyProject"})
 public class TestStudyProjectExamHigherHistoryResult {
 	String title = "StudyProjectHigherHistory"+CommonData.getStringRandom(5);
 	String paper_id = PaperBusiness.getIdByKeyword(BaseBusiness.pass_paper_name);

@@ -8,6 +8,7 @@ import com.lazy.common.utils.CommonData;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+@Test(groups = {"studyProject"})
 public class TestStudyProjectTrick extends InitStudyAuthCourse{
 
 	String name = "StudyProjectTrick"+CommonData.getStringRandom(5);

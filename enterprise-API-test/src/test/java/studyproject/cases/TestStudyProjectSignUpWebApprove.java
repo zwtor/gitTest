@@ -5,6 +5,7 @@ import com.lazy.common.utils.CommonData;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+@Test(groups = {"studyProject"})
 public class TestStudyProjectSignUpWebApprove {
 
 //	String title ="SignUpStudyProject"+CommonData.getStringRandom(3);

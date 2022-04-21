@@ -11,6 +11,7 @@ import com.lazy.common.utils.CommonData;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+@Test(groups = {"studyProject"})
 public class TestAppAddStudyProject {
 
 	String title = "AppStudyProject"+CommonData.getStringRandom(5);

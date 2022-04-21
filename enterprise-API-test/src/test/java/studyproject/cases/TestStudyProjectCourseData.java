@@ -17,7 +17,7 @@ import com.lazy.common.utils.CommonData;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-@Test(groups = {"CI"})
+@Test(groups = {"studyProject"})
 public class TestStudyProjectCourseData extends InitStudyAuthCourse{
 	String self_name = "StudyProjectCourse"+CommonData.getStringRandom(5);
 	String classification_id = ClassificationBusines.getPrimaryId();

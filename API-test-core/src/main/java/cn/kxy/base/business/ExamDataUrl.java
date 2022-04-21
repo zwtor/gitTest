@@ -41,6 +41,9 @@ public class ExamDataUrl {
 		case "FAT2":
 			url="https://ct2coolapi.coolcollege.cn/exam-api/";
 			break;
+		case "FAT2-1":
+			url="https://ct2-1coolapi.coolcollege.cn/exam-api/";
+			break;
 		case "FAT1":
 			url="https://ct1coolapi.coolcollege.cn/exam-api/";
 			break;

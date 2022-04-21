@@ -35,6 +35,9 @@ public class EnterpriseData {
 		case "FAT2":
 			id="951057547274620933";
 			break;
+		case "FAT2-1":
+			id="951057547274620933";
+			break;
 		case "FAT1":
 			id="951057547274620933";
 			break;

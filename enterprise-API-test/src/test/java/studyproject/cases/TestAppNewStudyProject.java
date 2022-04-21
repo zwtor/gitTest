@@ -5,6 +5,7 @@ import init.cases.InitStudyAuthCourse;
 import com.lazy.common.utils.CommonData;
 import org.testng.annotations.Test;
 
+@Test(groups = {"studyProject"})
 public class TestAppNewStudyProject extends InitStudyAuthCourse{
 	String title = "AppNewStudyProject"+CommonData.getStringRandom(8);
 	String class_id = ClassificationBusines.getPrimaryId();

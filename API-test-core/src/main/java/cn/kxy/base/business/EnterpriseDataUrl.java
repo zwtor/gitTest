@@ -104,6 +104,9 @@ public class EnterpriseDataUrl {
             case "FAT2":
                 url = "https://t2shareapi.coolcollege.cn/";
                 break;
+            case "FAT2-1":
+                url = "https://t2-1shareapi.coolcollege.cn/";
+                break;
             case "FAT1":
                 url = "https://tshareapi.coolcollege.cn/";
                 break;
@@ -182,6 +185,9 @@ public class EnterpriseDataUrl {
                 break;
             case "FAT2":
                 url = "https://ct2coolapi.coolcollege.cn/";
+                break;
+            case "FAT2-1":
+                url = "https://ct2-1coolapi.coolcollege.cn/";
                 break;
             case "FAT1":
                 url = "https://ct1coolapi.coolcollege.cn/";

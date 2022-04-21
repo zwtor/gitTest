@@ -2,7 +2,7 @@
 <suite name="酷学院学习项目模块" thread-count="2">
 	<groups>
 		<run>
-			<include name="CI"/>
+			<include name="studyProject"/>
 		</run>
 	</groups>
 	<test name="学习项目流程测试">
