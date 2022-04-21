@@ -15,6 +15,7 @@ import org.testng.annotations.Test;
 
 import java.io.UnsupportedEncodingException;
 
+@Test(groups = {"studyProject"})
 public class TestMyElectiveTask {
 
 	String title = "MyElectiveTask"+CommonData.getStringRandom(3);

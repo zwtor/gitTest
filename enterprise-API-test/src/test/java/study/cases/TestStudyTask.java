@@ -16,6 +16,7 @@ import com.lazy.common.utils.DateUtil;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+@Test(groups = {"studyProject"})
 public class TestStudyTask extends InitStudyAuthCourse{
 
 	String id = "";

@@ -21,6 +21,7 @@ import org.testng.annotations.Test;
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 
+@Test(groups = {"studyProject"})
 public class TestMixStudyTask extends InitStudyAuthCourse{
 
 	String study_name="Mix Study Task"+CommonData.getStringRandom(6);

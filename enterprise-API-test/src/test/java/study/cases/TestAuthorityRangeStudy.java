@@ -10,6 +10,7 @@ import com.lazy.common.utils.DateUtil;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+@Test(groups = {"studyProject"})
 public class TestAuthorityRangeStudy extends InitStudyAuthCourse {
 
 	String title_0 = "AuthorityStudyFalse" + CommonData.getStringRandom(5);

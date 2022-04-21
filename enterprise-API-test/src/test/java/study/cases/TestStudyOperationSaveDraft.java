@@ -10,6 +10,7 @@ import com.lazy.common.utils.DateUtil;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+@Test(groups = {"studyProject"})
 public class TestStudyOperationSaveDraft {
 
 	String title = "StudyOpertion" + CommonData.getStringRandom(5);

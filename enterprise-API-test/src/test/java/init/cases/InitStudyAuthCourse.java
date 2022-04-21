@@ -24,11 +24,11 @@ public class InitStudyAuthCourse {
 		System.out.println("start init data");
 		BaseBusiness.addLecturerLevel();
 		String res = LecturerListBusiness.queryLecturerList(outer_name, "1", "");
-		int total = (int) JSONPath.read(res, "$.total");
-		if (total == 0) {
-			LecturerListBusiness.addLecturer(outer_name, "1", "13526231231", "outside", "", BaseBusiness.lecturerLevel,
-					"auto", "jmeter");
-		}
+//		int total = (int) JSONPath.read(res, "$.total");
+//		if (total == 0) {
+//			LecturerListBusiness.addLecturer(outer_name, "1", "13526231231", "outside", "", BaseBusiness.lecturerLevel,
+//					"auto", "jmeter");
+//		}
 		System.out.println("add Lecturer success");
 		String courseware_res = CoursewareBusiness.queryList(classifyname);
 		int courseware_total = (int)JSONPath.read(courseware_res, "$.total");

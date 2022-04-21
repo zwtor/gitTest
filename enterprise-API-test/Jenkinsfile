@@ -8,6 +8,7 @@ pipeline {
     parameters {
         string defaultValue: 'FAT2-1', description: '''PRO, UAT, T, FAT9, FAT6, FAT5, FAT4, FAT3, FAT2, FAT1, DEV''', name: 'environment', trim: false
         string defaultValue: '', description: 'like exam.cases.TestNewExamPlan or exam.cases.TestNewExamPaper#testAddNewExamPaper', name: 'testCase', trim: false
+        string defaultValue: 'studyProject', description: 'like studyProject', name: 'groups', trim: false
     }
 
     stages {
@@ -25,7 +26,7 @@ pipeline {
             steps {
                 sh("mvn clean compile -pl enterprise-API-test")
                 dir('enterprise-API-test') {
-                    sh('mvn test -Denv=$environment -Dtest=$testCase -DloginMobile=$loginMobile -Dpassword=$password')
+                    sh('mvn test -Denv=$environment -Dtest=$testCase -Dgroups=$groups -DloginMobile=$loginMobile -Dpassword=$password')
                 }
             }
         }

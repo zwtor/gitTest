@@ -22,6 +22,7 @@ import org.testng.annotations.Test;
 
 import java.io.UnsupportedEncodingException;
 
+@Test(groups = {"studyProject"})
 public class TestAppStudyTask extends InitStudyAuthCourse {
 	String study_name = "APP Mix Study Task" + CommonData.getStringRandom(5);
 	String id = "";
