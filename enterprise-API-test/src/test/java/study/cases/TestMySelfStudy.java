@@ -20,9 +20,10 @@ import com.lazy.common.utils.CommonData;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+@Test(groups = {"studyProject"})
 public class TestMySelfStudy extends InitStudyAuthCourse{
 
-	String self_name = "SelfStudyTask"+CommonData.getStringRandom(5);
+	String self_name = "SelfStudyProject"+CommonData.getStringRandom(5);
 	String self_course_name = "self_course"+CommonData.getStringRandom(5);
 	String classification_id = ClassificationBusines.getPrimaryId();
 	String study_id = "";
@@ -279,7 +280,7 @@ public class TestMySelfStudy extends InitStudyAuthCourse{
 		Assert.assertNotNull(un_finish_count, "查看我的自学不同状态的未完成数,实际返回结果："+res);
 	}
 	String study_pro_id = "";
-	@Test(description="自学后，在学习项目列表查看自学人数",priority=30)
+	@Test(description="自学后，在学习项目列表查看自学人数",dependsOnMethods = "initMyselfStudy", priority=30)
 	public void testQueryLearningProjectList() {
 		String res = StudyProjectBusiness.queryLearningProjectList(self_name, classification_id);
 		study_pro_id= (String)JSONPath.read(res, "$.list[0].id");
