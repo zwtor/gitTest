@@ -13,7 +13,7 @@
 	</test>
 	<test name="新考试试题测试">
 		<classes>
-			<class name="exam.cases.TestNewExamQuestion" />
+			<class name="newexam.cases.TestNewExamQuestion" />
 		</classes>
 	</test>
 </suite>

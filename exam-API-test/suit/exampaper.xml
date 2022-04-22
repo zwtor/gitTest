@@ -27,7 +27,7 @@
 	</test>
 	<test name="新考试试卷测试">
 		<classes>
-			<class name="exam.cases.TestNewExamPaper" />
+			<class name="newexam.cases.TestNewExamPaper" />
 		</classes>
 	</test>
 	

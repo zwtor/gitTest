@@ -1,4 +1,4 @@
-package exam.cases;
+package newexam.cases;
 
 import com.lazy.common.utils.CommonData;
 import com.lazy.common.utils.DataDrivenLoader;

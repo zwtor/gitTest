@@ -1,4 +1,4 @@
-package exam.cases;
+package newexam.cases;
 
 import com.alibaba.fastjson.JSONPath;
 import com.lazy.common.utils.ResourceFileUtil;
