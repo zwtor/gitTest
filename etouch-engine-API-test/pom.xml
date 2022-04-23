@@ -45,7 +45,7 @@
                     <systemPropertyVariables>
                         <!--是否忽略html，解释见下图。与之后在reportNg报告上显示截图相关。当前已经使用allure了，这里可以直接去掉啦 -->
                         <org.uncommons.reportng.escape-output>false</org.uncommons.reportng.escape-output>
-                        <env>T</env>
+                        <env>PRO</env>
                         <loginMobile></loginMobile>
                         <password></password>
                         <token></token>
