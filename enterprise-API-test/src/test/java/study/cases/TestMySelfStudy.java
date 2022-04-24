@@ -49,15 +49,15 @@ public class TestMySelfStudy extends InitStudyAuthCourse{
 		study_id =(String)JSONPath.read(res, "$.course_id");
 		Assert.assertNotNull(id, "新增学习项目" + res);
 	}
-	@Test(description = "新增课程",priority = 2)
-	public void addCourse() {
-		String cour_res = CourseBusiness.addCourse(self_course_name, "1", "this is desription", LecturerListBusiness.getIdByKeyword(outer_name), 
-				ArticleBusiness.getIdByKeyword(""), "1", "3", "", "1", "0", "release");
-		String msg = (String)JSONPath.read(cour_res, "$.msg");
-		cour_id = (String)JSONPath.read(cour_res, "$.data[0]");
-		Assert.assertEquals(msg, "新增课程成功","新增课程到草稿箱实际返回结果："+cour_res);
-		
-	}
+//	@Test(description = "新增课程",priority = 2)
+//	public void addCourse() {
+//		String cour_res = CourseBusiness.addCourse(self_course_name, "1", "this is desription", LecturerListBusiness.getIdByKeyword(outer_name),
+//				ArticleBusiness.getIdByKeyword(""), "1", "3", "", "1", "0", "release");
+//		String msg = (String)JSONPath.read(cour_res, "$.msg");
+//		cour_id = (String)JSONPath.read(cour_res, "$.data[0]");
+//		Assert.assertEquals(msg, "新增课程成功","新增课程到草稿箱实际返回结果："+cour_res);
+//
+//	}
 	
 	@Test(description = "获取课程的id",priority =3)
 	public void getIdByPage() {
@@ -69,11 +69,11 @@ public class TestMySelfStudy extends InitStudyAuthCourse{
 		CourseFrontListInfoBusiness.queryInfo(cour_id);
 	}
 	
-	String resource_id = "";
-	@Test(description = "获取资源的id",priority = 5)
-	public void getCourseFirstSourceId() {
-		resource_id = CourseFrontListInfoBusiness.getCourseFirstSourceId(cour_id);
-	}
+//	String resource_id = "";
+//	@Test(description = "获取资源的id",priority = 5)
+//	public void getCourseFirstSourceId() {
+//		resource_id = CourseFrontListInfoBusiness.getCourseFirstSourceId(cour_id);
+//	}
 	
 	@Test(description = "保存课程进度",priority = 6)
 	public void saveCourseProgress() {
