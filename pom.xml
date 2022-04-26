@@ -15,6 +15,7 @@
         <module>platform-API-test</module>
         <module>micro-server-API-test</module>
         <module>etouch-engine-API-test</module>
+        <module>knowledge-API-test</module>
     </modules>
     <name>APITestCollection</name>
 
