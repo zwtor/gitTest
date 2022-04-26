@@ -13,7 +13,7 @@ import com.lazy.common.utils.CommonData;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-@Test(groups = {"CI"})
+@Test(groups = {"studyProject"})
 public class TestNewStudyProject extends InitStudyAuthCourse{
 	String title = "NewStudyProject"+CommonData.getStringRandom(5);
 	String class_id = ClassificationBusines.getPrimaryId();

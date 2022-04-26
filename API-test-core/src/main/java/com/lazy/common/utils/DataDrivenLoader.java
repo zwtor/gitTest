@@ -30,6 +30,9 @@ public class DataDrivenLoader {
             } else {
                 sheet = workbook.getSheet(suiteName);
             }
+            if(sheet == null) {
+                throw new IllegalArgumentException(String.format("can not get sheet: %s in excel data file", suiteName));
+            }
 
             // get row index list
             List<Integer> caseRowIndexList = getRowIndexList(sheet, caseName);

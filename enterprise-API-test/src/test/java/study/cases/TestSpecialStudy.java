@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 //import io.qameta.allure.Story;
 
 //@Story("专题课程的流程测试")
+@Test(groups = {"studyProject"})
 public class TestSpecialStudy extends InitStudyAuthCourse{
 
 	String course_name ="Windows"+CommonData.getStringRandom(5);

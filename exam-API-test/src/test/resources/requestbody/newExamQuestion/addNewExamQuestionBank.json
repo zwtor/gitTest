@@ -1,0 +1,12 @@
+{
+      "title": "{{title}}",
+      "classify_id": "{{classify_id}}",
+      "visible_range_vo": {
+            "visible_range_type": "all",
+            "department_list": [],
+            "user_list": [],
+            "group_list": [],
+            "post_list": []
+      },
+      "access_token": "{{token}}"
+}

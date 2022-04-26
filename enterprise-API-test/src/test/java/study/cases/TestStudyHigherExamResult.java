@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 
 import java.math.BigDecimal;
 
+@Test(groups = {"studyProject"})
 public class TestStudyHigherExamResult {
 	String title_high = "HistoryNewExamResult"+CommonData.getStringRandom(4);
 	String exam_title = "RecordNewExam"+CommonData.getStringRandom(5);

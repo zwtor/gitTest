@@ -11,6 +11,7 @@ import com.lazy.common.utils.CommonData;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+@Test(groups = {"studyProject"})
 public class TestExamCheckTrue {
 
 	String title  = "ExamStudy"+CommonData.getStringRandom(5);

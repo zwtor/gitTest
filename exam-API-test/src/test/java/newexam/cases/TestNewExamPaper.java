@@ -1,4 +1,4 @@
-package exam.cases;
+package newexam.cases;
 
 import com.lazy.common.utils.DataDrivenLoader;
 import newexam.paper.NewExamPaper;
@@ -56,8 +56,8 @@ public class TestNewExamPaper {
         System.out.println("paper title: " + paperTitle);
         System.out.println(test);
         System.out.println("paper ID: " + paperId);
-        DataDrivenLoader.updateTestData("TestNewExamPaperData.xlsx", "exam.cases.TestNewExamPaper", "testGetNewExamPaper", "paperId", paperId);
-        DataDrivenLoader.updateTestData("TestNewExamPaperData.xlsx", "exam.cases.TestNewExamPaper", "testDeleteNewExamPaper", "paperId", paperId);
+        DataDrivenLoader.updateTestData("TestNewExamPaperData.xlsx", "newexam.cases.TestNewExamPaper", "testGetNewExamPaper", "paperId", paperId);
+        DataDrivenLoader.updateTestData("TestNewExamPaperData.xlsx", "newexam.cases.TestNewExamPaper", "testDeleteNewExamPaper", "paperId", paperId);
     }
 
     @Test(description = "get new exam paper detail", dataProvider = "excelDataProvider", dependsOnMethods = "testAddNewExamPaper", priority = 2)
@@ -65,7 +65,6 @@ public class TestNewExamPaper {
         String response = newExamPaper.getNewPaperDetail(paperId);
         Assert.assertEquals(paperId, JSONPath.read(response, "$.data.id").toString());
         Assert.assertEquals(paperTitle, JSONPath.read(response, "$.data.title").toString());
-        System.out.println("-------in testGetNewExamPaper method---------");
         System.out.println(paperId);
     }
 

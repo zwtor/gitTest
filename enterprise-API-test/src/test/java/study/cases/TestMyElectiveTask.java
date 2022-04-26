@@ -15,6 +15,7 @@ import org.testng.annotations.Test;
 
 import java.io.UnsupportedEncodingException;
 
+@Test(groups = {"studyProject"})
 public class TestMyElectiveTask {
 
 	String title = "MyElectiveTask"+CommonData.getStringRandom(3);
@@ -102,29 +103,29 @@ public class TestMyElectiveTask {
 		Assert.assertNotNull(name,"查看课件详情，实际返回结果："+res);
 	}
 	
-	@Test(description="保存课件进度",priority=7)
-	public void testSaveArtProgress() {
-		String res = AppStudyBusiness.saveProgress("100",id, resource_id, zip_resourceId);
-		
-		int course_progress = (int)JSONPath.read(res, "$.course_progress");
-		int total_progress = (int)JSONPath.read(res, "$.total_progress");
-		Assert.assertEquals(total_progress, 50,"保存课件进度--总进度，实际返回结果："+res);
-		Assert.assertEquals(course_progress, 100,"保存课件进度--课件进度，实际返回结果："+res);
-	}
-	@Test(description="保存课件进度后，查看选修任务列表",priority=8)
-	public void testSaveCoursewerQueryList() {
-		String res = MyElectiveTaskBusiness.queryList(title);
-		int process = (int)JSONPath.read(res, "$.list[0].process");
-		Assert.assertEquals(process, 50,"保存课件进度后，查看选修任务列表，对进度进行校验，实际返回结果："+res);
-	}
-	@Test(description="保存课件进度后，查看我的选修任务详情",priority=9)
-	public void testQuerySaveCoursewerInfo() {
-		String res = MyElectiveTaskBusiness.queryInfo(id);
-		int studyProgress = (int)JSONPath.read(res, "$.data.courseInfo[0].studyProgress");
-		int process = (int)JSONPath.read(res, "$.data.process");
-		Assert.assertEquals(process, 50,"保存课件进度后，查看我的选修任务详情，创建人进行校验，实际返回结果："+res);
-		Assert.assertEquals(studyProgress, 100,"保存课件进度后，查看我的选修任务详情，创建人进行校验，实际返回结果："+res);
-	}
+//	@Test(description="保存课件进度",priority=7)
+//	public void testSaveArtProgress() {
+//		String res = AppStudyBusiness.saveProgress("100",id, resource_id, zip_resourceId);
+//
+//		int course_progress = (int)JSONPath.read(res, "$.course_progress");
+//		int total_progress = (int)JSONPath.read(res, "$.total_progress");
+//		Assert.assertEquals(total_progress, 50,"保存课件进度--总进度，实际返回结果："+res);
+//		Assert.assertEquals(course_progress, 100,"保存课件进度--课件进度，实际返回结果："+res);
+//	}
+//	@Test(description="保存课件进度后，查看选修任务列表",priority=8)
+//	public void testSaveCoursewerQueryList() {
+//		String res = MyElectiveTaskBusiness.queryList(title);
+//		int process = (int)JSONPath.read(res, "$.list[0].process");
+//		Assert.assertEquals(process, 50,"保存课件进度后，查看选修任务列表，对进度进行校验，实际返回结果："+res);
+//	}
+//	@Test(description="保存课件进度后，查看我的选修任务详情",priority=9)
+//	public void testQuerySaveCoursewerInfo() {
+//		String res = MyElectiveTaskBusiness.queryInfo(id);
+//		int studyProgress = (int)JSONPath.read(res, "$.data.courseInfo[0].studyProgress");
+//		int process = (int)JSONPath.read(res, "$.data.process");
+//		Assert.assertEquals(process, 50,"保存课件进度后，查看我的选修任务详情，创建人进行校验，实际返回结果："+res);
+//		Assert.assertEquals(studyProgress, 100,"保存课件进度后，查看我的选修任务详情，创建人进行校验，实际返回结果："+res);
+//	}
 	
 	@Test(description="查看课程学习进度",priority=10)
 	public void testGetSinglCourseProgress() {

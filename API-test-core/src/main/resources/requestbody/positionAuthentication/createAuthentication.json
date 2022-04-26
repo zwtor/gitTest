@@ -1,0 +1,23 @@
+{
+  "title": "{{title}}",
+  "summary": "Automation Test",
+  "stageJson": [],
+  "certificateId": "",
+  "studyTimeLimit": "0",
+  "visibleRange": "part",
+  "scopes": {
+    "department_list": [],
+    "user_list": [
+      {
+        "id": "{{user_id}}",
+        "name": "{{user_name}}",
+        "type": "{{user_type}}"
+      }
+    ],
+    "group_list": [],
+    "post_list": []
+  },
+  "stagePass": false,
+  "syncProgress": "false",
+  "access_token": "{{token}}"
+}

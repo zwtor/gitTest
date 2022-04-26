@@ -18,7 +18,7 @@ public class NewExamPaper {
     private RestAssuredRequestHandler requestHandler;
     private ResourceFileUtil resourceFileUtil;
 
-    private String requestBodyFolder = "requestbody" + File.separator + "newExamPaper";
+    private String requestBodyFolder = "requestbody/newExamPaper";
 
     public NewExamPaper() {
         requestHandler = new RestAssuredRequestHandler();
@@ -63,5 +63,10 @@ public class NewExamPaper {
     public String deleteNewPaper(String id) {
         String deleteNewPaperURL = RestAssuredRequestHandler.buildURL(newExamURLObject.getString("deleteNewPaper"), EnterpriseData.getEnterpriseId(), id);
         return requestHandler.sendPostRequest(deleteNewPaperURL, null);
+    }
+
+    public String copyExamPaper(String paperId){
+        String copyExamPaperURL= RestAssuredRequestHandler.buildURL(newExamURLObject.getString("copyPaper"),EnterpriseData.getEnterpriseId(),paperId);
+        return requestHandler.sendPostRequest(copyExamPaperURL,null);
     }
 }

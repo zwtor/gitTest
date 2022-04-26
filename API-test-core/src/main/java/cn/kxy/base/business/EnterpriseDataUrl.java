@@ -70,6 +70,10 @@ public class EnterpriseDataUrl {
         return getDomainName() + "dictionary-service/";
     }
 
+    public static String getOpenPlatFormUrl() {
+        return getDomainName() + "openapi/";
+    }
+
     public static String getShareUrl() {
         String env = System.getProperty("env");
         String url = "";
@@ -100,6 +104,9 @@ public class EnterpriseDataUrl {
                 break;
             case "FAT2":
                 url = "https://t2shareapi.coolcollege.cn/";
+                break;
+            case "FAT2-1":
+                url = "https://t2-1shareapi.coolcollege.cn/";
                 break;
             case "FAT1":
                 url = "https://tshareapi.coolcollege.cn/";
@@ -182,6 +189,9 @@ public class EnterpriseDataUrl {
                 break;
             case "FAT2":
                 url = "https://ct2coolapi.coolcollege.cn/";
+                break;
+            case "FAT2-1":
+                url = "https://ct2-1coolapi.coolcollege.cn/";
                 break;
             case "FAT1":
                 url = "https://ct1coolapi.coolcollege.cn/";

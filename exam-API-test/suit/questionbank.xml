@@ -11,4 +11,9 @@
 			<class name="exam.cases.TestQuestions" />
 		</classes>
 	</test>
+	<test name="新考试试题测试">
+		<classes>
+			<class name="newexam.cases.TestNewExamQuestion" />
+		</classes>
+	</test>
 </suite>

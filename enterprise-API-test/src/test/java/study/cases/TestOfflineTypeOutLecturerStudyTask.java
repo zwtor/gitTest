@@ -4,6 +4,7 @@ import cn.kxy.setting.bussiness.UserBusiness;
 import com.lazy.common.utils.CommonData;
 import org.testng.annotations.Test;
 
+@Test(groups = {"studyProject"})
 public class TestOfflineTypeOutLecturerStudyTask {
 
 	String study_name = "Offline Study Task" + CommonData.getStringRandom(7);

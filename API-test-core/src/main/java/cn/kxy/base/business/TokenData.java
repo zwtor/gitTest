@@ -10,8 +10,8 @@ public class TokenData {
 	}
 
 	public static String getMangerToken() {
-		if(token == null || token.equals("")) {
-			if(System.getProperty("token") == null) {
+		if(token == null || token.isEmpty()) {
+			if(System.getProperty("token") == null || System.getProperty("token").isEmpty()) {
 				String response = LoginBusiness.loginCoolColleague(System.getProperty("loginMobile"), System.getProperty("password"));
 				token = String.valueOf(JSONPath.read(response, "$.action_token"));
 			} else {

@@ -6,6 +6,7 @@ import com.lazy.common.utils.DateUtil;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+@Test(groups = {"studyProject"})
 public class TestExtremelyStudyTask {
 	@Test(description = "延期任务时，不传id",priority=1)
 	public void testplanStudyDelayIdIsNull() {

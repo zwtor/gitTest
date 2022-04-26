@@ -50,7 +50,7 @@
 		</classes>
 	</test>
 	
-	<test name="随时试卷按题给分测试">
+	<test name="随机试卷按题给分测试">
 		<classes>
 			<class name="group.cases.TestScoringByQuestion" />
 		</classes>
@@ -64,6 +64,11 @@
 		<classes>
 			<class name="exam.cases.TestSoaExam" />
 		</classes>
-	</test> 
+	</test>
+	<test name="新考试任务测试">
+		<classes>
+			<class name="newexam.cases.TestNewExamPlan" />
+		</classes>
+	</test>
 
 </suite>

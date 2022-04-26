@@ -1,0 +1,41 @@
+pipeline {
+    agent any
+    tools {
+        jdk 'default'
+        maven 'maven354'
+    }
+
+    parameters {
+        string defaultValue: 'FAT2-1', description: '''PRO, UAT, T, FAT9, FAT6, FAT5, FAT4, FAT3, FAT2, FAT1, DEV''', name: 'environment', trim: false
+        string defaultValue: '', description: 'like newexam.cases.TestNewExamPlan or newexam.cases.TestNewExamPaper#testAddNewExamPaper', name: 'testCase', trim: false
+        string defaultValue: 'studyProject', description: 'like studyProject', name: 'groups', trim: false
+    }
+
+    stages {
+        stage('check out code') {
+            steps {
+                git credentialsId: '019208c4-d053-4052-8b5d-fd9825c70595', url: 'http://gitlab.coolcollege.cn/qa/api-test-collection.git'
+            }
+        }
+        stage('build project') {
+            steps {
+                sh("mvn install -Dmaven.test.skip=true")
+            }
+        }
+        stage('run test') {
+            steps {
+                sh("mvn clean compile -pl enterprise-API-test")
+                dir('enterprise-API-test') {
+                    sh('mvn test -Denv=$environment -Dtest=$testCase -Dgroups=$groups -DloginMobile=$loginMobile -Dpassword=$password')
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            allure includeProperties: false, jdk: '', results: [[path: 'enterprise-API-test/target/allure-results']]
+        }
+    }
+
+}

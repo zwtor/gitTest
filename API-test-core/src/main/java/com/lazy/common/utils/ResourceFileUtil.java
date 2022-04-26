@@ -18,6 +18,17 @@ public class ResourceFileUtil {
         String wholeFilePath = folder + "/" + fileName;
         ClassLoader classLoader = getClass().getClassLoader();
         InputStream inputStream = classLoader.getResourceAsStream(wholeFilePath);
+        // if resource file is not in test module resource folder, read them from API-test core resource module
+        if(inputStream == null) {
+            System.out.println("get file input stram from API-test-core resource file");
+            System.out.println(wholeFilePath);
+            try {
+                inputStream = new FileInputStream(classLoader.getResource(wholeFilePath).getFile());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
         return inputStream;
     }
 
@@ -36,12 +47,12 @@ public class ResourceFileUtil {
 
 
     public String readSingleFile(String folder, String fileName) {
-        String wholeFilePath = folder + File.separator + fileName;
+        String wholeFilePath = folder + "/" + fileName;
         ClassLoader classLoader = getClass().getClassLoader();
-
         StringBuilder stringBuilder = new StringBuilder();
-        try (InputStream inputStream = classLoader.getResourceAsStream(wholeFilePath);
-             InputStreamReader streamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
+
+        InputStream inputStream = getInputStream(folder, fileName);
+        try (InputStreamReader streamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
              BufferedReader reader = new BufferedReader(streamReader)) {
 
             String line;
@@ -95,20 +106,20 @@ public class ResourceFileUtil {
     }
 
     // parameter format: path1, value1, path2, value2...
-    public static JSONObject setJsonBodyValue(JSONObject body, String... parameters) {
+    public static JSONObject setJsonBodyValue(JSONObject body, Object... parameters) {
         if (parameters == null || (parameters.length % 2 != 0)) {
             System.err.println("The parameter format is wrong!It should be like: path1, value1, path2, value2...");
             return null;
         }
 
         for (int i = 0; i < parameters.length; i++) {
-            JSONPath.set(body, parameters[i], parameters[++i]);
+            JSONPath.set(body, String.valueOf(parameters[i]), parameters[++i]);
         }
         return body;
     }
 
     // key is path and value is the value to be set
-    public static JSONObject setJsonBodyValue(JSONObject body, Map<String, String> valueMap) {
+    public static JSONObject setJsonBodyValue(JSONObject body, Map<String, Object> valueMap) {
         if (valueMap == null) {
             System.err.println("The value map is null!");
             return null;

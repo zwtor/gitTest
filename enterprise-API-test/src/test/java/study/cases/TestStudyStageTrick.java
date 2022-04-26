@@ -14,6 +14,7 @@ import org.testng.annotations.Test;
 
 import java.io.UnsupportedEncodingException;
 //学习任务阶段间闯关
+@Test(groups = {"studyProject"})
 public class TestStudyStageTrick extends InitStudyAuthCourse{
 
 	String name = "StudyStageTrick"+CommonData.getStringRandom(4);

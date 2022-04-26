@@ -57,6 +57,10 @@ public class QuestionnaireBusiness {
 	public static String editUrl(String id) {
 		return enterpriseUrl + "v2/" + enterpriseId + "/questionnaire/" +id + "/edit";
 	}
+
+	public static String copyUrl(String id) {
+		return enterpriseUrl + "v2/questionnaire/"+id+"/copy";
+	}
 	
 	public static String setVisible(String id,String visible_range,String user_id) {
 		return PostRequestTools.RequestBodyByPost("{\r\n" + 
@@ -68,6 +72,10 @@ public class QuestionnaireBusiness {
 				"  \"user_ids\": \""+user_id+"\", \r\n" + 
 				"  \"access_token\": \""+token+"\"\r\n" + 
 				"}", token, batch_update_visible_url);
+	}
+
+	public static String copyQuestionnaire(String id) {
+		return HttpRequest.get(copyUrl(id)).query("access_token", token).send().body();
 	}
 	
 	public static String queryInfo(String name, String status) {

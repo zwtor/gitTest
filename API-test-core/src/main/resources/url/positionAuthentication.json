@@ -1,0 +1,7 @@
+{
+  "createAuthentication": "/enterprise-api/v1/qualifications",
+  "getAuthenticationDetail": "/enterprise-api/v1/qualifications/{{authentication_id}}",
+  "getAuthenticationList": "/enterprise-api/v1/qualifications",
+  "updateAuthenticationStatus": "/enterprise-api/v1/qualifications/{{authentication_id}}/action",
+  "deleteAuthentication": "/enterprise-api/v1/qualifications/{{authentication_id}}/delete"
+}

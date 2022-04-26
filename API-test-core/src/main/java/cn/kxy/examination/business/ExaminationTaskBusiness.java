@@ -300,6 +300,13 @@ public class ExaminationTaskBusiness {
 				.asString();
 	}
 
+	public static String queryList(String keyword, String queryIntervalType, String onlySeeMe) {
+		return given().queryParam("keyword", keyword).queryParam("queryIntervalType", queryIntervalType)
+				.queryParam("sortName", "createTime").queryParam("timestamp", System.currentTimeMillis())
+				.queryParam("onlySeeMe", onlySeeMe).queryParam("access_token", token).get(queryListUrl)
+				.asString();
+	}
+
 	public static String submitPassByIdExam(String id) {
 		String res01 = GetRequestTools.RequestQueryParamsByGet("access_token", token,
 				MyExamTaskBusiness.queryInfoByIdUrl(id));

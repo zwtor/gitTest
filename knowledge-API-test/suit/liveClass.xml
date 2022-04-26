@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="酷学院-直播课" thread-count="2">
+	
+	<test name="live class test suit">
+		<classes>
+			<class name="live.cases.TestLiveClass" />
+		</classes>
+	</test>
+	
+</suite>
