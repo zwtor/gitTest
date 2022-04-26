@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="酷学院消息设置-消息模板" thread-count="1">
+    <groups>
+        <run>
+            <include name="CI"/>
+        </run>
+    </groups>
+    <test name="获取消息通道列表">
+        <classes>
+            <class name="messageSetting.cases.TestMessageChannel" />
+        </classes>
+    </test>
+
+
+</suite>

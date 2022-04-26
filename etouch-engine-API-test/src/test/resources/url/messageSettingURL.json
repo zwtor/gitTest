@@ -1,0 +1,4 @@
+{
+  "getMessageChannelList": "/etouch-engine/v3/manage/{enterprise-id}/list-message-channel"
+
+}
