@@ -1,0 +1,10 @@
+{
+  "addNewPaper": "/new-exam-api/v2/enterprises/{enterprise-id}/paper/add",
+  "getNewPaperInfo": "/new-exam-api/v2/enterprises/{enterprise-id}/paper/{paper-id}/info",
+  "getNewPaperDetail": "/new-exam-api/v2/enterprises/{enterprise-id}/paper/{paper-id}/detail",
+  "getNewPaperList": "/new-exam-api/v2/enterprises/{enterprise-id}/paper/list",
+  "saveFixedPaper": "/new-exam-api/v2/enterprises/{enterprise-id}/paper/{paper-id}/save-fixed-paper",
+  "deleteNewPaper": "/new-exam-api/v2/enterprises/{enterprise-id}/paper/{paper-id}/delete",
+  "updatePaperStatus": "/new-exam-api/v2/enterprises/{enterprise-id}/paper/{paper-id}/updatePaperStatus",
+  "copyPaper":"/new-exam-api/v2/enterprises/{enterprise-id}/paper/{paper-id}/copy"
+}

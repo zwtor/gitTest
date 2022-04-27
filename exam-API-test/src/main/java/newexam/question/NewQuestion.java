@@ -10,7 +10,7 @@ import com.lazy.assured.utils.RestAssuredRequestHandler;
 import com.lazy.common.utils.ResourceFileUtil;
 
 public class NewQuestion {
-	private final JSONObject newExamURLObject = (new ResourceFileUtil()).parseAllJsonFiles("url");
+	private final JSONObject newExamURLObject = (new ResourceFileUtil()).parseJsonFile("url", "newExamQuestionURL.json");
     private final String classificationId = ClassificationBusines.getPrimaryId();
     private RestAssuredRequestHandler requestHandler;
     private ResourceFileUtil resourceFileUtil;

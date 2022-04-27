@@ -18,7 +18,6 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-@Test(groups = {"CI"})
 public class TestNewExamQuestion {
     private NewQuestion newQuestion;
     private ResourceFileUtil resourceFileUtil;

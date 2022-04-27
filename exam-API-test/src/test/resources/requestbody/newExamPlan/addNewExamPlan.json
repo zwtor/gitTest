@@ -1,0 +1,74 @@
+{
+  "paper_id": "{{paper_id}}",
+  "answer_rule": "unlimited",
+  "exam_count": 1,
+  "cut_screen_rule": "unlimited",
+  "cut_screen_count": 1,
+  "cut_screen_interval": 0,
+  "random_question": "false",
+  "random_options": "false",
+  "mark_type": "system",
+  "mark_question_type": {
+    "fill_blank": false,
+    "short_answer": false
+  },
+  "anonymous_marking": "false",
+  "exam_certificate_id": "{{certificate_id}}",
+  "supervisor_list": [
+    "1826320863608311808"
+  ],
+  "marker_list": [
+    "1826320863608311808"
+  ],
+  "result_view_rule": "afterCommit",
+  "answer_parsing": "answerAnalysis",
+  "ranking_list_view_rule": "afterCommit",
+  "show_result": "true",
+  "status": "{{status}}",
+  "reward_rule": {
+    "type": "score",
+    "absence": {
+      "score": -1,
+      "checked": "true"
+    },
+    "passed": {
+      "score": 5,
+      "checked": "true"
+    },
+    "failed": {
+      "score": 1,
+      "checked": "true"
+    }
+  },
+  "authority_range": "false",
+  "supervisor_mark": "true",
+  "classify_id": "",
+  "exam_paper_info": {
+    "fill_blank_count": 0,
+    "paper_name": "{{paper_name}}",
+    "pass_score": "{{total_score*pass_line*0.01}}",
+    "short_answer_count": "{{short_answer_count}}",
+    "total_score": "{{total_score}}",
+    "type": "{{paper_type}}"
+  },
+  "has_published": "false",
+  "always_extract_paper": "true",
+  "biz_type": "normalExam",
+  "classify_name": "",
+  "create_time": "{{time_stamp}}",
+  "description": "test",
+  "enterprise_id": "{enterprise_id}}",
+  "exam_duration": 10,
+  "face_recognition": "false",
+  "id": "",
+  "paper_version": 1,
+  "pass_line": 60,
+  "period_assign": "false",
+  "score_record_type": "latest",
+  "show_tag": "false",
+  "source_id": 0,
+  "source_name": "",
+  "title": "{{title}}",
+  "update_time": "{{time_stamp}}",
+  "access_token": "{{token}}"
+}

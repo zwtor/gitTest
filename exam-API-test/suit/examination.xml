@@ -67,7 +67,7 @@
 	</test>
 	<test name="新考试任务测试">
 		<classes>
-			<class name="newexam.cases.TestNewExamPlan" />
+			<class name="newexam.cases.TestDefaultNewExamPlan" />
 		</classes>
 	</test>
 

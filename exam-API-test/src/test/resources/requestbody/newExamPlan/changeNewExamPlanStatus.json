@@ -1,0 +1,5 @@
+{
+  "planId": "{{exam_plan_id}}",
+  "status": "{{status}}",
+  "access_token": "{{token}}"
+}

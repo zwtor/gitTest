@@ -1,10 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="酷学院考试-试卷管理" thread-count="2">
-	<groups>
-		<run>
-			<include name="CI"/>
-		</run>
-	</groups>
 	<test name="试卷管理模块流程测试">
 		<classes>
 			<class name="exam.cases.TestPaperCases" />

@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 public class NewExamPaper {
-    private final JSONObject newExamURLObject = (new ResourceFileUtil()).parseAllJsonFiles("url");
+    private final JSONObject newExamURLObject = (new ResourceFileUtil()).parseJsonFile("url", "newExamPaperURL.json");
     private final String classificationId = ClassificationBusines.getPrimaryId();
     private final String classificationName = ClassificationBusines.getPrimaryName();
     private RestAssuredRequestHandler requestHandler;

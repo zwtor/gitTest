@@ -1,0 +1,6 @@
+{
+  "getQuestionBankList": "/new-exam-api/v2/enterprises/{enterprise-id}/question-bank/list",
+  "getQuestionList": "/new-exam-api/v2/enterprises/{enterprise-id}/question/list",
+  "addNewQuestionBank":"/new-exam-api/v2/enterprises/{enterprise-id}/question-bank/add",
+  "deleteNewQuestionBank":"/new-exam-api/v2/enterprises/{enterprise-id}/question-bank/{question-bank}/delete"
+}
