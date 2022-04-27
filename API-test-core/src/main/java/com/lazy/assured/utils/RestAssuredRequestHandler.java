@@ -27,7 +27,7 @@ public class RestAssuredRequestHandler {
         isRequireToken = true;
         requestHeader = new HashMap<String, String>() {{
             put("Content-Type", "application/json");
-            put("access_token", token);
+            put("x-access-token", token);
         }};
     }
 
@@ -40,7 +40,7 @@ public class RestAssuredRequestHandler {
         // only get token when token is required
         if(isRequireToken) {
             token = TokenData.getMangerToken();
-            requestHeader.put("access_token", token);
+            requestHeader.put("x-access-token", token);
         }
     }
 
@@ -48,7 +48,7 @@ public class RestAssuredRequestHandler {
     public Map<String, String> buildHeader(Map<String, String> newHeader) {
         if (newHeader != null) {
             requestHeader.clear();
-            requestHeader.put("access_token", token);
+            requestHeader.put("x-access-token", token);
             requestHeader.putAll(newHeader);
         }
         return requestHeader;
@@ -63,9 +63,7 @@ public class RestAssuredRequestHandler {
     public String sendGetRequest(String url, String... queryParameters) {
         RequestSpecification request = RestAssured.given();
         request.config((RestAssured.config().sslConfig(new SSLConfig().relaxedHTTPSValidation()))).headers(requestHeader);
-        if(isRequireToken) {
-            request.queryParam("access_token", token);
-        }
+
         if(queryParameters != null && queryParameters.length > 0) {
             Map<String, Object> parameterMap = formatParameters(queryParameters);
             request.queryParams(parameterMap);
@@ -79,9 +77,6 @@ public class RestAssuredRequestHandler {
     public String sendGetRequest(String url, Map queryParameterMap) {
         RequestSpecification request = RestAssured.given();
         request.config((RestAssured.config().sslConfig(new SSLConfig().relaxedHTTPSValidation()))).headers(requestHeader).queryParams(queryParameterMap);
-        if(isRequireToken) {
-            request.queryParam("access_token", token);
-        }
 
         Response response = request.get(url);
         verifyStatusCode(response, COMMON_SUCCESS_CODE);
@@ -92,9 +87,7 @@ public class RestAssuredRequestHandler {
     public String sendPutRequest(String url, Map<String, Object> requestBody, String... queryParameters) {
         RequestSpecification request = RestAssured.given();
         request.config((RestAssured.config().sslConfig(new SSLConfig().relaxedHTTPSValidation()))).headers(requestHeader);
-        if(isRequireToken) {
-            request.queryParam("access_token", token);
-        }
+
         if(queryParameters != null && queryParameters.length > 0) {
             Map<String, Object> parameterMap = formatParameters(queryParameters);
             request.queryParams(parameterMap);
@@ -108,9 +101,7 @@ public class RestAssuredRequestHandler {
     public String sendPutRequest(String url, Map<String, Object> requestBody, Map queryParameterMap, Map formParameterMap) {
         RequestSpecification request = RestAssured.given();
         request.config((RestAssured.config().sslConfig(new SSLConfig().relaxedHTTPSValidation()))).headers(requestHeader);
-        if(isRequireToken) {
-            request.queryParam("access_token", token);
-        }
+
         if(queryParameterMap != null && queryParameterMap.size() > 0) {
             request.queryParams(queryParameterMap);
         }
@@ -127,9 +118,7 @@ public class RestAssuredRequestHandler {
     public String sendPostRequest(String url, Map<String, Object> requestBody, String... queryParameters) {
         RequestSpecification request = RestAssured.given();
         request.config((RestAssured.config().sslConfig(new SSLConfig().relaxedHTTPSValidation()))).headers(requestHeader);
-        if(isRequireToken) {
-            request.queryParam("access_token", token);
-        }
+
         if(queryParameters != null && queryParameters.length > 0) {
             Map<String, Object> parameterMap = formatParameters(queryParameters);
             request.queryParams(parameterMap);
@@ -144,9 +133,6 @@ public class RestAssuredRequestHandler {
         RequestSpecification request = RestAssured.given();
         request.config((RestAssured.config().sslConfig(new SSLConfig().relaxedHTTPSValidation()))).headers(requestHeader);
 
-        if(isRequireToken) {
-            request.queryParam("access_token", token);
-        }
         if(queryParameterMap != null && queryParameterMap.size() > 0) {
             request.queryParams(queryParameterMap);
         }
@@ -163,9 +149,7 @@ public class RestAssuredRequestHandler {
     public String sendDeleteRequest(String url, String... queryParameters) {
         RequestSpecification request = RestAssured.given();
         request.config((RestAssured.config().sslConfig(new SSLConfig().relaxedHTTPSValidation()))).headers(requestHeader);
-        if(isRequireToken) {
-            request.queryParam("access_token", token);
-        }
+
         if(queryParameters != null && queryParameters.length > 0) {
             Map<String, Object> parameterMap = formatParameters(queryParameters);
             request.queryParams(parameterMap);
@@ -179,9 +163,6 @@ public class RestAssuredRequestHandler {
     public String sendDeleteRequest(String url, Map queryParameterMap) {
         RequestSpecification request = RestAssured.given();
         request.config((RestAssured.config().sslConfig(new SSLConfig().relaxedHTTPSValidation()))).headers(requestHeader).queryParams(queryParameterMap);
-        if(isRequireToken) {
-            request.queryParam("access_token", token);
-        }
 
         Response response = request.delete(url);
         verifyStatusCode(response, DELETE_SUCCESS_CODE);

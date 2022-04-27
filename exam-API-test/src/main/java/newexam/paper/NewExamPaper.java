@@ -39,9 +39,10 @@ public class NewExamPaper {
         return requestHandler.sendGetRequest(getNewPaperDetailURL);
     }
 
-    public String getNewPaperList() {
+    public String getNewPaperList(Boolean onlySeeMe) {
         String getNewPaperListURL = RestAssuredRequestHandler.buildURL(newExamURLObject.getString("getNewPaperList"), EnterpriseData.getEnterpriseId());
-        return requestHandler.sendGetRequest(getNewPaperListURL, "page_number", "1", "page_size", "10", "visible_range", "onlyMe");
+        String visibleRange = onlySeeMe? "onlyMe" : "All";
+        return requestHandler.sendGetRequest(getNewPaperListURL, "page_number", "1", "page_size", "10", "visible_range", visibleRange);
     }
 
     public String saveFixedPaper(String paperId, List<JSONObject> questionList) {

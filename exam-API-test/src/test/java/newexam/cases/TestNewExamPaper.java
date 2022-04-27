@@ -70,7 +70,7 @@ public class TestNewExamPaper {
 
     @Test(description = "get new exam papers list created by me", dependsOnMethods ="testAddNewExamPaper", priority = 3)
     public void testGetNewExamPaperList() {
-        String response = newExamPaper.getNewPaperList();
+        String response = newExamPaper.getNewPaperList(true);
         Integer count = Integer.valueOf(JSONPath.read(response,"$.data.total").toString());
         Assert.assertTrue(count > 0);
         Assert.assertTrue(JSONPath.read(response,"$.data.list[0].title").toString().startsWith("Automation"), String.format("result of get exam list is: %s", response));

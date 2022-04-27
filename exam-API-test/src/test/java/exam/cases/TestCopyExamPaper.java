@@ -1,18 +1,12 @@
 package exam.cases;
 
-import cn.kxy.examination.business.PaperBusiness;
 import com.alibaba.fastjson.JSONPath;
-import com.lazy.common.utils.CommonData;
 import newexam.paper.NewExamPaper;
-import org.omg.CORBA.PUBLIC_MEMBER;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import newexam.question.NewQuestion;
-
 
 public class TestCopyExamPaper {
-
     private NewExamPaper newExamPaper;
     private String newPaperId;
     private String copyPaperId;
@@ -20,7 +14,7 @@ public class TestCopyExamPaper {
     @BeforeClass
     public void setUp(){
         newExamPaper=new NewExamPaper();
-        newPaperId = JSONPath.read(newExamPaper.getNewPaperList(),"$.data.list[0].id").toString();
+        newPaperId = JSONPath.read(newExamPaper.getNewPaperList(true),"$.data.list[0].id").toString();
 
     }
 
