@@ -2,6 +2,7 @@
   "addNewPaper": "/new-exam-api/v2/enterprises/{enterprise-id}/paper/add",
   "getNewPaperInfo": "/new-exam-api/v2/enterprises/{enterprise-id}/paper/{paper-id}/info",
   "getNewPaperDetail": "/new-exam-api/v2/enterprises/{enterprise-id}/paper/{paper-id}/detail",
+  "getNewPaperQuestionNumber": "/new-exam-api/v2/enterprises/{{enterprise_id}}/paper/{paper-id}/questionNum",
   "getNewPaperList": "/new-exam-api/v2/enterprises/{enterprise-id}/paper/list",
   "saveFixedPaper": "/new-exam-api/v2/enterprises/{enterprise-id}/paper/{paper-id}/save-fixed-paper",
   "deleteNewPaper": "/new-exam-api/v2/enterprises/{enterprise-id}/paper/{paper-id}/delete",

@@ -39,6 +39,11 @@ public class NewExamPaper {
         return requestHandler.sendGetRequest(getNewPaperDetailURL);
     }
 
+    public String getNewPaperQuestionNumber(String id) {
+        String getNewPaperQuestionNumberURL = RestAssuredRequestHandler.buildURL(newExamURLObject.getString("getNewPaperQuestionNumber"), EnterpriseData.getEnterpriseId(), id);
+        return requestHandler.sendGetRequest(getNewPaperQuestionNumberURL);
+    }
+
     public String getNewPaperList(Boolean onlySeeMe) {
         String getNewPaperListURL = RestAssuredRequestHandler.buildURL(newExamURLObject.getString("getNewPaperList"), EnterpriseData.getEnterpriseId());
         String visibleRange = onlySeeMe? "onlyMe" : "All";

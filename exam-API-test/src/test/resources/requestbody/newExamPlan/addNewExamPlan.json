@@ -7,7 +7,7 @@
   "cut_screen_interval": 0,
   "random_question": "false",
   "random_options": "false",
-  "mark_type": "system",
+  "mark_type": "{{markType}}",
   "mark_question_type": {
     "fill_blank": false,
     "short_answer": false
@@ -44,12 +44,10 @@
   "supervisor_mark": "true",
   "classify_id": "",
   "exam_paper_info": {
-    "fill_blank_count": 0,
-    "paper_name": "{{paper_name}}",
-    "pass_score": "{{total_score*pass_line*0.01}}",
-    "short_answer_count": "{{short_answer_count}}",
-    "total_score": "{{total_score}}",
-    "type": "{{paper_type}}"
+    "paper_name": "",
+    "pass_score": 0,
+    "total_score": 0,
+    "type": ""
   },
   "has_published": "false",
   "always_extract_paper": "true",

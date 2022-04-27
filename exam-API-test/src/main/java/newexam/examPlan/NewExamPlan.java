@@ -20,11 +20,13 @@ public class NewExamPlan {
         resourceFileUtil = new ResourceFileUtil();
     }
 
-    public String addDefaultNewExamPlan(String title, String status, JSONObject paperObject) {
+    public String addDefaultNewExamPlan(String title, String markType, String status, JSONObject paperQuestionObject) {
         // set basic info
         String certificateResponse = CertificateBusiness.queryCertificateList("", "");
         String certificateId = JSONPath.read(certificateResponse, "$.list[0].id").toString();
         JSONObject requestBody = ResourceFileUtil.setJsonBodyValue(resourceFileUtil.parseJsonFile(requestBodyFolder, "addNewExamPlan.json"),
+                "$.paper_id", paperQuestionObject.getJSONObject("data").getString("id"),
+                "$.mark_type", markType,
                 "$.exam_certificate_id", certificateId,
                 "$.status", status,
                 "$.create_time", System.currentTimeMillis(),
@@ -32,30 +34,10 @@ public class NewExamPlan {
                 "$.title", title,
                 "$.update_time", System.currentTimeMillis(),
                 "$.access_token", TokenData.getMangerToken());
-        // set exam paper info
-        Double passLine = requestBody.getDouble("pass_line");
-        requestBody = ResourceFileUtil.setJsonBodyValue(requestBody, "$.paper_id", paperObject.getJSONObject("data").getString("id"),
-                "$.exam_paper_info.paper_name", paperObject.getJSONObject("data").getString("title"),
-                "$.exam_paper_info.pass_score", paperObject.getJSONObject("data").getDouble("total_score") * passLine * 0.01,
-                "$.exam_paper_info.total_score", paperObject.getJSONObject("data").getDouble("total_score"),
-                "$.exam_paper_info.type", paperObject.getJSONObject("data").getString("type"));
-        JSONArray questionList = paperObject.getJSONObject("data").getJSONArray("question_info");
-
-        int fillBankCount = 0;
-        int shortAnswerCount = 0;
-        int singleCount = 0;
-        for(Object questionObject : questionList) {
-            JSONObject question = (JSONObject) questionObject;
-            if(question.getString("type").equals("fillBlank")) {
-                fillBankCount++;
-            } else if(question.getString("type").equals("shortAnswer")) {
-                shortAnswerCount++;
-            } else if(question.getString("type").equals("single")) {
-                singleCount++;
-            }
-        }
-        requestBody = ResourceFileUtil.setJsonBodyValue(requestBody, "$.exam_paper_info.fill_blank_count", fillBankCount,
-                "$.exam_paper_info.short_answer_count", shortAnswerCount);
+        Boolean fillBank = paperQuestionObject.getJSONObject("data").getInteger("fill_blank_count") > 0;
+        Boolean shorAnswer = paperQuestionObject.getJSONObject("data").getInteger("short_answer_count") > 0;
+        requestBody = ResourceFileUtil.setJsonBodyValue(requestBody, "$.data.mark_question_type.fill_blank", fillBank,
+                "$.data.mark_question_type.short_answer", shorAnswer);
 
         String addNewExamPlanURL = RestAssuredRequestHandler.buildURL(newExamPlanURLObject.getString("addNewExamPlan"), EnterpriseData.getEnterpriseId());
         return requestHandler.sendPostRequest(addNewExamPlanURL, requestBody);
