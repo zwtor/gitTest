@@ -4,5 +4,6 @@
   "editNewExamPlan": "/new-exam-api/v2/enterprises/{enterprise-id}/exam-plan/{exam-id}/edit",
   "changeStatus": "/new-exam-api/v2/enterprises/{enterprise-id}/exam-plan/{exam-id}/change-status",
   "deleteNewExamPlan": "/new-exam-api/v2/enterprises/{enterprise-id}/exam-plan/{exam-id}/delete",
-  "copyNewExamPlan": "/new-exam-api/v2/enterprises/{enterprise-id}/exam-plan/{exam-id}/copy"
+  "copyNewExamPlan": "/new-exam-api/v2/enterprises/{enterprise-id}/exam-plan/{exam-id}/copy",
+  "assignStudent": "/new-exam-api/v2/enterprises/{enterprise-id}/exam-plan/{exam-id}/assign-once-exam-plan"
 }

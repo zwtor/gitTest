@@ -1,0 +1,3 @@
+{
+  "getExamTaskList": "/new-exam-api/v2/enterprises/{enterprise-id}/users/{user-id}/exams-list"
+}

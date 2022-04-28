@@ -1,0 +1,19 @@
+{
+  "assign_config": {
+    "time_type": "{{timeType}}",
+    "begin_time": "{{beginTime}}",
+    "end_time": "{{endTime}}",
+    "interval": "{{intervalDay}}",
+    "release_type": "now",
+    "release_time": ""
+  },
+  "assign_object": {
+    "user_list": [
+      "{{user_id}}"
+    ],
+    "post_list": [],
+    "department_list": [],
+    "group_list": []
+  },
+  "access_token": "{{token}}"
+}

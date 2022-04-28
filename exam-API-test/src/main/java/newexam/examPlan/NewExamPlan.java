@@ -3,21 +3,29 @@ package newexam.examPlan;
 import cn.kxy.authentication.business.CertificateBusiness;
 import cn.kxy.base.business.EnterpriseData;
 import cn.kxy.base.business.TokenData;
+import cn.kxy.base.business.UserProfile;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.JSONPath;
 import com.lazy.assured.utils.RestAssuredRequestHandler;
 import com.lazy.common.utils.ResourceFileUtil;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class NewExamPlan {
     private final JSONObject newExamPlanURLObject = (new ResourceFileUtil()).parseJsonFile("url", "newExamPlanURL.json");
     private RestAssuredRequestHandler requestHandler;
     private ResourceFileUtil resourceFileUtil;
+    private UserProfile userProfile;
     private String requestBodyFolder = "requestbody/newExamPlan";
 
     public NewExamPlan() {
         requestHandler = new RestAssuredRequestHandler();
         resourceFileUtil = new ResourceFileUtil();
+        userProfile = new UserProfile();
     }
 
     public String addDefaultNewExamPlan(String title, String markType, String status, JSONObject paperQuestionObject) {
@@ -60,6 +68,47 @@ public class NewExamPlan {
         JSONObject requestBody = ResourceFileUtil.setJsonBodyValue(resourceFileUtil.parseJsonFile(requestBodyFolder, "changeNewExamPlanStatus.json"),
                 "$.status", status);
         return requestHandler.sendPostRequest(changeStatusURL, requestBody);
+    }
+
+    public String assignStudent(String examPlanId, String timeType) {
+        JSONObject requestBody = resourceFileUtil.parseJsonFile(requestBodyFolder, "assignStudent.json");
+        if(timeType.equals("timeFrame")) {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:sss");
+            Date date = new Date();
+            try {
+                date = dateFormat.parse("2024-01-01 00:00:00:00");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(date);
+            long beginTimeStamp = calendar.getTimeInMillis();
+
+            try {
+                date = dateFormat.parse("2024-01-05 00:00:00:00");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            calendar = Calendar.getInstance();
+            calendar.setTime(date);
+            long endTimeStamp = calendar.getTimeInMillis();
+
+            requestBody = ResourceFileUtil.setJsonBodyValue(requestBody, "$.assign_config.time_type", timeType,
+                    "$.assign_config.begin_time", beginTimeStamp,
+                    "$.assign_config.end_time", endTimeStamp,
+                    "$.assign_config.interval", "");
+
+        } else if(timeType.equals("timeInterval")) {
+            requestBody = ResourceFileUtil.setJsonBodyValue(requestBody, "$.assign_config.time_type", timeType,
+                    "$.assign_config.begin_time", "",
+                    "$.assign_config.end_time", "",
+                    "$.assign_config.interval", 5);
+        }
+        String userId = JSONPath.read(userProfile.getUserProfile(), "$.data.id").toString();
+        requestBody = ResourceFileUtil.setJsonBodyValue(requestBody, "$.assign_object.user_list[0]", userId,
+                "access_token", TokenData.getMangerToken());
+        String assignStudentURl = RestAssuredRequestHandler.buildURL(newExamPlanURLObject.getString("assignStudent"), EnterpriseData.getEnterpriseId(), examPlanId);
+        return requestHandler.sendPostRequest(assignStudentURl, requestBody);
     }
 
     public String deleteNewExamPlan(String examPlanId) {
