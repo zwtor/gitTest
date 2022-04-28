@@ -36,15 +36,16 @@ public class TestDefaultNewExamPlan {
 
     @Test(description = "add new exam plan with default configuration", dataProvider = "dataProvider", priority = 1)
     public void testAddNewExamPlan(String markType) {
-        String examPaperListResponse = newExamPaper.getNewPaperList(false);
-        examPaperId = JSONPath.read(examPaperListResponse, "$.data.list[0].id").toString();
-        String paperQuestionResponse = newExamPaper.getNewPaperQuestionNumber(examPaperId);
+        // get the first paper which contain fill blank or show answer question
+        String paperQuestionResponse = newExamPaper.getPaperWithSubjectiveQuestion();
+        examPaperId = JSONPath.read(paperQuestionResponse, "$.data.id").toString();
         JSONObject paperQuestionObject = JSONObject.parseObject(paperQuestionResponse);
 
         // add and publish new exam plan
         String examTitle = "Automation" + CommonData.getStringRandom(3);
         String response = newExamPlan.addDefaultNewExamPlan(examTitle, markType, "published", paperQuestionObject);
         String examPlanId = JSONPath.read(response, "$.data.id").toString();
+
         // save generated exam plan id into list
         examPlanIdList.add(examPlanId);
         Assert.assertEquals(JSONPath.read(response, "$.data.status").toString(), "published");

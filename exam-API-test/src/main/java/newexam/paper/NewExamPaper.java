@@ -2,7 +2,9 @@ package newexam.paper;
 
 import cn.kxy.base.business.EnterpriseData;
 import cn.kxy.setting.bussiness.ClassificationBusines;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSONPath;
 import com.lazy.assured.utils.RestAssuredRequestHandler;
 import com.lazy.common.utils.ResourceFileUtil;
 
@@ -48,6 +50,21 @@ public class NewExamPaper {
         String getNewPaperListURL = RestAssuredRequestHandler.buildURL(newExamURLObject.getString("getNewPaperList"), EnterpriseData.getEnterpriseId());
         String visibleRange = onlySeeMe? "onlyMe" : "All";
         return requestHandler.sendGetRequest(getNewPaperListURL, "page_number", "1", "page_size", "10", "visible_range", visibleRange);
+    }
+
+    // get the first paper which contain fill blank or show answer question
+    public String getPaperWithSubjectiveQuestion() {
+        String examPaperListResponse = getNewPaperList(false);
+        JSONArray paperList = JSONObject.parseArray(JSONPath.read(examPaperListResponse, "$.data.list").toString());
+        for(Object object : paperList) {
+            JSONObject paperObject = (JSONObject) object;
+            String paperId = paperObject.getString("id");
+            String questionResponse = getNewPaperQuestionNumber(paperId);
+            if(Integer.parseInt(JSONPath.read(questionResponse, "$.data.fill_blank_count").toString()) > 0 ) {
+                return questionResponse;
+            }
+        }
+        return null;
     }
 
     public String saveFixedPaper(String paperId, List<JSONObject> questionList) {
