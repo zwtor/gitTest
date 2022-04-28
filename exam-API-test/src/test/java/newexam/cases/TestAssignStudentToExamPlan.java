@@ -15,6 +15,7 @@ import org.testng.annotations.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+//考试任务添加学员（固定时间段、固定周期）
 public class TestAssignStudentToExamPlan {
     private NewExamPlan newExamPlan;
     private NewExamPaper newExamPaper;

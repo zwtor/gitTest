@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="酷学院考试管理" thread-count="1">
+    <test name="新考试任务测试">
+        <classes>
+            <class name="newexam.cases.TestDefaultNewExamPlan" />
+        </classes>
+    </test>
+    <test name="新考试任务添加学员测试">
+        <classes>
+            <class name="newexam.cases.TestAssignStudentToExamPlan" />
+        </classes>
+    </test>
+
+</suite>
